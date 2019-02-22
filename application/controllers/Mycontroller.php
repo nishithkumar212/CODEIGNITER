@@ -12,7 +12,6 @@ class Mycontroller extends REST_Controller
     {
         parent::_construct();
     }  
-
     /**
      * function which is used to get all the details from the employee
      */
@@ -64,4 +63,19 @@ class Mycontroller extends REST_Controller
     {
         $this->EmployeeModel->deletes($id);
     }
+    public function add()
+{
+    $request= json_decode(file_get_contents('php://input'), TRUE);
+    $data=$this->RegisterModel->insert_form($request);
+     if($data)
+      {
+         echo "success";
+      }else{
+         echo "failure";
+      }
+   }
+   public function say()
+   {
+     echo "hello";
+   }
 }

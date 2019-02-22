@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</script>
+</head>
+<body>
+    <div ng-app="MyApp" ng-controller="MyCtrl">
+        <!-- call $scope.search() when submit is clicked. -->
+        <form ng-submit="get()">
+          <!-- will automatically update $scope.user.first_name and .last_name -->
+          <input type="text" ng-model="user.first_name"> 
+          <input type="text" ng-model="user.last_name">
+          <input type="submit" value="get">
+        </form>
+        <div>
+          Results:
+          <ul>
+            <!-- assuming our search returns an array of users matching the search -->
+            <li ng-repeat="user in results">
+               {{user.first_name}} {{user.last_name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script>
+          var app=angular.module('MyApp', [])
+  app.controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
+      $scope.user = {};
+      $scope.results = [];
+      $scope.get = function () {
+          /* the $http service allows you to make arbitrary ajax requests.
+           * in this case you might also consider using angular-resource and setting up a
+           * User $resource. */
+          $http.get('http://localhost/codeigniter/Fifth.html', { params: user },
+            function (response) { $scope.results = response; },
+            function (failure) { console.log("failed :(", failure); });
+      }
+  }]);
+      </script>
+</body>
+</html>

@@ -8,8 +8,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<script>
-angular.module('angularFormApp',[])
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+        <script>
+            angular.module('angularFormApp',[])
 .controller('regController',['$scope','$http',
 function ($scope,$http)
 {
@@ -21,7 +22,7 @@ $scope.submitForm=function()
         method:'post',
        dataType:'json',
         data : $scope.user, //forms user object
-        url:'http://localhost/codeigniter/index.php/Welcome/add',
+        url:'http://localhost/codeigniter/Welcome/add',
         headers : {'Content-Type': 'application/x-www-form-urlencoded'} 
     }).success(function (data)
     {
@@ -29,9 +30,9 @@ $scope.submitForm=function()
     });
 };
 }]);
-</script>
-<body>
-       <div id="content" ng-app="TryApp" ng-controller="regController">
+        </script>
+        <body>
+        <div id="content" ng-app="TryApp" ng-controller="regController">
           <form ng-submit="submit()">
             <input type="text" placeholder="first name" name='name' ng-model="user.Name" />
             <br>
@@ -40,9 +41,9 @@ $scope.submitForm=function()
             <input type="text" placeholder="age" name="age" ng-model="user.age" />
             <br>
             <input type="submit" value="Save" />
+           
         </form>
         <p>{{user | json }}</p>
       </div>
-            </body>
-            </html>
-            <p>{{user | json }}</p>
+</body>
+</html>

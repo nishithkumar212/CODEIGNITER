@@ -22,33 +22,18 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
-	// public function add_user()
-	// { 
+	public function add()
+    {
+        $request= json_decode(file_get_contents('php://input'), TRUE);
+        $data=$this->ektreemodel->insert_form($request);
+        if($data)
+        {
+         echo "success";
+        }else{
+         echo "failure";
+        }
+        // $this->fetchdata(); 
 
-	// 	$fname=$this->input->post('fname');
-	// 	$lname=$this->input->post('lname');
-	// 	$data=array('firstname'=>$fname,'lastname'=>$lname);
-	// 	$this->load->model('Add_users');
-	// 	if($this->Add_users->add($data));
-	// 	{
-
-	// 	}
-	// }
-	// public function get_user()
-	// {
-	// 	$this->load->model('Add_users');
-	// 	$data['data']=$this->Add_users->getuser();
-	// 	$this->load->view('showdata',$data);
-	// }
-	
-	// public function delete($id)
-	// {
-	// 	$this->load->model('Add_users');
-	// 	//$this->input->get('id');
-	// 	$this->Add_users->deleteuser($id);
-	// }
-	// public function update($fname)
-	// {
-	// 	$this->add_users->updateuser($fname);
-	// }
+    }
 }
+	

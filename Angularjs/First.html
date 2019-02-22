@@ -15,7 +15,7 @@
 <p>Name: <input type="text" ng-model="firstName"></p>
 <p>Name: <input type="text" ng-model="lastName"></p>
 
-<p>You wrote: {{ firstName+' '+lastName }}</p>
+<p>You wrote: {{firstName|uppercase+''+lastName|lowercase}}
 
 </div> 
 </body>

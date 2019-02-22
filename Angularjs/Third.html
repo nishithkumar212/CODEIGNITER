@@ -11,13 +11,13 @@
 </head>
 <body>
     <div ng-app="myApp" ng-controller="myCtrl">
-        {{message}}
+        {{myUrl}}
     </div>
 
         <script>
-                var app = angular.module("myApp", []);
-                app.controller("myCtrl", function($scope) {
-               $scope.message="welcome to angular js BODDU KARTHIK";
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope,$location) {
+                    $scope.myUrl = $location.absUrl();;
     });
                 </script>
     
