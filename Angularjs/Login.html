@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="Scripts.js"></script>
+</head>
+<body ng-app='Myform' ng-controller='appcontroller'></body>
+    <h1>HELLO!!!! Enter the credentials to login....</h1>
+<form name="login">
+        <ul>
+                <li ng-repeat="x in message">
+                    {{x.firstname
+                      x.lastname
+                      x.email
+                    x.password
+                    x.phonenumber}}</li>
+              </ul>
+              
+    <table>
+        <tr>
+            <td align='right'>
+                    email:<input type="text" placeholder="email or username" ng-model=user.emailrequired>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                Password:<input type="text" placeholder="password" ng-model=user.password required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" ng-click="submitForm()" value="login"></td>
+                <td>
+                    <input type="button" value="cancel">
+            </td>
+        </tr>
+    </table>
+            {{sucessMsg}}
+</form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="Script.js"></script>
+        <style>
+.blue {
+    background-color:blue;
+    padding:40px;
+    font-family:Verdana;
+}
+</style>
+
+</head>
+<body   ng-model="blue" class="blue" ng-app='angularFormApp' ng-controller='regController'>
+    <h1> REGISTRATION FORM  </h1>
+    <div  ></div>
+          <form name="newForm">
+              <table>
+            <tr>
+         <td align="right">firstname:<input type="text" placeholder="first name" id="inputfirstname" ng-model="user.firstname"  required>
+            </tr>
+        </td>
+            <tr>
+           <td align="right">lastname:<input type="text" placeholder="last name" id="inputlastname" ng-model="user.lastname" />
+            </tr></td>
+            <tr>
+            <td align="right">email:<input type="email" placeholder="email" name="user.email" id="inputemail" ng-model="user.email" required />
+                {{newForm.user.email.$valid}}
+            </tr>
+        </td>
+            <tr>
+            <td align="right">password:<input type="password" placeholder="password" id="inputpassword" ng-model="user.password" required/></td>
+            </tr>
+            <tr>
+            <td align="right" >phonenumber:<input type="text" placeholder="phonenumber" id="inputphonenumber" ng-model="user.phonenumber" /></td>
+            </tr>                                    
+            <td ><input type="submit" ng-click="submitForm()" value="Register">
+               
+                </td>
+                {{sucessMsg}}
+        </form>
+        <p>{{user | json }}</p>
+      </div>
+
+      
+            </body>
+            </html>

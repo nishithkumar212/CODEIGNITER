@@ -23,17 +23,26 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 	public function add()
-    {
-        $request= json_decode(file_get_contents('php://input'), TRUE);
-        $data=$this->ektreemodel->insert_form($request);
-        if($data)
-        {
+{
+    $request= json_decode(file_get_contents('php://input'), TRUE);
+    $data=$this->Registermodel->insert_form($request);
+     if($data)
+      {
          echo "success";
-        }else{
+      }else{
          echo "failure";
-        }
-        // $this->fetchdata(); 
-
-    }
+      }
+}
+public function login()
+{
+	 $request=json_decode(file_get_contents('php://input'),TRUE);
+	 $data=$this->Registermodel->finduser($request);
+     if($data)
+      {
+			echo "success";
+      }else{
+         echo "failure";
+      }
+}
 }
 	
