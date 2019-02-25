@@ -1,9 +1,9 @@
-var Myform=angular.module("Myform",[]);
-Myform.controller("appcontroller",['$scope','$http',
+angular.module('Myform',[])
+.controller('appcontroller',['$scope','$http',
 function($scope,$http)
 {
     $scope.user = {};
-$scope.myFunction=function()
+$scope.submitForm=function()
 {
     $scope.message={};
        $http({
@@ -14,8 +14,17 @@ $scope.myFunction=function()
         headers : {'Content-Type': 'application/x-www-form-urlencoded'} 
     }).then(function (data)
     {
-        $scope.sucessMsg = "login sucess";
-            $scope.message=data;
+        debugger
+        if(data.data.error != '')
+        {
+         $scope.alertClass = 'alert-danger';
+         $scope.alertMessage = data.data.error;
+        }
+        else
+        {  
+         $scope.alertClass = 'alert-success';
+         $scope.alertMessage = data.data.message;
+        }
     });
 };
 }]);

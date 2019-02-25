@@ -14,8 +14,16 @@ $scope.submitForm=function()
         headers : {'Content-Type': 'application/x-www-form-urlencoded'} 
     }).then(function (data)
     {
-        $scope.sucessMsg = "register sucess";
-            $scope.message=data;
+        debugger;
+        if(data.data.error != '')
+   {
+   
+    $scope.alertMessage = data.data.error;
+   }
+   else
+   {  
+    $scope.alertMessage = data.data.message;
+   }
     });
 };
 }]);

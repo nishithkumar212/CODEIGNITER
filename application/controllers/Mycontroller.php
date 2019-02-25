@@ -41,7 +41,6 @@ class Mycontroller extends REST_Controller
         );
         $this->EmployeeModel->insert($values);
     }
-
     /**
      * Function which is used to update the specific row in the table
      */
@@ -54,8 +53,6 @@ class Mycontroller extends REST_Controller
         print_r($valu);
         $this->EmployeeModel->updates($this->put('Eid'),$valu);
         }
-
-
     /**
      * Function which it is used to delete the specific row from the table.
      */
