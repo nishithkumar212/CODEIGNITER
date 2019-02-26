@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<!--Declaring the head section-->
 <head>
     <title>LOGIN Form</title>
-
-<!--including the angularjs extension file-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="Styles.css" />
-    <script src="Scripts.js"></script>
+    <script src="scripting.js"></script>
 </head>
 
 <body ng-app='Myform' ng-controller='appcontroller'>
     <h1>LOGIN FORM</h1>
     <div>
-
         <form name="login">
             <p>email:<br>
                 <input type="text" placeholder="enter the email" name="email" ng-model=user.email required>
@@ -31,7 +26,6 @@
     <div>
         <strong>{{alertMessage}}</strong>
     </div>
-
     </form>
     {{user|json}}
 </body>

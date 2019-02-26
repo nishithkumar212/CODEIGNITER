@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Session</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script src="script1.js"></script>
+    <script type="text/javascript"></script>
+</head>
+<body>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <form name="newForm">
+            <table>
+                <p>firstname:<br>
+                    <input type="text" placeholder="first name" name="firstname" id="inputfirstname" ng-model="credentials.firstname"
+                        required maxlength="10">
+                    <span ng-show="newForm.firstname.$dirty && newForm.firstname.$invalid"></span>
+                    <span ng-show="newForm.firstname.$error.required">Username is required.</span>
+                </p>
+                <p>lastname:<br>
+                    <input type="text" placeholder="last name" id="inputlastname" ng-model="user.lastname" maxlength="15" />
+                </p>
+                <p>email:<br>
+                    <input type="email" placeholder="email" name="email" id="inputemail" ng-model="user.email" required
+                        maxlength="30" />
+                    <span ng-show="newForm.email.$dirty && newForm.email.$invalid"></span>
+                    <span ng-show="newForm.email.$error.required">mail is required.</span>
+                    <span ng-show="newForm.email.$error.email">Invalid email address.</span>
+                </p>
+                <p>password:<br>
+                    <input type="password" placeholder="password" id="inputpassword" name="password" ng-model="user.password"
+                        required minlength="5" maxlength="10" />
+                    <span ng-show="newForm.password.$dirty && newForm.password.$invalid"></span>
+                    <span ng-show="newForm.password.$error.required">password is required.</span>
+                </p>
+                <p>phonenumber:<br>
+                    <input type="text" placeholder="phonenumber" id="inputphonenumber" ng-model="user.phonenumber"
+                        minlength="10" maxlength="10" />
+                </p>
+                <p>
+                    <input type="button" ng-click="save" value="save">
+                    <input type="button" ng-click="get" value="get">
+                </p>
+        </form>
+        <p>{{user | json }}</p>
+        </div>
+    </body>
+    
+</body>
+</html>

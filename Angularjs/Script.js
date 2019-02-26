@@ -22,6 +22,7 @@ $scope.submitForm=function()
    }
    else
    {  
+    window.location.href='http://localhost/codeigniter/Welcome/direction.html';
     $scope.alertMessage = data.data.message;
    }
     });

@@ -112,9 +112,33 @@ class Welcome extends CI_Controller
 		{
             $validation_error = implode(", ", $error);
         }
-        $output = array(
+            $output = array(
             'error' => $validation_error,
             'message' => $message,
+        );
+        echo json_encode($output);
+    }
+    
+    public function finddetails()
+    {
+        $request=json_decode(file_get_contents('php://input'), true);
+        $message = '';
+        $info='';
+        $data=$this->Registermodel->finddetails($request);
+        if($data)
+        {
+            foreach($data as $row)
+            {
+                $one=$row->firstname;
+                $two=$row->lastname;
+                $three=$row->email;
+                $four=$row->password;
+                $five=$row->phonenumber;
+                $info= "your details are ".$one.','.$two.','.$three.','.$four.','.$five;
+            }
+        }
+        $output = array(
+            'message' => $info
         );
         echo json_encode($output);
     }
