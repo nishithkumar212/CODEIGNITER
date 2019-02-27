@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <!--Declaring the head section-->
 <head>
     <title>Registration FORM</title>
@@ -9,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="Script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--Including the jquery script-->
     <script>
             $(document).ready(function(){
               $("input").focus(function(){
@@ -34,15 +34,19 @@
     <!--Declaring a form named newform-->
     <!--Declaring labels with names-->
     <form name="newForm">
+
+        <!--Declaring the label as firstname-->
         <p>firstname:<br>
            <div class =input><input type="text" placeholder="first name" name="firstname" id="inputfirstname" ng-model="user.firstname"
                 required maxlength="10">
             <span ng-show="newForm.firstname.$dirty && newForm.firstname.$invalid"></span>
             <span ng-show="newForm.firstname.$error.required">Username is required.</span>
         </p>
+        <!--Declaring the label as lastname-->
         <p>lastname:<br>
             <input type="text" placeholder="last name" id="inputlastname" ng-model="user.lastname" maxlength="15" />
         </p>
+        <!--Declaring the label as email-->
         <p>email:<br>
             <input type="email" placeholder="email" name="email" id="inputemail" ng-model="user.email" required
                 maxlength="30" />
@@ -50,12 +54,14 @@
             <span ng-show="newForm.email.$error.required">mail is required.</span>
             <span ng-show="newForm.email.$error.email">Invalid email address.</span>
         </p>
+        <!--Declaring the label as password-->
         <p>password:<br>
             <input type="password" placeholder="password" id="inputpassword" name="password" ng-model="user.password"
                 required minlength="5" maxlength="10" />
             <span ng-show="newForm.password.$dirty && newForm.password.$invalid"></span>
             <span ng-show="newForm.password.$error.required">password is required.</span>
         </p>
+        <!--Declaring the label as phonenumber-->
         <p>phonenumber:<br>
             <input type="text" placeholder="phonenumber" id="inputphonenumber" ng-model="user.phonenumber" minlength="10"
                 maxlength="10" />

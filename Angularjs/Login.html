@@ -5,16 +5,20 @@
 <head>
     <title>LOGIN Form</title>
 
-<!--including the angularjs extension file-->
+    <!--including the angularjs extension file-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!--including the stylesheet-->
     <link rel="stylesheet" type="text/css" href="Styles.css" />
     <script src="Scripts.js"></script>
 </head>
+<!--Declaring the body section with  the app name and controller name-->
 
 <body ng-app='Myform' ng-controller='appcontroller'>
     <h1>LOGIN FORM</h1>
     <div>
 
+        <!--naming the labels-->
         <form name="login">
             <p>email:<br>
                 <input type="text" placeholder="enter the email" name="email" ng-model=user.email required>
@@ -25,15 +29,16 @@
                     required>
                 <span ng-show="login.password.$error.required">Password is required.</span>
             </p>
+            <!--Declaring a button and click on button redirects to script-->
             <input type="submit" ng-click="submitForm()" value="login">
             <input type="reset" value="cancel">
     </div>
     <div>
+        <!--printing the message-->
         <strong>{{alertMessage}}</strong>
     </div>
 
     </form>
-    {{user|json}}
 </body>
 
 </html>
