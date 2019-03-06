@@ -11,7 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
-import {RegisterService} from './register.service';
+import {RegisterService} from './services/register.service';
 
 @NgModule({
   declarations: [

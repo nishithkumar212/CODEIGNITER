@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Register } from 'Models/register';
-
+import { Register } from '../Models/register';
+import {ServiceUrlService} from '../serviceUrl/service-url.service';
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  serverurl: string = "http://localhost/codeigniter/register";
-  constructor(private http: HttpClient) { }
-
+  
+  constructor(private http: HttpClient,private serviceurl : ServiceUrlService) { }
+  
   registeruser(register:Register)
   {
     debugger;
@@ -18,7 +18,7 @@ export class RegisterService {
     createuser.append("email",register.email);
     createuser.append("password",register.password);
     createuser.append("confirmpassword",register.confirmpassword);
-    this.http.post(this.serverurl,createuser);
+    return  this.http.post(this.serviceurl.host+this.serviceurl.register,createuser);
   }
 }
 

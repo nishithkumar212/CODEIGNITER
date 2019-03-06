@@ -1,4 +1,7 @@
 <?php
+
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Authorization");
 defined('BASEPATH') or exit('No direct script access allowed');
 include "/var/www/html/codeigniter/application/Services/Register.php";
 class Signin extends CI_Controller
@@ -28,6 +31,6 @@ class Signin extends CI_Controller
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmpassword = $_POST['confirmpassword'];
-        $this->ref->insertdb($firstname, $lastname, $email, $password, $confirmpassword);
+       return $this->ref->insertdb($firstname, $lastname, $email, $password, $confirmpassword);
     }
 }
