@@ -37,4 +37,8 @@ class Registermodel extends CI_Model
         $data = $this->db->query("select * from last where email='$useremail' And password='$userpassword' ")->result();
         return $data;
     }
+    public function registration()
+    {
+        
+    }
 }

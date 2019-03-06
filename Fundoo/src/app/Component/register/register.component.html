@@ -1,0 +1,55 @@
+<mat-card class="register">
+  <div class="center">
+    <h1>Registration</h1>
+  </div>
+  <form class="myform" [formGroup]="registerForm" (ngSubmit)='submitForm(registerForm.value)' novalidate>
+    <mat-form-field matinput [ngClass]="{'has-error':!registerForm.controls['firstname'].valid}">
+      <input matInput placeholder=" firstname" formControlName="firstname"
+        [formControl]="registerForm.controls['firstname']" required>
+    </mat-form-field><br>
+    <div *ngIf="submitted && registerForm.controls['firstname'].errors">
+      <div class="validate" *ngIf="registerForm.controls['firstname'].errors.required">firstname is required</div>
+    </div>
+    <mat-form-field matinput [ngClass]="{'has-error':!registerForm.controls['lastname'].valid}">
+      <input matInput placeholder=" lastname" formControlName="lastname"
+        [formControl]="registerForm.controls['lastname']" required>
+    </mat-form-field><br>
+    <div *ngIf="submitted && registerForm.controls['lastname'].errors">
+      <div class="validate" *ngIf="registerForm.controls['lastname'].errors.required">lastname is required</div>
+    </div>
+    <mat-form-field matinput [ngClass]="{'has-error':!registerForm.controls['email'].valid}">
+        <input type="email" matInput placeholder=" email" formControlName="email"
+            [formControl]="registerForm.controls['email']" required>
+    </mat-form-field><br>
+    <div *ngIf="submitted && registerForm.controls['email'].errors">
+
+        <div class="validate" *ngIf="registerForm.controls['email'].errors.required">Email must be a valid email
+            address</div>
+        <div class="validate" *ngIf="registerForm.controls['email'].errors.required">email is required</div>
+    </div>
+    <mat-form-field matinput [ngClass]="{'has-error':!registerForm.controls['password'].valid}">
+      <input type="password" matInput placeholder=" password" formControlName="password"
+        [formControl]="registerForm.controls['password']" required>
+    </mat-form-field><br>
+    <div *ngIf="submitted && registerForm.controls['password'].errors">
+      <div class="validate" *ngIf="registerForm.controls['password'].errors.required">password is required</div>
+    </div>
+
+
+
+    <mat-form-field matinput [ngClass]="{'has-error':!registerForm.controls['confirmpassword'].valid}">
+        <input type="password" matInput placeholder=" confirmpassword" formControlName="confirmpassword"
+          [formControl]="registerForm.controls['confirmpassword']" required>
+      </mat-form-field><br>
+      <div *ngIf="submitted && registerForm.controls['confirmpassword'].errors">
+       
+        <div class="validate" *ngIf="registerForm.controls['confirmpassword'].errors.MatchPassword">password should be same</div> 
+      </div>
+    <div class="bfield">
+      <button mat-button>Register</button>
+      <button mat-button routerLink="../login">Login</button>
+      <br><br>
+    </div>
+
+  </form>
+</mat-card>

@@ -20,59 +20,62 @@ class Welcome extends CI_Controller
     public function index()
     {
         $this->load->view('welcome_message');
-	}
-	/**
-	 * 
-	 */
+    }
+    /**
+     * Function which is used to validate the user -given inputs in the form and redirecting the Model
+     */
     public function add()
     {
         $request = json_decode(file_get_contents('php://input'), true);
         $message = '';
         $validation_error = '';
-		if (empty($request['firstname'])) 
-		{
+
+        //validating the first name whether it is empty or not
+        if (empty($request['firstname'])) {
             $error[] = 'firstname is Required';
-		} else 
-		{
+        } else {
             $data[':firstname'] = $request['firstname'];
         }
-		if (empty($request['lastname'])) 
-		{
+
+        //validating the lastname in the form given by the user
+        if (empty($request['lastname'])) {
             $error[] = ' lastname is Required';
-		} else 
-		{
+        } else {
             $data[':lastname'] = $request['lastname'];
         }
-		if (empty($request['email'])) 
-		{
+
+        //validating the email in the form given by the user
+        if (empty($request['email'])) {
             $error[] = 'Email is Required';
-		} else 
-		{
+        } else {
             $data[':email'] = $request['email'];
         }
-		if (empty($request['password'])) 
-		{
+
+        //validating the password  in the form given by the user
+        if (empty($request['password'])) {
             $error[] = 'Password is Required';
-		} else 
-		{
+        } else {
             $data[':password'] = $request['password'];
         }
-		if (empty($request['phonenumber'])) 
-		{
+
+        //validating the phonenumber  in the form given by the user
+        if (empty($request['phonenumber'])) {
             $error[] = 'phonenumber is Required';
-		} else 
-		{
-            $data[':phonenumber'] = $request['phonenumber'];
+        } else {
+            $data[':phonenumber'] = $defined('BASEPATH') OR exit('No direct script access allowed');request['phonenumber'];
         }
-		if (empty($error)) 
-		{
+
+        if (empty($error)) {
+            //calling the method present in the register model
             $statement = $this->Registermodel->insert_form($request);
-			if ($statement) 
-			{
-                $message = 'Your Registration success'.' '. $request['firstname'];
+
+            //if the query returns true
+            if ($statement) {
+                //storing the success message in the message
+                $message = 'Your Registration success' . ' ' . $request['firstname'];
             }
-		} else 
-		{
+        } else {
+            //printing the error-details
             $validation_error = implode(", ", $error);
         }
         $output = array(
@@ -84,61 +87,65 @@ class Welcome extends CI_Controller
 
     public function login()
     {
+        //retrieving the form details through the input
         $request = json_decode(file_get_contents('php://input'), true);
         $message = '';
         $validation_error = '';
-		if (empty($request['email'])) 
-		{
+
+        //validating the user-given email
+        if (empty($request['email'])) {
             $error[] = 'Email is Required';
-		} else 
-		{
+        } else {
             $data[':email'] = $request['email'];
         }
-		if (empty($request['password'])) 
-		{
+
+        //validating the user given password
+        if (empty($request['password'])) {
             $error[] = 'Password is Required';
-		} else 
-		{
+        } else {
             $data[':password'] = $request['password'];
         }
-		if (empty($error)) 
-		{
+
+         //validating the error variable containing any messages and calling the method 
+        if (empty($error)) {
             $data = $this->Registermodel->finduser($request);
-			if ($data) 
-			{
+            if ($data) {
                 $message = ' Your login success';
             }
-		} else 
-		{
+        } else {
             $validation_error = implode(", ", $error);
         }
-            $output = array(
+        $output = array(
             'error' => $validation_error,
             'message' => $message,
         );
         echo json_encode($output);
     }
-    
+
     public function finddetails()
     {
-        $request=json_decode(file_get_contents('php://input'), true);
+        //retrieving the form details through the input
+        $request = json_decode(file_get_contents('php://input'), true);
+
+        //declaring the variables
         $message = '';
-        $info='';
-        $data=$this->Registermodel->finddetails($request);
-        if($data)
-        {
-            foreach($data as $row)
-            {
-                $one=$row->firstname;
-                $two=$row->lastname;
-                $three=$row->email;
-                $four=$row->password;
-                $five=$row->phonenumber;
-                $info= "your details are ".$one.','.$two.','.$three.','.$four.','.$five;
+        $info = '';
+
+        //calling the method finddetails present in the model
+        $data = $this->Registermodel->finddetails($request);
+        if ($data) {
+            //accessing the each and every value
+            foreach ($data as $row) {
+                $one = $row->firstname;
+                $two = $row->lastname;
+                $three = $row->email;
+                $four = $row->password;
+                $five = $row->phonenumber;
+                $info = "your details are " . $one . ',' . $two . ',' . $three . ',' . $four . ',' . $five;
             }
         }
         $output = array(
-            'message' => $info
+            'message' => $info,
         );
         echo json_encode($output);
     }

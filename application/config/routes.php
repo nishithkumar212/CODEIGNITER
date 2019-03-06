@@ -53,5 +53,6 @@ $route['findid/(:num)']='Mycontroller/find/$1';
 $route['create']='Mycontroller/create';
 $route['update']='Mycontroller/update';
 $route['delete/(:num)']='Mycontroller/delete/$1';
+$route['register']='Signin/insertion';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

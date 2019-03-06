@@ -5,7 +5,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class EmployeeModel extends CI_Model
 {
-
     /**
      * Function which is used to get the details of all members in database
      */
