@@ -10,14 +10,18 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
+import {ResetComponent}  from './Component/reset/reset.component';
 
 import {RegisterService} from './services/register.service';
+import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ForgotpasswordComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

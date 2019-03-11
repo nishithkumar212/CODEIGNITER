@@ -7,17 +7,17 @@ class Register extends CI_Controller
      * function used to used to interact with the database
      * @param indicates values from the controllers are passed to the table in the database
      */
-    public function insertdb($fname, $lname, $email, $pass, $cpass)
+    public function insertdb($fname, $lname, $email, $pass)
     {
         $data = [
             'firstname' => $fname,
             'lastname' => $lname,
             'email' => $email,
             'password' => $pass,
-            'confirmpassword' => $cpass,
+            
         ];
         //query which is used to insert the values in to the database
-        $query = " Insert into fundoo (firstname,lastname,email,password,confirmpassword) values  ('$fname','$lname','$email','$pass','$cpass')";
+        $query = " Insert into fundoo (firstname,lastname,email,password) values  ('$fname','$lname','$email','$pass')";
         $stmt = $this->db->conn_id->prepare($query);
         $res = $stmt->execute($data);
         if ($res) {

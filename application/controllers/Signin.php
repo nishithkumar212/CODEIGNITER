@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Authorization");
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -22,7 +21,6 @@ class Signin extends CI_Controller
      * function which is used to take the controller values from the post method 
      * calling the insertdb method in services class
      * @param in insertdb indicates the values from the controllers are taken to the method in service class
-     * 
      */
     public function insertion()
     {
@@ -30,7 +28,7 @@ class Signin extends CI_Controller
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $confirmpassword = $_POST['confirmpassword'];
-       return $this->ref->insertdb($firstname, $lastname, $email, $password, $confirmpassword);
+    
+        return $this->ref->insertdb($firstname, $lastname, $email, $password);
     }
 }

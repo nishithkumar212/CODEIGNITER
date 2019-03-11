@@ -11,4 +11,7 @@ export class ServiceUrlService {
   public host = environment.baseUrl;
   public register = "register";
   public login = "login";
+  public forgot="forgot";
+  public reset="reset";
+  public getemail="fetchemail";
 }

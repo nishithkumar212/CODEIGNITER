@@ -60,5 +60,4 @@ class Mycontroller extends REST_Controller
     {
         $this->EmployeeModel->deletes($id);
     }
-    
 }
