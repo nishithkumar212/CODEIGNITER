@@ -17,7 +17,15 @@ class Forgotuser extends CI_Controller
             $stmt->execute();
             $sub="password recover mail";
             $body= "hello click this link to recover your password click here ".$value->resetLink.$token;
-            $ref->sendEmail($email,$sub,$body);
+             $value=$ref->sendEmail($email,$sub,$body);
+             if ($value=="sent")
+             {
+             $data=array(
+                 "message"=>"200",
+             );
+            print  json_encode($data);
+                    return "200";
+            }
         }
         // $data=[
         //     'email'=>$email,

@@ -27,11 +27,11 @@ submitForm(value: any) {
   let status =this.forgotservice.forgotpass(value);
   status.subscribe((res: any) => {
     debugger;
+    console.log(res.message);
     if (res.message == "200") {
-   
-    this.errormsg = "Login  success";
+    this.errormsg = "Reset link send to your mail";
     } else if (res.message == "204") {
-    this.errormsg = "Login  failed";
+    this.errormsg = "Register failed";
     }
     });
 }

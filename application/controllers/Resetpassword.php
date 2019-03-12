@@ -19,6 +19,7 @@ class Resetpassword extends CI_Controller
     }
     public function getemail()
     {
-        $email=$_POST['email'];
+        $email=$_POST['token'];
+        return $this->ref->verificationtoken($email);
     }
 }
