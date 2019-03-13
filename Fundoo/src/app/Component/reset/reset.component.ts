@@ -35,8 +35,6 @@ export class ResetComponent implements OnInit {
       {
         this.session="your session was expired";
         this.show=false;
-     
-       
       }
     });
   }
