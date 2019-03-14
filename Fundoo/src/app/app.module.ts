@@ -14,7 +14,7 @@ import {ResetComponent}  from './Component/reset/reset.component';
 
 import {RegisterService} from './services/register.service';
 import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
-
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +22,8 @@ import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpasswo
     RegisterComponent,
     ForgotpasswordComponent,
     ResetComponent,
+    DashboardComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,8 @@ import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpasswo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
+  
     
   ],
   providers: [RegisterService],

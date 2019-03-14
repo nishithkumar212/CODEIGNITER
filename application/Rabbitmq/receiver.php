@@ -8,12 +8,10 @@ class Receiver
     public function receiverMail()
     {   
         $Rabbit = new RabbitConstants();
-        
         $connection = new AMQPStreamConnection($Rabbit->host,$Rabbit->port,$Rabbit->username,$Rabbit->password);
         $channel    = $connection->channel();
         $channel->queue_declare($Rabbit->queuename, false, false, false, false);
-        // $email=$Rabbit->senderEmailID;
-        // $pass=$Rabbit->senderPassword;
+        
         $callback = function ($msg) {
 
             $Rabbit = new RabbitConstants();

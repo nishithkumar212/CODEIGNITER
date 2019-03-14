@@ -2,10 +2,11 @@ import {NgModule} from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+
 import {
 MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
 MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule,
-MatSelectModule ,MatFormFieldModule
+MatSelectModule ,MatFormFieldModule,MatSidenavModule,MatDividerModule, MatListModule
 } from '@angular/material';
 @NgModule({
 imports: [
@@ -22,7 +23,11 @@ MatMenuModule,
 MatIconModule,
 MatSelectModule,
 MatProgressSpinnerModule,
-MatFormFieldModule
+MatFormFieldModule,
+MatSidenavModule,
+MatDividerModule,
+MatListModule
+
 ],
 exports: [
 CommonModule,
@@ -36,7 +41,10 @@ MatMenuModule,
 MatIconModule,
 MatProgressSpinnerModule,
 MatSelectModule,
-MatFormFieldModule
+MatFormFieldModule,
+MatSidenavModule,
+MatDividerModule,
+MatListModule
 ],
 })
 export class CustomMaterial { }
