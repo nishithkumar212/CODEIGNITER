@@ -31,7 +31,7 @@
   border-radius: 8px;
   outline: none;
   padding: 6px 16px;
-  margin-left:20%;
+  margin-left:10%;
   width: 100%;
   max-width: 550px;
   font-size: 16px;
@@ -73,10 +73,16 @@
 .fifth
 {
   margin-left:20px;
+  margin-top:20px;
 }
 .ff
 {
   margin-left: 20px;
+  padding:6px,16px;
+}
+.bulb
+{
+  margin-bottom: 20px;
 }
 .spacing
 {
@@ -116,8 +122,40 @@
 .small
 {
   padding:opx,14px;
+  color: rgb(104, 101, 101);
 }
-.frst
+.one
 {
-  margin-left:20px;
+  margin-left: 20%;
+  color: rgb(104, 101, 101);
+}
+.two
+{
+  margin-left:20%;
+  color: rgb(104, 101, 101);
+}
+.three
+{
+  margin-left: 20%;
+  color: rgb(104, 101, 101);
+}
+.four
+{
+  color: rgb(104, 101, 101);
+margin-left: 20%;
+}
+.boxsrch
+{
+  margin-bottom: 40%;
+  margin-left: 40%;
+}
+.five
+{
+  margin-left:40%;
+  color: rgb(104, 101, 101);
+}
+.privacy
+{
+margin-left: 20px;
+margin-top:220px;
 }

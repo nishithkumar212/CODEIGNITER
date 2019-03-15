@@ -2,7 +2,6 @@
 
 require_once '/var/www/html/codeigniter/application/Rabbitmq/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
-
 class Receiver
 {
     public function receiverMail()
@@ -16,8 +15,6 @@ class Receiver
 
             $Rabbit = new RabbitConstants();
             $data = json_decode($msg->body, true);
-
-            
             $to_email   = $data['to_email'];
             $subject    = $data['subject'];
             $message    = $data['message'];

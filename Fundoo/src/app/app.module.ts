@@ -11,10 +11,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import {ResetComponent}  from './Component/reset/reset.component';
-
 import {RegisterService} from './services/register.service';
 import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import {NoteComponent} from './Component/note/note.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
     ForgotpasswordComponent,
     ResetComponent,
     DashboardComponent,
-   
+    NoteComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -35,9 +37,7 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
-  
-    
+   
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]

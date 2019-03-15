@@ -1,47 +1,63 @@
-
-  <div fxLayout="row" fxLayoutAlign="center center" >
-<mat-toolbar>
-  <mat-toolbar-row>
-    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <img src="../../../assets/keep_48dp.png">FundooKeep
-    <Input class="searchbox" matInput placeholder="search">
-      <div class ="small">
-      <mat-icon>refresh</mat-icon>
-        <mat-icon>view_agenda</mat-icon>
-        <mat-icon>settings</mat-icon>
-        <mat-icon>apps</mat-icon>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="../../../assets/keep_48dp.png">FundooKeep
+      <Input class="searchbox" matInput placeholder="search">
+      <div class="small">
+        <span class="one">
+          <mat-icon>refresh</mat-icon>
+        </span>
+        <span class="two">
+          <mat-icon>view_agenda</mat-icon>
+        </span>
+        <span class="three">
+          <mat-icon>settings</mat-icon>
+        </span>
+        <span class="four">
+          <mat-icon>apps</mat-icon>
+        </span>
+        <span class="five">
+          <mat-icon>account_box</mat-icon>
+        </span>
       </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </div>
 <mat-sidenav-container class="example-container">
-  
-    <input  class="box" Matinput placeholder="take a note">
   <mat-sidenav class="myclass" #drawer mode="side" opened role="navigation">
-      <mat-list>
-        <mat-icon>lightbulb_outline</mat-icon>
-        <span class="ff">Notes</span>
-        <mat-list class="my">
-            <mat-icon>notifications_none</mat-icon>
-            <span class="second">Reminder</span>
-        </mat-list>
-        <mat-divider></mat-divider>
-        <mat-list><span class="label">Labels</span></mat-list>
-        <mat-list class="spacing">
-            <mat-icon>border_color</mat-icon>
-            <span class="third">Edit labels</span>
-        </mat-list>
-        <mat-divider></mat-divider>
-        <mat-list>
-            <mat-icon>archive</mat-icon>
-            <span class="fourth">Archive</span>
-        </mat-list>
-        <mat-list>
-            <mat-icon>delete</mat-icon>
-            <span class="fourth">Trash</span>
-        </mat-list>
+    <mat-list>
+      <mat-icon class="bulb">lightbulb_outline</mat-icon>
+      <mat-nav-list>
+        <a class="ff" mat-list-item routerLink="note">Notes</a>
+      </mat-nav-list>
+      <mat-list class="my">
+        <mat-icon>notifications_none</mat-icon>
+        <span class="second">Reminder</span>
       </mat-list>
+      <mat-divider></mat-divider>
+      <mat-list><span class="label">Labels</span></mat-list>
+      <mat-list class="spacing">
+        <mat-icon>mode_edit</mat-icon>
+        <span class="third">Edit labels</span>
+      </mat-list>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-icon>archive</mat-icon>
+        <span class="fourth">Archive</span>
+      </mat-list>
+      <mat-list>
+        <mat-icon>delete</mat-icon>
+        <span class="fourth">Trash</span>
+      </mat-list>
+      <mat-list class="privacy"><span>privacy Terms </span></mat-list>
+      <mat-list><span class="privacy"> open source licences</span></mat-list>
+
+    </mat-list>
   </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

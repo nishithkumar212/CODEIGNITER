@@ -26,7 +26,7 @@ MatProgressSpinnerModule,
 MatFormFieldModule,
 MatSidenavModule,
 MatDividerModule,
-MatListModule
+MatListModule,
 
 ],
 exports: [
@@ -44,7 +44,7 @@ MatSelectModule,
 MatFormFieldModule,
 MatSidenavModule,
 MatDividerModule,
-MatListModule
+MatListModule,
 ],
 })
 export class CustomMaterial { }
