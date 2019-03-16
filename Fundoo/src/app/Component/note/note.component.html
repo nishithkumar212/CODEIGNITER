@@ -1,1 +1,17 @@
-<input class="search" matInput placeholder="Take  a Note">
+
+<div class="first" *ngIf="flag==true">
+    <mat-form-field>
+        <input matInput placeholder="take a Note" (click)="initialize()">
+    </mat-form-field>
+</div>
+<div class="second" *ngIf="flag==false">
+        <form class="some" [formGroup]="noteform" (ngSubmit)='Forms(noteform.value)'>
+    <mat-form-field>
+        <input matInput placeholder="title" formControlName="title">
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="take a Note" formControlName="description">
+    </mat-form-field><br>
+    <button mat-button >Submit</button>
+</form>
+</div>

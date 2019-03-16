@@ -14,4 +14,5 @@ export class ServiceUrlService {
   public forgot="forgot";
   public reset="reset";
   public getemail="fetchemails";
+  public note="noteregister";
 }

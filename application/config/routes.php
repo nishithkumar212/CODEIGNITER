@@ -57,6 +57,7 @@ $route['register']='Signin/insertion';
 $route['login']='Login/login';
 $route['forgot']='Forgotpassword/forgot';
 $route['reset']='Resetpassword/reset';
+$route['note']='note/noteregister';
 $route['fetchemails']='Resetpassword/getemail';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

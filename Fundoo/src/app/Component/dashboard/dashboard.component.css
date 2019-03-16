@@ -78,11 +78,13 @@
 .ff
 {
   margin-left: 20px;
-  padding:6px,16px;
+  margin-top:30px;
 }
 .bulb
 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 20px;
+  
 }
 .spacing
 {
@@ -91,11 +93,9 @@
 .my{
  margin-bottom: 30px;
 }
-.label
+.labels
 {
-  margin-left: 20px;
-  margin-bottom:50px;
-  margin-top: 50px;
+  margin-left: 30px;
 }
 .box
 {

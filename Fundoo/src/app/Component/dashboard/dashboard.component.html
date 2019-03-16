@@ -29,32 +29,39 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav class="myclass" #drawer mode="side" opened role="navigation">
     <mat-list>
-      <mat-icon class="bulb">lightbulb_outline</mat-icon>
-      <mat-nav-list>
-        <a class="ff" mat-list-item routerLink="note">Notes</a>
-      </mat-nav-list>
-      <mat-list class="my">
-        <mat-icon>notifications_none</mat-icon>
-        <span class="second">Reminder</span>
-      </mat-list>
-      <mat-divider></mat-divider>
-      <mat-list><span class="label">Labels</span></mat-list>
-      <mat-list class="spacing">
-        <mat-icon>mode_edit</mat-icon>
-        <span class="third">Edit labels</span>
-      </mat-list>
-      <mat-divider></mat-divider>
-      <mat-list>
-        <mat-icon>archive</mat-icon>
-        <span class="fourth">Archive</span>
-      </mat-list>
-      <mat-list>
-        <mat-icon>delete</mat-icon>
-        <span class="fourth">Trash</span>
-      </mat-list>
-      <mat-list class="privacy"><span>privacy Terms </span></mat-list>
-      <mat-list><span class="privacy"> open source licences</span></mat-list>
-
+            <mat-nav-list>
+              <a mat-list-item routerLink="note">
+              <mat-icon>lightbulb_outline</mat-icon>
+              <span>Notes</span>
+              </a>
+            </mat-nav-list>
+            <mat-nav-list>
+              <a mat-list-item routerLink="">
+                <mat-icon>notifications_none</mat-icon>
+                <span>reminders</span>
+              </a>
+              <mat-divider></mat-divider>
+              <span class="labels">Labels</span>
+            </mat-nav-list>
+                <mat-nav-list>
+                  <a mat-list-item routerlink="">
+                  <mat-icon>mode_edit</mat-icon>
+                  <span>Edit labels</span>
+                  </a>
+                  <mat-divider></mat-divider>
+                </mat-nav-list>
+                    <mat-nav-list>
+                      <a mat-list-item routerlink="">
+                      <mat-icon>archive</mat-icon>
+                      <span>Archive</span>
+                      </a>
+                    </mat-nav-list>
+                     <mat-nav-list>
+                          <a mat-list-item routerlink="">
+                          <mat-icon>delete</mat-icon>
+                          <span>trash</span>
+                          </a>
+                        </mat-nav-list>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
