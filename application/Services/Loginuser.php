@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+include_once("/var/www/html/codeigniter/application/Services/jwt.php");
+include_once("/var/www/html/codeigniter/application/predis-1.1/autoload.php");
+use \Firebase\JWT\JWT;
 class Loginuser extends CI_Controller
 {
     public function signin($email,$password)
@@ -30,14 +33,32 @@ class Loginuser extends CI_Controller
         //  }
         //  return 204;
         if($no>0) {
-            $data = array(
-                "message" => "200",
+
+            // $data = array(
+            //     "message" => "200",
+
+            // );
+            $key="nishith";
+            $data=array(
+                "email"=>$email,
             );
-            print json_encode($data);
-            return "200";
+            $ref=new JWT();
+            $jwt=$ref->encode($data,$key);
+            $client = new Predis\Client(array(
+                'host' => '127.0.0.1',
+                'port' => 6379,
+                'password' => null,
+                ));
+            $client->set('token','$jwt');
+            // $value=$client->get('token');
+                $data=array(
+                    "message"=>"200",
+                    "token"=>"$jwt"
+                );
+                 print json_encode($data);
         } else {
             $data = array(
-                "message" => "204",
+                "message" => "204"
             );
              print json_encode($data);
             return "204";

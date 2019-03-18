@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {LoginService } from '../../services/login.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,18 +12,21 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginForm: FormGroup;
   errormsg :string="";
+  value:any;
+  tokens:any;
 
   /**
    * @param fb creating an FormBuilder instance instead of formcontrol and form group 
    * It includes validations for the controllers.
    */
-  constructor(fb: FormBuilder,private  loginservice:LoginService ) {
+  constructor(fb: FormBuilder,private  loginservice:LoginService,private route:Router ) {
     this.loginForm = fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
     })
   }
   ngOnInit() {
+
   }
 
   /**
@@ -35,13 +39,14 @@ export class LoginComponent implements OnInit {
     let status =this.loginservice.login(value);
     status.subscribe((res: any) => {
       debugger;
-      if (res.message == "200") {
-     
-      this.errormsg = "Login  success";
-      } else if (res.message == "204") {
-      this.errormsg = "Login  failed";
-      }
-      });
+    if(res.message=="200")
+    {
+      debugger
+      this.errormsg="login success";
+      const tokens =res.token;
+      localStorage.setItem('token',tokens);
+    }
+      this.route.navigate(["/dashboard"]);
+  });
   }
-  }
-
+}

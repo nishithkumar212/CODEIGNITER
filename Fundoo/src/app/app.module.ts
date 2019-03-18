@@ -24,7 +24,9 @@ import {NoteComponent} from './Component/note/note.component';
     ForgotpasswordComponent,
     ResetComponent,
     DashboardComponent,
-    NoteComponent
+    NoteComponent,
+
+  
   
   ],
   imports: [
@@ -37,6 +39,7 @@ import {NoteComponent} from './Component/note/note.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+  
    
   ],
   providers: [RegisterService],
