@@ -1,21 +1,40 @@
-<div class="first" *ngIf="flag==true">
+<div fxLayout="row" class="first" *ngIf="flag==true">
     <mat-form-field>
         <input matInput placeholder="take a Note" (click)="initialize()">
+
     </mat-form-field>
 </div>
 <div class="second" *ngIf="flag==false">
     <form class="some" [formGroup]="noteform" (ngSubmit)='Forms(noteform.value)'>
+        <div>
         <mat-form-field>
             <input matInput placeholder="title" formControlName="title">
-        </mat-form-field><br>
+        </mat-form-field>
+    </div>
+    <div>
         <mat-form-field>
             <input matInput placeholder="take a Note" formControlName="description">
-        </mat-form-field><br>
+        </mat-form-field>
+    </div>
+    <div  class="designs" fxLayoutGap="12px ">
+    <mat-icon >person_add</mat-icon>
+    <mat-menu  class="menu" #appMenu="matMenu">
+        <button mat-menu-item (click)=reminder()>Today </button>
+        <button mat-menu-item>Tomorrow</button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>notifications_none</mat-icon>
+      </button>
+    <mat-icon>insert_photo</mat-icon>
+    <mat-icon>archive</mat-icon>
+    <mat-icon>color_lens</mat-icon>
         <button mat-button>Submit</button>
+    </div>
     </form>
 </div>
-<mat-card class="notes" *ngFor="let users of details ">
-    <div >
-        {{users.title}}{{users.description}}
-    </div>
+<div  fxLayout="row wrap"  fxLayoutGap="10px"  fxLayoutAlign="center center"> 
+<mat-card class="notes"  *ngFor="let users of details ">
+       {{users.title}}
+        {{users.description}}
 </mat-card>
+</div>

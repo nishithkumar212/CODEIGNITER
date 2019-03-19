@@ -5,6 +5,7 @@ import {NoteService} from '../../services/note.service';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import decode from 'jwt-decode';
 import { variable } from '@angular/compiler/src/output/output_ast';
+import { DatePipe } from '@angular/common'
  
 @Component({
   selector: 'app-note',
@@ -24,7 +25,9 @@ export class NoteComponent implements OnInit {
   mytitle:string;
   details:string[];
   mydescription:string;
-  constructor(private fb:FormBuilder,private service:NoteService) 
+  latest_date:any;
+  date:any;
+  constructor(private fb:FormBuilder,private service:NoteService,public datepipe: DatePipe) 
   {
     this.noteform=fb.group({
       title:"",
@@ -47,6 +50,11 @@ export class NoteComponent implements OnInit {
   {
     this.flag=!this.flag;
   }
+  reminder()
+  {
+    this.date=new Date();
+ let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+  }
   Forms(value:any)
   {
     debugger;
@@ -55,17 +63,17 @@ export class NoteComponent implements OnInit {
     this.myvalue=decode(this.tokenvalue);
       this.emailvalues=this.myvalue['email'];
     let user=this.service.register(value,this.emailvalues);
-      debugger
+      debugger;
      user.subscribe((res:any)=>
       {                
-        if(res.message=="200")
-        {
-          this.errormsg="note inserted successsfully in database";
-        }
-        else if(res.message=="204")
-        {
-          this.errormsg="some thing went wrong in insertion ";
-        }
+      //   if(res.message=="200")
+      //   {
+      //     this.errormsg="note inserted successsfully in database";
+      //   }
+      //   else if(res.message=="204")
+      //   {
+      //     this.errormsg="some thing went wrong in insertion ";
+      //   }
       })
     }
   }

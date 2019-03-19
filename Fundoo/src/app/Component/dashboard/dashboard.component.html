@@ -8,19 +8,20 @@
       <Input class="searchbox" matInput placeholder="search">
       <div class="small">
         <span class="one">
-          <mat-icon>refresh</mat-icon>
+         <button mat-icon-button><mat-icon style="font-size:25px;">refresh</mat-icon></button>
         </span>
         <span class="two">
-          <button mat-icon-button><mat-icon style="font-size:30px;">view_agenda</mat-icon></button>
+          <button mat-icon-button><mat-icon style="font-size:25px;">view_agenda</mat-icon></button>
         </span>
+       
         <span class="three">
-         <button mat-icon-button> <mat-icon style="font-size:30px;">settings</mat-icon></button>
+         <button mat-icon-button> <mat-icon style="font-size:25px;">settings</mat-icon></button>
         </span>
         <span class="four">
-          <mat-icon>apps</mat-icon>
+        <button mat-icon-button> <mat-icon style="font-size:25px;">apps</mat-icon></button> 
         </span>
         <span class="five">
-          <button mat-icon-button  onclick=signout() routerLink="../login"><mat-icon style="font-size:35px;">account_box</mat-icon></button>
+          <button mat-icon-button  onclick=signout() routerLink="../login"><mat-icon style="font-size:25px;">account_box</mat-icon></button>
         </span>
       </div>
     </mat-toolbar-row>
@@ -36,7 +37,7 @@
               </a>
             </mat-nav-list>
             <mat-nav-list>
-              <a mat-list-item routerLink="">
+              <a mat-list-item>
                 <mat-icon>notifications_none</mat-icon>
                 <span>reminders</span>
               </a>
@@ -62,6 +63,14 @@
                           <span>trash</span>
                           </a>
                         </mat-nav-list>
+                        <div class="last">
+                    
+                        <mat-list>
+                          <li>privacy -terms</li>
+                          open-source licenses
+                       
+                    </mat-list>
+                    </div>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>

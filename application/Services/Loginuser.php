@@ -44,17 +44,19 @@ class Loginuser extends CI_Controller
             );
             $ref=new JWT();
             $jwt=$ref->encode($data,$key);
+            $decodedvalue=$ref->decode($jwt,$key,array('HS256'));
             $client = new Predis\Client(array(
                 'host' => '127.0.0.1',
                 'port' => 6379,
                 'password' => null,
                 ));
-            $client->set('token','$jwt');
+            $client->set('token',$jwt);
             // $value=$client->get('token');
                 $data=array(
                     "message"=>"200",
                     "token"=>"$jwt"
                 );
+                // $tokenvalue=$client->get('token');
                  print json_encode($data);
         } else {
             $data = array(
