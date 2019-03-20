@@ -12,9 +12,11 @@ class Note extends CI_Controller
  }
     public function noteregister()
     {
+        $myhead=apache_request_headers('head');
        $tit=$_POST['title'];
        $des=$_POST['description'];
-       $email=$_POST['emailid'];
-       return  $this->ref->notes($tit,$des,$email);
+    //    $email=$_POST['emailid'];
+       $date=$_POST['dateformat'];
+       return  $this->ref->notes($tit,$des,$email,$date);
     }
 }

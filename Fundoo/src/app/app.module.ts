@@ -9,13 +9,13 @@ import { CustomMaterial } from './material.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HttpHeaders }    from '@angular/common/http';
 import {ResetComponent}  from './Component/reset/reset.component';
 import {RegisterService} from './services/register.service';
 import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpassword.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import {NoteComponent} from './Component/note/note.component';
-
+import {DatePipe} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +25,6 @@ import {NoteComponent} from './Component/note/note.component';
     ResetComponent,
     DashboardComponent,
     NoteComponent,
-
-  
-  
   ],
   imports: [
     BrowserModule,
@@ -39,10 +36,11 @@ import {NoteComponent} from './Component/note/note.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
   
    
   ],
-  providers: [RegisterService],
+  providers: [RegisterService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

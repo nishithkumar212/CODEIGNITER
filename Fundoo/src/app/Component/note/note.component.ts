@@ -52,8 +52,9 @@ export class NoteComponent implements OnInit {
   }
   reminder()
   {
+    debugger;
     this.date=new Date();
- let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+ this.latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   }
   Forms(value:any)
   {
@@ -62,7 +63,7 @@ export class NoteComponent implements OnInit {
     this.tokenvalue=localStorage.getItem('token');
     this.myvalue=decode(this.tokenvalue);
       this.emailvalues=this.myvalue['email'];
-    let user=this.service.register(value,this.emailvalues);
+    let user=this.service.register(value,this.emailvalues,this.latest_date);
       debugger;
      user.subscribe((res:any)=>
       {                
