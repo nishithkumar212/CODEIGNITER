@@ -16,7 +16,7 @@ new :any;
    {
      debugger;
      let selectuser=new FormData();
-     selectuser.append("email",values);
+     selectuser.append("tokenemail",values);
      return this.http.post(this.serverurl.host+this.serverurl.selected,selectuser);
    }
   register(Notes:note,tokenvalue,date)
@@ -27,8 +27,9 @@ new :any;
     noteuser.append("description",Notes.description);
      //noteuser.append("emailid",tokenvalue);
     this.head=new HttpHeaders().set("Authorization",tokenvalue);
+    console.log(this.head);
     noteuser.append("dateformat",date);
-    this.new=this.head.get("AUthorization");
+    //this.new=this.head.get("AUthorization");
     return this.http.post(this.serverurl.host+this.serverurl.note,noteuser,{
       headers:this.head
     });

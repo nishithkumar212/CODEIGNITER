@@ -1,39 +1,49 @@
 <div fxLayout="row" class="first" *ngIf="flag==true" fxLayoutGap="10px">
     <mat-form-field>
-            <input matInput placeholder="take a Note" (click)="initialize()">
+        <input matInput placeholder="take a Note" (click)="initialize()">
     </mat-form-field>
-    </div>
+</div>
 <div class="second" *ngIf="flag==false">
-    <form class="some" [formGroup]="noteform" >
+    <form class="some" [formGroup]="noteform">
         <div>
-        <mat-form-field>
-            <input matInput placeholder="title" formControlName="title">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field>
-            <input matInput placeholder="take a Note" formControlName="description">
-        </mat-form-field>
-    </div>
-    <div  class="designs" fxLayoutGap="12px ">
-    <mat-icon >person_add</mat-icon>
-    <mat-menu  class="menu" #appMenu="matMenu">
-        <button mat-menu-item (click)="reminder()">Today </button>
-      </mat-menu>
-      <button   mat-icon-button [matMenuTriggerFor]="appMenu">
-        <mat-icon class="image">notifications_none</mat-icon>
-      </button>
-    <mat-icon>insert_photo</mat-icon>
-    <mat-icon>archive</mat-icon>
-    <mat-icon>color_lens</mat-icon>
-        <button class="edge" mat-button (click)="Forms(noteform.value)">close</button>
-    </div>
+            
+                <input class="title" matInput placeholder="title" formControlName="title">
+           
+        </div>
+        <div>
+          
+                <input class="takenote" matInput placeholder="take a Note" formControlName="description">
+            
+        </div>
+       
+        <div class="designs" fxLayoutGap="12px ">
+            <mat-menu class="menu" #appMenu="matMenu">
+                <button mat-menu-item (click)="reminder()"> Later Today 8.00PM</button>
+                <button mat-menu-item>Tomorrow 8.00AM</button>
+                <button mat-menu-item (click)="datecalender=true">Datepicker</button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon class="image">notifications_none</mat-icon>
+            </button>
+            <mat-icon>person_add</mat-icon>
+            <mat-icon>insert_photo</mat-icon>
+            <mat-icon>archive</mat-icon>
+            <mat-icon>color_lens</mat-icon>
+            <button class="edge" mat-button (click)="Forms(noteform.value)">close</button>
+        </div>
+       
     </form>
 </div>
-<div  fxLayout="row wrap"  fxLayoutGap="10px"  fxLayoutAlign="center center"> 
-<mat-card class="notes"  *ngFor="let users of details ">
-      <p> {{users.title}}</p>
-      <p>{{users.description}} </p>
-      <p> {{users.dateformat}}</p> 
-</mat-card>
+<div *ngIf="datecalender">
+        <mat-card class="call">
+            <input matInput  placeholder="select date">
+            <input matInput placeholder="select month">
+        </mat-card>
+    </div>
+<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
+    <mat-card class="notes" *ngFor="let users of details ">
+        <p> {{users.title}}</p>
+        <p>{{users.description}} </p>
+        <p> {{users.dateformat}}</p>
+    </mat-card>
 </div>

@@ -44,7 +44,7 @@ class Loginuser extends CI_Controller
             );
             $ref=new JWT();
             $jwt=$ref->encode($data,$key);
-            $decodedvalue=$ref->decode($jwt,$key,array('HS256'));
+            // $decodedvalue=$ref->decode($jwt,$key,array('HS256'));
             $client = new Predis\Client(array(
                 'host' => '127.0.0.1',
                 'port' => 6379,

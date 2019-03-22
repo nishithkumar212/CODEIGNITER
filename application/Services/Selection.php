@@ -15,11 +15,13 @@ class Selection extends CI_Controller
             'password' => null
         ));
         $values=$client->get('token');
+        // if($email==$values)
+        // {
         // $data=array(
         //     email=>"nishith@gmail.com"
         // );
         // $j=$reference->encode($data,$key);
-        // $myDecode=$reference->decode($values, $key, array('HS256'));
+        //  $Decodeemail=$reference->decode($values, $key, array('HS256'));
         $myDecode=$reference->decode($values, $key, array('HS256'));
         $query="SELECT  * from notes where emailid='$email'";
         $stmt=$this->db->conn_id->prepare($query);
@@ -28,4 +30,5 @@ class Selection extends CI_Controller
         print json_encode($data);
     }
 }
+
 ?>

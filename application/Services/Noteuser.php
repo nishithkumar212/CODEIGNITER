@@ -1,12 +1,26 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+include_once("/var/www/html/codeigniter/application/predis-1.1/autoload.php");
+include_once("/var/www/html/codeigniter/application/Services/jwt.php");
+use \Firebase\JWT\JWT;
 class Noteuser extends CI_Controller
 {
-    public function notes($tit,$des,$email,$date)
+    public function notes($tit,$des,$myhead,$date)
     {
-        $query="INSERT into notes (title,description,emailid,dateformat) values('$tit','$des','$email','$date')";
+        $key="nishith";
+        $client = new Predis\Client(array(
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'password' => null,
+            ));
+             $value=$client->get('token');
+             if($value==$myhead['Authorization'])
+             {
+                 $ref=new JWT();
+                $email=$ref->decode($myhead,$key,array('HS256'))->email;
+        $query="INSERT into notes (title,description,emailid,dateformat) values('$tit','$des','$email ','$date')";
         $stmt=$this->db->conn_id->prepare($query);
-        $stmt->execute();
+      $RES =  $stmt->execute();
         $no=$stmt->rowCount();
         if($no>0)
         {
@@ -17,5 +31,6 @@ class Noteuser extends CI_Controller
                 return "200";
         }
     }
+}
 }
 ?>

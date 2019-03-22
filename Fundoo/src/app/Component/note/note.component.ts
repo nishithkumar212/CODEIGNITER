@@ -6,6 +6,7 @@ import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import decode from 'jwt-decode';
 import { variable } from '@angular/compiler/src/output/output_ast';
 import { DatePipe } from '@angular/common'
+import { HttpHeaders } from '@angular/common/http';
  
 @Component({
   selector: 'app-note',
@@ -37,8 +38,8 @@ export class NoteComponent implements OnInit {
   ngOnInit() {
     debugger;
     this.tokenvalue=localStorage.getItem('token');
-    this.myvalue=decode(this.tokenvalue);
-      this.emailvalues=this.myvalue['email'];
+     this.myvalue=decode(this.tokenvalue);
+       this.emailvalues=this.myvalue['email'];
     let user=this.service.selection(this.emailvalues);
     user.subscribe((res:any)=>
     {
@@ -61,9 +62,9 @@ export class NoteComponent implements OnInit {
     debugger;
     console.log(value);
     this.tokenvalue=localStorage.getItem('token');
-    this.myvalue=decode(this.tokenvalue);
-      this.emailvalues=this.myvalue['email'];
-    let user=this.service.register(value,this.emailvalues,this.latest_date);
+    //  this.myvalue=decode(this.tokenvalue);
+    // this.emailvalues=this.myvalue['email'];
+    let user=this.service.register(value,this.tokenvalue,this.latest_date);
       debugger;
      user.subscribe((res:any)=>
       {                
