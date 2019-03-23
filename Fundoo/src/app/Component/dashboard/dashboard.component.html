@@ -13,20 +13,38 @@
         <span class="two">
           <button mat-icon-button><mat-icon style="font-size:25px;">view_agenda</mat-icon></button>
         </span>
-       
-        <span class="three">
+        <span class="three" [matMenuTriggerFor]="newmenu">
+         
          <button mat-icon-button> <mat-icon style="font-size:25px;">settings</mat-icon></button>
+          <mat-menu class="trigger" #newmenu="matMenu">
+             <p>settings</p>
+             <p>sendfeedback</p>
+             <p>Help</p>
+             <p>AppDownloads</p>
+             <p>Addshortcuts</p>
+          </mat-menu>
         </span>
         <span class="four">
         <button mat-icon-button> <mat-icon style="font-size:25px;">apps</mat-icon></button> 
         </span>
         <span class="five">
-          <button mat-icon-button  onclick=signout() routerLink="../login"><mat-icon style="font-size:25px;">account_box</mat-icon></button>
+          <!-- <button mat-icon-button  (click)="signout=true"><mat-icon style="font-size:25px;">account_box</mat-icon></button> -->
         </span>
+        <span [matMenuTriggerFor]="mymenu">
+         <button mat-icon-button> <mat-icon>account_box</mat-icon></button>
+        <mat-menu   class="menubar" #mymenu="matMenu">
+          <!-- <img src="../../../assets/pexels-photo-236047.jpeg"> -->
+          {{email}}
+          <div fxLayoutGap="10px"><input type="button"  style="color: rgb(104, 101, 101);"value="AddAccount">
+          <input type="button"  style="color: rgb(104, 101, 101);" value="RemoveAccount">
+          </div>
+        </mat-menu>
+      </span>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
+
 <mat-sidenav-container class="example-container">
   <mat-sidenav class="myclass" #drawer mode="side"  role="navigation">
     <mat-list>
@@ -68,7 +86,6 @@
                         <mat-list>
                           <li>privacy -terms</li>
                           open-source licenses
-                       
                     </mat-list>
                     </div>
     </mat-list>

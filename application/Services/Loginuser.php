@@ -50,7 +50,7 @@ class Loginuser extends CI_Controller
                 'port' => 6379,
                 'password' => null,
                 ));
-            $client->set('token',$jwt);
+            $client->set($jwt,$jwt);
             // $value=$client->get('token');
                 $data=array(
                     "message"=>"200",

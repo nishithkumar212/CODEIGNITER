@@ -16,6 +16,8 @@ import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpasswo
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import {NoteComponent} from './Component/note/note.component';
 import {DatePipe} from '@angular/common';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import {MatGridListModule }from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,9 +38,9 @@ import {DatePipe} from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    MatDatepickerModule,
+    MatGridListModule
   
-   
   ],
   providers: [RegisterService,DatePipe],
   bootstrap: [AppComponent]

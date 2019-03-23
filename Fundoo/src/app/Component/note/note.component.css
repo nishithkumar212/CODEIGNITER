@@ -68,9 +68,22 @@ margin-top:30px;
 }
 .call
 {
-  max-width: 155px;
-  height: 200px;
+  max-width: 135px;
+  height: 10px;
   
   margin-left:275px;
-  margin-top:-60px;
+  margin-top:-70px;
+}
+.arrow
+{
+  line-height: -80px;
+  padding-right: 1000%;
+}
+.example-full-width
+{
+ max-width: 120px;
+}
+.example
+{
+  max-width: 125px;
 }

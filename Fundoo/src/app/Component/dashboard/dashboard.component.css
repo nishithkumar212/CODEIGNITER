@@ -185,3 +185,21 @@ margin-top:220px;
 {
   margin-left:20px;
 }
+.signout
+{
+  max-width: 250px;
+  height:250px;
+}
+.menubar
+{
+min-width:250px;
+max-width:250px;
+}
+.photo
+{
+  border-radius: 100%;
+}
+.profile
+{
+  border-radius:100%;
+}

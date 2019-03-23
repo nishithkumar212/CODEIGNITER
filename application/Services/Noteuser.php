@@ -13,11 +13,11 @@ class Noteuser extends CI_Controller
             'port' => 6379,
             'password' => null,
             ));
-             $value=$client->get('token');
-             if($value==$myhead['Authorization'])
+             $value=$client->get($myhead['Authorization']);
+             if($value)
              {
                  $ref=new JWT();
-                $email=$ref->decode($myhead,$key,array('HS256'))->email;
+                $email=$ref->decode($value,$key,array('HS256'))->email;
         $query="INSERT into notes (title,description,emailid,dateformat) values('$tit','$des','$email ','$date')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();

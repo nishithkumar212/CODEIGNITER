@@ -6,7 +6,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import {
 MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
 MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule,
-MatSelectModule ,MatFormFieldModule,MatSidenavModule,MatDividerModule, MatListModule
+MatSelectModule ,MatFormFieldModule,MatSidenavModule,MatDividerModule, MatListModule,
+MatDatepickerModule ,MatNativeDateModule ,
 } from '@angular/material';
 @NgModule({
 imports: [
@@ -27,6 +28,8 @@ MatFormFieldModule,
 MatSidenavModule,
 MatDividerModule,
 MatListModule,
+MatDatepickerModule,
+MatNativeDateModule,
 
 ],
 exports: [

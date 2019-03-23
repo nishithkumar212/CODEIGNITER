@@ -6,16 +6,11 @@
 <div class="second" *ngIf="flag==false">
     <form class="some" [formGroup]="noteform">
         <div>
-            
-                <input class="title" matInput placeholder="title" formControlName="title">
-           
+            <input class="title" matInput placeholder="title" formControlName="title">
         </div>
         <div>
-          
-                <input class="takenote" matInput placeholder="take a Note" formControlName="description">
-            
+            <input class="takenote" matInput placeholder="take a Note" formControlName="description">
         </div>
-       
         <div class="designs" fxLayoutGap="12px ">
             <mat-menu class="menu" #appMenu="matMenu">
                 <button mat-menu-item (click)="reminder()"> Later Today 8.00PM</button>
@@ -31,19 +26,35 @@
             <mat-icon>color_lens</mat-icon>
             <button class="edge" mat-button (click)="Forms(noteform.value)">close</button>
         </div>
-       
     </form>
 </div>
 <div *ngIf="datecalender">
-        <mat-card class="call">
-            <input matInput  placeholder="select date">
-            <input matInput placeholder="select month">
-        </mat-card>
-    </div>
-<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
-    <mat-card class="notes" *ngFor="let users of details ">
-        <p> {{users.title}}</p>
-        <p>{{users.description}} </p>
-        <p> {{users.dateformat}}</p>
+    <mat-card class="call">
+        <p>pick date and time</p>
+        <mat-divider></mat-divider>
+        <mat-form-field class="example-full-width">
+            <input class="arrow" matInput [matDatepicker]="picker" placeholder="Choose date">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example" >
+            <select matNativeControl required>
+                <option value="Morning">Morning 8.00AM</option>
+                <option value="Afternoon">Afternoon 1.00AM</option>
+                <option value="Evening">Evening 6.00PM</option>
+                <option value="custom">custom</option>
+            </select>
+        </mat-form-field>
+        <input matInput placeholder="doesn't repeat">
     </mat-card>
 </div>
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
+        <mat-card class="notes" *ngFor="let users of details ">
+            <p> {{users.title}}</p>
+            <p>{{users.description}} </p>
+            <p> {{users.dateformat}}</p>
+        </mat-card>
+    </div>
+
