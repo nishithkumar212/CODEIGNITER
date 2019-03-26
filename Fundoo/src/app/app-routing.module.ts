@@ -6,6 +6,8 @@ import { ForgotpasswordComponent } from './Component/forgotpassword/forgotpasswo
 import { ResetComponent } from './Component/reset/reset.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { NoteComponent } from './Component/note/note.component';
+import { FirstComponent } from './Component/first/first.component';
+
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -20,8 +22,11 @@ const routes: Routes = [
                 path: 'note',
                 component: NoteComponent,
             },
+           
         ]
     },
+    {path:'details',component:FirstComponent},
+
 ]
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

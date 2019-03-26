@@ -1,61 +1,73 @@
-<div fxLayout="row" fxLayoutAlign="center center">
+<div class="maindiv">
+<div fxLayout="row" fxLayoutAlign="center center" >
   <mat-toolbar>
-    <mat-toolbar-row>
+    <mat-toolbar-row style="
+    height: 64px;
+    width: 1297px;
+    background-color: white;
+">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
         <mat-icon>menu</mat-icon>
       </button>
       <img src="../../../assets/keep_48dp.png">FundooKeep
       <Input class="searchbox" matInput placeholder="search">
-      <div class="small">
-        <span class="one">
-         <button mat-icon-button><mat-icon style="font-size:25px;">refresh</mat-icon></button>
-        </span>
-        <span class="two">
-          <button mat-icon-button><mat-icon style="font-size:25px;">view_agenda</mat-icon></button>
-        </span>
-        <span class="three" [matMenuTriggerFor]="newmenu">
+        <div class="one"> 
+        
+         <button mat-icon-button class="iconbtn"><mat-icon>refresh</mat-icon></button>
+    
+     
+          <button *ngIf= "list" mat-icon-button class="iconbtn"  (click)="clicker()"><mat-icon style="font-size:25px;">view_agenda</mat-icon></button>
+        
+       
+          <button *ngIf="grid" (click)="clicker()" class="iconbtn" mat-icon-button><img src="../../../assets/menu-grid.svg" style="font-size:15px;"></button>
+     
+  
          
-         <button mat-icon-button> <mat-icon style="font-size:25px;">settings</mat-icon></button>
+         <button mat-icon-button [matMenuTriggerFor]="newmenu" class="iconbtn"> <mat-icon style="font-size:25px;">settings</mat-icon></button>
           <mat-menu class="trigger" #newmenu="matMenu">
-             <p>settings</p>
-             <p>sendfeedback</p>
-             <p>Help</p>
-             <p>AppDownloads</p>
-             <p>Addshortcuts</p>
+             <button mat-menu-item>settings</button>
+             <button mat-menu-item>sendfeedback</button>
+             <button mat-menu-item>Help</button>
+             <button mat-menu-item>AppDownloads</button>
+             <button mat-menu-item>Addshortcuts</button> 
           </mat-menu>
-        </span>
-        <span class="four">
-        <button mat-icon-button> <mat-icon style="font-size:25px;">apps</mat-icon></button> 
-        </span>
-        <span class="five">
-          <!-- <button mat-icon-button  (click)="signout=true"><mat-icon style="font-size:25px;">account_box</mat-icon></button> -->
-        </span>
-        <span [matMenuTriggerFor]="mymenu">
-         <button mat-icon-button> <mat-icon>account_box</mat-icon></button>
-        <mat-menu   class="menubar" #mymenu="matMenu">
-          <!-- <img src="../../../assets/pexels-photo-236047.jpeg"> -->
-          {{email}}
-          <div fxLayoutGap="10px"><input type="button"  style="color: rgb(104, 101, 101);"value="AddAccount">
+       
+  
+       
+        <button mat-icon-button class="iconbtn"> <mat-icon style="font-size:25px;">apps</mat-icon></button> 
+        
+        
+          <!-- <button mat-icon-button ><mat-icon style="font-size:25px;">account_box</mat-icon></button> -->
+      
+         <button mat-icon-button class="source" [matMenuTriggerFor]="mymenu">
+           <mat-icon>account_box</mat-icon></button>
+        <mat-menu   class="menubar" #mymenu="matMenu" >
+          <div>
+              <img class="source" src= "../../../assets/pexels-photo-236047.jpeg"> {{email}}
+          </div>
+          <mat-divider></mat-divider>
+          <div  class="pixels"fxLayoutGap="10px"><input type="button"  style="color: rgb(104, 101, 101); margin-bottom: 20px;"value="AddAccount">
           <input type="button"  style="color: rgb(104, 101, 101);" value="RemoveAccount">
           </div>
         </mat-menu>
-      </span>
+
       </div>
+      
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
-
+<mat-divider></mat-divider>
 <mat-sidenav-container class="example-container">
   <mat-sidenav class="myclass" #drawer mode="side"  role="navigation">
     <mat-list>
             <mat-nav-list>
-              <a mat-list-item routerLink="note">
+              <a mat-list-item routerLink="note" [routerLinkActive]="['is-active']">
               <mat-icon>lightbulb_outline</mat-icon>
               <span class="notes">Notes</span>
               </a>
             </mat-nav-list>
             <mat-nav-list>
-              <a mat-list-item>
+              <a mat-list-item [routerLinkActive]="['is-active']"> 
                 <mat-icon>notifications_none</mat-icon>
                 <span class="reminders">reminders</span>
               </a>
@@ -82,7 +94,6 @@
                           </a>
                         </mat-nav-list>
                         <div class="last">
-                    
                         <mat-list>
                           <li>privacy -terms</li>
                           open-source licenses
@@ -94,3 +105,4 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

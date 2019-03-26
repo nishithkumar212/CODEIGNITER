@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import decode from 'jwt-decode';
+import { ViewService } from 'src/app/services/view.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,19 +9,33 @@ import decode from 'jwt-decode';
 })
 export class DashboardComponent implements OnInit {
   showFiller = false;
-  constructor() { }
+  list: any = true;
+  grid:any=false;
+  constructor(private view: ViewService) { }
+
   "angularCompilerOptions": {
     "preserveWhitespaces": true
-  } 
-  email:string;
+  }
+  email: string;
   ngOnInit() {
     const token = localStorage.getItem('token');
     var decoded = decode(token);
     this.email = decoded.email;
-
   }
-signout()
-{
-  localStorage.removeItem('token');
-}
+  clicker() {
+    if (this.list==true)
+    { 
+      this.list = false;
+      this.grid=true;
+    }
+    else
+    {
+      this.grid=false;
+      this.list= true;
+    }
+    this.view.gridview();
+  }
+  signout() {
+    localStorage.removeItem('token');
+  }
 }

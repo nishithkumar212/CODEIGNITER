@@ -1,9 +1,14 @@
 .example-container {
-    width: 1400px;
+
     height: 600px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: none;
   }
-  
+  .iconbtn{
+    margin-left: 25px;
+  }
+  .maindiv{
+    position: fixed;
+  }
   .slide {
     display: top;
     height: 100%;
@@ -31,11 +36,12 @@
   border-radius: 8px;
   outline: none;
   padding: 6px 16px;
-  margin-left:10%;
+  margin-left:2%;
   width: 100%;
-  max-width: 550px;
+  max-width: 580px;
   font-size: 16px;
   line-height: 34px;
+  margin-right:  65px;
 }
 .myclass
 {
@@ -127,23 +133,30 @@
 }
 .one
 {
-  margin-left: 20%;
+  margin-left: 2px;
   color: rgb(104, 101, 101);
 }
 .two
 {
-  margin-left:20%;
+  /* margin-left:15%; */
+  
   color: rgb(104, 101, 101);
 }
 .three
 {
-  margin-left: 20%;
+  /* margin-left: 15%; */
   color: rgb(104, 101, 101);
 }
 .four
 {
   color: rgb(104, 101, 101);
-margin-left: 20%;
+/* margin-left: 15%; */
+}
+.six
+{
+  /* color:rgb(104,101,101);
+  margin-left:15px;
+  width: 2px; */
 }
 .boxsrch
 {
@@ -153,7 +166,7 @@ margin-left: 20%;
 .five
 {
   color: rgb(104, 101, 101);
-  margin-left: 2%;
+  /* margin-left: 2%; */
 }
 .privacy
 {
@@ -192,8 +205,8 @@ margin-top:220px;
 }
 .menubar
 {
-min-width:250px;
-max-width:250px;
+min-width:500%;
+max-width:500%;
 }
 .photo
 {
@@ -202,4 +215,17 @@ max-width:250px;
 .profile
 {
   border-radius:100%;
+}
+.source
+{
+  border-radius:100%;
+  width: 35%;
+}
+.pixels
+{
+  margin-left:15px;
+}
+.is-active
+{
+  background-color: #FFEDC4;
 }

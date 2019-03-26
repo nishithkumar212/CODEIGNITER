@@ -4,10 +4,10 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import {NoteService} from '../../services/note.service';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import decode from 'jwt-decode';
-import { variable } from '@angular/compiler/src/output/output_ast';
+import { variable, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { DatePipe } from '@angular/common'
 import { HttpHeaders } from '@angular/common/http';
- 
+import { ViewService } from 'src/app/services/view.service';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -28,14 +28,31 @@ export class NoteComponent implements OnInit {
   mydescription:string;
   latest_date:any;
   date:any;
-  constructor(private fb:FormBuilder,private service:NoteService,public datepipe: DatePipe) 
+
+  breakpoint:any;
+  wrap: string = "wrap";
+  direction: string;
+  layout:any;
+  // layout: string = this.direction + " " + this.wrap
+  public view;
+
+  constructor(private fb:FormBuilder,private service:NoteService,public datepipe: DatePipe, private views:ViewService) 
   {
     this.noteform=fb.group({
       title:"",
       description:""
     });
+    views.getview().subscribe(res=>
+      {
+
+        debugger
+			this.view = res;
+			this.direction = this.view.data+ " " +this.wrap;
+      })
   }
+  
   ngOnInit() {
+    // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     debugger;
     this.tokenvalue=localStorage.getItem('token');
      this.myvalue=decode(this.tokenvalue);
@@ -47,6 +64,9 @@ export class NoteComponent implements OnInit {
         debugger;
     })
   }
+  // onResize(event) {
+  //   // this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+  // }
   initialize()
   {
     this.flag=!this.flag;

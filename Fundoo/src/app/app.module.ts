@@ -18,6 +18,8 @@ import {NoteComponent} from './Component/note/note.component';
 import {DatePipe} from '@angular/common';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import {MatGridListModule }from '@angular/material/grid-list';
+import {Observable } from"rxjs";
+import { FirstComponent } from './Component/first/first.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,10 @@ import {MatGridListModule }from '@angular/material/grid-list';
     ResetComponent,
     DashboardComponent,
     NoteComponent,
+    FirstComponent,
+  
+  
+    
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import {MatGridListModule }from '@angular/material/grid-list';
     ReactiveFormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+
+
+  
   
   ],
   providers: [RegisterService,DatePipe],
