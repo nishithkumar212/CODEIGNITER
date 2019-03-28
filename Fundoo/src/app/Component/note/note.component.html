@@ -1,6 +1,5 @@
 <div class="body">
- <div fxLayout="row" class="first" *ngIf="flag==true" fxLayoutGap="10px">
-       
+    <div fxLayout="row" class="first" *ngIf="flag==true" fxLayoutGap="10px">
         <mat-form-field>
             <input matInput placeholder="take a Note" (click)="initialize()">
         </mat-form-field>
@@ -13,11 +12,14 @@
             <div>
                 <input class="takenote" matInput placeholder="take a Note" formControlName="description">
             </div>
+
+
             <div class="designs" fxLayoutGap="12px ">
                 <mat-menu class="menu" #appMenu="matMenu">
                     <button mat-menu-item (click)="reminder()"> Later Today 8.00PM</button>
                     <button mat-menu-item>Tomorrow 8.00AM</button>
-                    <button mat-menu-item (click)="datecalender=true">Datepicker</button>
+                    <button mat-menu-item>Next Week</button>
+                  <button mat-menu-item (click)="datecalender=true"> <mat-icon>schedule</mat-icon> Datepicker</button>
                 </mat-menu>
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">
                     <mat-icon class="image">notifications_none</mat-icon>
@@ -30,36 +32,42 @@
             </div>
         </form>
     </div>
-
-
-         <div  class="last" fxLayout="{{direction}} wrap" fxLayoutGap="4px" fxLayoutAlign="center center">
-            <mat-card class="notes" *ngFor="let users of details ">
-                <p> {{users.title}}</p>
-                <p>{{users.description}} </p>
-                <p> {{users.dateformat}}</p>
-            </mat-card>
-        </div> 
-
-
+    <div class="last" fxLayout="{{direction}} wrap" fxLayoutGap="4px" fxLayoutAlign="center center">
+        <mat-card  (click)="openDialog(users)" *ngFor="let users of details  " [ngClass]="direction=='row' ? 'row' :'column' " >
+            <p> {{users.title}}</p>
+            <p>{{users.description}} </p>
+            <p> {{users.dateformat}}</p>
+            <span class="icons">
+            <mat-icon class="a">notifications_none</mat-icon>
+        <mat-icon class="b">person_add</mat-icon>
+        <mat-icon class="c">insert_photo</mat-icon>
+        <mat-icon class="d">archive</mat-icon>
+        <mat-icon class="e">color_lens</mat-icon>
+    </span>
+</mat-card>
     </div>
+</div>
 
-        <div *ngIf="datecalender">
-                <mat-card class="call">
-                    <p>pick date and time</p>
-                        <mat-form-field class="example-full-width">
-                                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                                <mat-datepicker-toggle matSuffix [for]="picker">
-                                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                                </mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                              </mat-form-field>
-                              <mat-form-field class="line">
-                                    <select matNativeControl required>
-                                      <option value="Morning ">MORNING 08.00AM</option>
-                                      <option value="AFTERNOON">AFTERNOON 12.00AM </option>
-                                      <option value="EVENING">EVENING 06.00 PM</option>
-                                      <option value="CUSTOM">CUSTOM</option>
-                                    </select>
-                                  </mat-form-field>
-                </mat-card>
-            </div>
+    <div *ngIf="datecalender"  fxLayout="row">
+            <form [formGroup]="dateuser">
+        <mat-card class="call" >
+            <p>pick date and time</p>
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="datevalue" [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="line">
+                <select matNativeControl required>
+                    <option value="Morning ">MORNING 08.00AM</option>
+                    <option value="AFTERNOON">AFTERNOON 12.00AM </option>
+                    <option value="EVENING">EVENING 06.00 PM</option>
+                    <option value="CUSTOM">CUSTOM</option>
+                </select>
+            </mat-form-field>
+            <input type="button" value="save" (click)="mydate(dateuser.value)">
+        </mat-card>
+    </form>
+    </div>

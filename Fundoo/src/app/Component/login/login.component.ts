@@ -45,8 +45,12 @@ export class LoginComponent implements OnInit {
       this.errormsg="login success";
       const tokens =res.token;
       localStorage.setItem('token',tokens);
-    }
       this.route.navigate(["/dashboard"]);
+    }
+    else{
+      this.errormsg="login failed";
+    }
+      
   });
   }
 }

@@ -30,5 +30,4 @@ class Selection extends CI_Controller
         print json_encode($data);
     }
 }
-
 ?>

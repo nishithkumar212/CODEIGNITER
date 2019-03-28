@@ -20,6 +20,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import {MatGridListModule }from '@angular/material/grid-list';
 import {Observable } from"rxjs";
 import { FirstComponent } from './Component/first/first.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {EditnotesComponent} from './Component/editnotes/editnotes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +32,7 @@ import { FirstComponent } from './Component/first/first.component';
     DashboardComponent,
     NoteComponent,
     FirstComponent,
-  
-  
-    
+    EditnotesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,12 +46,10 @@ import { FirstComponent } from './Component/first/first.component';
     HttpClientModule,
     MatDatepickerModule,
     MatGridListModule,
-
-
-  
-  
+    MatDialogModule
   ],
   providers: [RegisterService,DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EditnotesComponent]
 })
 export class AppModule { }

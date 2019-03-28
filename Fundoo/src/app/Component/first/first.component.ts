@@ -1,5 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
-
+import { Component, OnInit,Input,Output} from '@angular/core';
+import { EventEmitter } from 'events';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 @Component({
   selector: 'app-first',
   templateUrl: './first.component.html',
@@ -7,30 +8,12 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class FirstComponent implements OnInit {
  users:any;
-  constructor() { 
-    this.users=
-  [
-    {"id":101,
-    "name":"nishith",
-    "stream":"it",
-    "proprer":"warangal"},
-    {"id":102,
-    "name":"pramod",
-    "stream":"marketing",
-    "proprer":"warangal"},
-    {"id":103,
-    "name":"chinna",
-    "stream":"politics",
-    "proprer":"warangal"},
-    {"id":104,
-    "name":"kanna",
-    "stream":"strategy",
-    "proprer":"warangal"},
-  ]
+  constructor(public dialog: MatDialog) { 
+    
   }
   ngOnInit() {
   }
-  handleclick() {
-    console.log('hey I am  clicked in child');
-}
+
+  
+
 }

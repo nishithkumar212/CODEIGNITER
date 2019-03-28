@@ -5,12 +5,13 @@ import {Subject} from "rxjs";
   providedIn: 'root'
 })
 export class ViewService {
-  private result:boolean=true;
-  private subject= new Subject();
+   result:boolean=true;
+   subject= new Subject();
   constructor() { }
 
   getview()
-{
+ {
+  this.gridview();
     return this.subject.asObservable();
   }
    gridview()

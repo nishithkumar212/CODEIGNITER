@@ -7,7 +7,7 @@ import {
 MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
 MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule,
 MatSelectModule ,MatFormFieldModule,MatSidenavModule,MatDividerModule, MatListModule,
-MatDatepickerModule ,MatNativeDateModule ,
+MatDatepickerModule ,MatNativeDateModule ,MAT_DIALOG_DATA
 } from '@angular/material';
 @NgModule({
 imports: [

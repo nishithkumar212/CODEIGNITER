@@ -61,4 +61,6 @@ $route['note']='Note/noteregister';
 $route['selected']='selected/calling';
 $route['fetchemails']='Resetpassword/getemail';
 $route['404_override'] = '';
+$route['noteedit']='Editnotes/edit';
+$route['deletenote']='Deletenote/deleted';
 $route['translate_uri_dashes'] = FALSE;

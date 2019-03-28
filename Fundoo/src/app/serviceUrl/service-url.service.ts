@@ -16,4 +16,6 @@ export class ServiceUrlService {
   public getemail="fetchemails";
   public note="note";
   public selected="selected";
+  public noteedit="noteedit";
+  public deletenote="deletenote";
 }

@@ -33,9 +33,9 @@
 {
     max-width: 145px;
     display:65px;
-
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left:45px;
+    margin-bottom: 10px;
 }
 .designs
 {
@@ -67,22 +67,23 @@
 }
 .schedule
 {
-font-size: 20px;
-margin-top:30px;
+font-size: 10px;
+margin-top:30p;
 }
 .call
 {
    max-width: 155px;
-  height: 150px;
-  
-  margin-left:275px;
-  margin-top:-350px;
+  height: 180px;
+  position: fixed;
+  margin-left:208px;
+  margin-top:-486px;
 }
 .arrow
 {
   /* line-height: -80px;
   padding-right: 1000%; */
 }
+
 .example-full-width
 {
  max-width: 120px;
@@ -94,4 +95,53 @@ margin-top:30px;
 .line
 {
   margin-left: -15px;
+}
+.row{
+margin-left:53px;
+margin-top:44px;
+margin-bottom: 30px;
+width:220px;
+height:5%;
+display:inline-block;
+color:#7E858A;
+font-family: 'Product Sans',Arial,sans-serif;
+font-size: 15px;
+border-radius: 9px
+}
+.column
+{
+  margin-left:150px;
+width:620px;
+height: 10%;
+display: inline-block;
+color:#7E858A;
+font-family: 'Product Sans',Arial,sans-serif;
+font-size: 15px;
+border-radius: 9px;
+margin-bottom: 49px;
+}
+.icons
+{
+  padding: 10%;
+  margin-left:5px;
+}
+.a
+{
+  margin-left:10px;
+}
+.b
+{
+  margin-left:10px;
+}
+.c
+{
+  margin-left:10px;
+}
+.d
+{
+  margin-left:10px;
+}
+.e
+{
+  margin-left:10px;
 }

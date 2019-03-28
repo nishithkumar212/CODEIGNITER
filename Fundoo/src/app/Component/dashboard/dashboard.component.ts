@@ -10,7 +10,7 @@ import { ViewService } from 'src/app/services/view.service';
 export class DashboardComponent implements OnInit {
   showFiller = false;
   list: any = true;
-  grid:any=false;
+  grid: any = false;
   constructor(private view: ViewService) { }
 
   "angularCompilerOptions": {
@@ -23,15 +23,13 @@ export class DashboardComponent implements OnInit {
     this.email = decoded.email;
   }
   clicker() {
-    if (this.list==true)
-    { 
+    if (this.list == true) {
       this.list = false;
-      this.grid=true;
+      this.grid = true;
     }
-    else
-    {
-      this.grid=false;
-      this.list= true;
+    else {
+      this.grid = false;
+      this.list = true;
     }
     this.view.gridview();
   }
