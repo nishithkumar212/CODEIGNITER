@@ -34,4 +34,12 @@ new :any;
       headers:this.head
     });
   }
+  coloring(value,id)
+  {
+    debugger;
+    let coloruser=new FormData();
+    coloruser.append("setcolor",value.color);
+    coloruser.append("setid",id.id);
+return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
+  }
 }

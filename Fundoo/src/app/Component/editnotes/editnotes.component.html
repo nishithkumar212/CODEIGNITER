@@ -1,5 +1,5 @@
 
-  <div>
+  <div [ngStyle]="{'background-color': mycolor}">
     <form [formGroup]="editform">
     <div><input class="etitle"  matInput value="{{title}}" formControlName="ftitle" ></div>
     <div><input class="etitle" matInput  value="{{description}}"  formControlName="fdescription" ></div>
@@ -8,18 +8,36 @@
       <mat-icon class="b">person_add</mat-icon>
       <mat-icon class="c">insert_photo</mat-icon>
       <mat-icon class="d">archive</mat-icon>
-      <mat-icon class="e">color_lens</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="colorMenu">
+     <mat-icon class="e" >color_lens</mat-icon>
+     </button>
       <button mat-icon-button [matMenuTriggerFor]="appMenu">
-          <mat-icon class="image">more_vert</mat-icon>
+          <mat-icon class="e">more_vert</mat-icon>
       </button>
-      <button mat-button (click)="updating(editform.value)">close</button>
+      <button mat-button class="f" (click)="updating(editform.value)">close</button>
       </div>
-      
       <mat-menu class="menu" #appMenu="matMenu">
-          <button mat-menu-item (click)="deleted(editform.value)"> Delete Note</button>
+          <button *ngIf="deleteflag==true" mat-menu-item (click)="deleted(editform.value)"> Delete Note</button>
           <button mat-menu-item>Add Label</button>
           <button mat-menu-item>Add Drawing</button>
           <button mat-menu-item>Make a copy</button>
       </mat-menu>
+
+      <mat-menu  #colorMenu="matMenu" >
+        <div class="menu">
+        <button  (click)="colordb(editform.value.color='#fcf476')" mat-mini-fab style="background-color:#fcf476;" ></button>
+        <button  (click)="colordb(editform.value.color='#f8bc04')" mat-mini-fab style="background-color:#f8bc04;" ></button>
+        <button  (click)="colordb(editform.value.color='#aecbfa')"  mat-mini-fab style="background-color:#aecbfa;" ></button>
+        <button   (click)="colordb(editform.value.color='#ffffff')"mat-mini-fab style="background-color:#ffffff;" ></button>
+        <button  (click)="colordb(editform.value.color='#e8eaed')" mat-mini-fab style="background-color:#e8eaed;" ></button>
+        <button   (click)="colordb(editform.value.color='#6a5acd')"mat-mini-fab style="background-color: #6a5acd;" ></button>
+        <button  (click)="colordb(editform.value.color='#ccff90')" mat-mini-fab style="background-color: #ccff90;" ></button>
+        <button   (click)="colordb(editform.value.color='#e8eaed')"mat-mini-fab style="background-color: #e8eaed;" ></button>
+        <button   (click)="colordb(editform.value.color='#e6c9a8')"mat-mini-fab style="background-color: #e6c9a8;" ></button>
+        <button   (click)="colordb(editform.value.color='#fccfe8')"mat-mini-fab style="background-color: #fccfe8;" ></button>
+        <button  (click)="colordb(editform.value.color='#cbf0f8')"mat-mini-fab style="background-color:#cbf0f8;"></button>
+        <button  (click)="colordb(editform.value.color='#d7aefb')"mat-mini-fab style="background-color:#d7aefb;"></button>
+      </div>
+    </mat-menu>
     </form>
   </div>

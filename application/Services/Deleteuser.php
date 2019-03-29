@@ -7,7 +7,6 @@ class Deleteuser extends CI_Controller
         $query="Delete from notes where id='$eid'";
         $stmt=$this->db->conn_id->prepare($query);
         $stmt->execute();
-
     }
 }
 ?>

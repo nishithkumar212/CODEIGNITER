@@ -63,15 +63,18 @@ export class NoteComponent implements OnInit {
     this.myvalue = decode(this.tokenvalue);
     this.emailvalues = this.myvalue['email'];
     let user = this.service.selection(this.emailvalues);
-    // setInterval(() => {
-     
-    // }, 1000);
-     user.subscribe((res: any) => {
-        this.details = res as string[];
-      })
+    setInterval(() => {
+      
+    }, 1000);
+    user.subscribe((res: any) => {
+      debugger
+      this.details = res as string[];
+      console.log("arrayt"+res);
+    })
+   
     this.vi.getview().subscribe(res => {
       this.view = res;
-      this.direction = this.view.data;
+      this.direction = this.view.datas;
     })
   }
   // onResize(event) {
@@ -113,6 +116,15 @@ this.dialogConfig.data={
    this.dialogConfig.align='center';
    this.dialogConfig.direction='ltr';
    this.dialog.open(EditnotesComponent,this.dialogConfig);
+  }
+  colordb(value:any)
+  {
+    debugger;
+    let coloruser=this.service.coloring(value,this.details);
+    coloruser.subscribe((res:any)=>
+    {
+      
+    })
   }
   noteshow;
   Forms(value: any) {

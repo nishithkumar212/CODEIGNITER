@@ -63,4 +63,5 @@ $route['fetchemails']='Resetpassword/getemail';
 $route['404_override'] = '';
 $route['noteedit']='Editnotes/edit';
 $route['deletenote']='Deletenote/deleted';
+$route['setcolor']='Editnotes/coloring';
 $route['translate_uri_dashes'] = FALSE;

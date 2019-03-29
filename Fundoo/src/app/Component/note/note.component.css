@@ -43,7 +43,8 @@
 }
 .menu
 {
-  margin-top: 50px;
+
+  width:160px;
 }
 .edge
 {
@@ -51,7 +52,8 @@
 }
 .image
 {
-  margin-bottom: 19px;
+  /* margin-bottom: 19px; */
+  margin-bottom: 3px;
 }
 .outline
 {
@@ -123,9 +125,9 @@ margin-bottom: 49px;
 .icons
 {
   padding: 10%;
-  margin-left:5px;
+  margin-top:20px;
 }
-.a
+/* .a
 {
   margin-left:10px;
 }
@@ -144,4 +146,9 @@ margin-bottom: 49px;
 .e
 {
   margin-left:10px;
+} */
+.mat-icon
+{
+  margin-top: -14px;
 }
+

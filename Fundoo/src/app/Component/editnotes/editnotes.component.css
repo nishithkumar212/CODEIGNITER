@@ -16,11 +16,16 @@
 }
 .e
 {
-    margin-left:10px;
+    margin-top:-13px;
+}
+.f
+{
+    margin-top:-13px;
+    margin-left:25px;
 }
 .icons
 {
-    margin-bottom:40px;
+    margin-top:60px;
 }
 .etitle
 {
@@ -28,4 +33,9 @@
  border:none;
  line-height: 34px;
  font-size: 16px;
+}
+.menu
+{
+    width:160px;
+
 }

@@ -26,4 +26,12 @@ export class EditService {
     dataa.append("eid",id);
     return this.http.post(this.serviceurl.host+this.serviceurl.deletenote,dataa);
   }
+  editcolor(value,id)
+  {
+    debugger
+    let colordata=new FormData();
+    colordata.append('setcolor',value);
+    colordata.append('setid',id);
+    return this.http.post(this.serviceurl.host+this.serviceurl.setcolor,colordata);
+  }
 }

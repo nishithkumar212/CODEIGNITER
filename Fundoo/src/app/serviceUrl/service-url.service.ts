@@ -18,4 +18,5 @@ export class ServiceUrlService {
   public selected="selected";
   public noteedit="noteedit";
   public deletenote="deletenote";
+  public setcolor="setcolor";
 }

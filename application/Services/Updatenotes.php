@@ -4,7 +4,7 @@ class Updatenotes extends CI_Controller
 {
     public function updatedb($etit,$edes,$eid)
     {
-        if(empty($etit)&&empty($edes))
+        if(empty($etit) and empty($edes))
         {
           
         }
@@ -20,12 +20,19 @@ class Updatenotes extends CI_Controller
             $stmt=$this->db->conn_id->prepare($query);
             $stmt->execute();
         }
-        else if(!empty($etit)&&!empty($edes))
+        else if(!empty($etit) and !empty($edes))
         {
         $query="UPDATE notes SET title= '$etit', description='$des' where id='$eid'";
         $stmt=$this->db->conn_id->prepare($query);
         $stmt->execute();
         }
+    }
+
+    public function setcolor($color,$id)
+    {
+        $query="UPDATE notes SET color='$color' where id='$id'";
+        $stmt=$this->db->conn_id->prepare($query);
+        $stmt->execute();
     }
 //     public function updatedb($etit,$edes,$eid)
 //     {
