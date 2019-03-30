@@ -19,4 +19,5 @@ export class ServiceUrlService {
   public noteedit="noteedit";
   public deletenote="deletenote";
   public setcolor="setcolor";
+  public reminder="reminder";
 }

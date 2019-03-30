@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { supportsWebAnimations } from '@angular/animations/browser/src/render/web_animations/web_animations_driver';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NoteService } from '../../services/note.service';
+
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import decode from 'jwt-decode';
 import { variable, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -11,6 +12,7 @@ import { ViewService } from 'src/app/services/view.service';
 import * as moment from 'moment';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { EditnotesComponent } from '../editnotes/editnotes.component';
+import {ReminderserviceService} from '../../services/reminderservice.service';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -43,7 +45,7 @@ export class NoteComponent implements OnInit {
 //  cards:boolean=true;
 
 
-  constructor(private fb: FormBuilder, private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog) {
+  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog) {
     this.noteform = fb.group({
       title: "",
       description: ""
@@ -83,11 +85,22 @@ export class NoteComponent implements OnInit {
   initialize() {
     this.flag = !this.flag;
   }
-  // reminder() {
-  //   debugger;
-  //   this.date = new Date();
-  //   // this.latest_date = this.datepipe.transform(this.date, 'yyyy-MM-dd');
-  // }
+  reminder1date:any;
+  reminder(value) {
+    if(value==1)
+    {
+      debugger;
+   this.reminder1date="Today 08.00 AM";
+   this.myremind.insertion(value);
+   
+  }
+  else if(value==2)
+  {
+    debugger;
+    this.reminder1date="Tomorrow 08.00 AM";
+    this.myremind.insertion(value);
+  }
+}
   cardcal
 datecalender;
 dialogConfig;
@@ -117,10 +130,10 @@ this.dialogConfig.data={
    this.dialogConfig.direction='ltr';
    this.dialog.open(EditnotesComponent,this.dialogConfig);
   }
-  colordb(value:any)
+  colordb(value,uid)
   {
     debugger;
-    let coloruser=this.service.coloring(value,this.details);
+    let coloruser=this.service.coloring(value,uid);
     coloruser.subscribe((res:any)=>
     {
       

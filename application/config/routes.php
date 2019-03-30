@@ -64,4 +64,6 @@ $route['404_override'] = '';
 $route['noteedit']='Editnotes/edit';
 $route['deletenote']='Deletenote/deleted';
 $route['setcolor']='Editnotes/coloring';
+$route['reminder']='Reminder/setreminder';
+$route['reminders']='Reminder/insertreminder';
 $route['translate_uri_dashes'] = FALSE;

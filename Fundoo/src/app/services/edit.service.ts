@@ -9,14 +9,20 @@ import { HttpClient } from '@angular/common/http';
 export class EditService {
 
   constructor(private serviceurl: ServiceUrlService,private http:HttpClient) { }
-  update(value,id)
+  update(values,id)
   {
     debugger;
     let data=new FormData();
-    data.append("etitle",value.ftitle);
-    data.append("edescription",value.fdescription);
+    data.append("etitle",values.ftitle);
+    data.append("edescription",values.fdescription);
     data.append("eid",id);
      return this.http.post(this.serviceurl.host+this.serviceurl.noteedit,data);
+  }
+  date(value)
+  {
+    let reminder=new FormData();
+    reminder.append("reminder",value);
+    return this.http.post(this.serviceurl.host+this.serviceurl.setcolor,reminder);
   }
   delete(value,id)
   {
@@ -30,8 +36,8 @@ export class EditService {
   {
     debugger
     let colordata=new FormData();
-    colordata.append('setcolor',value);
-    colordata.append('setid',id);
+    colordata.append("setcolor",value);
+    colordata.append("setid",id);
     return this.http.post(this.serviceurl.host+this.serviceurl.setcolor,colordata);
   }
 }

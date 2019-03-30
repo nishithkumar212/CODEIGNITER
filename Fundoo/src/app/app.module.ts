@@ -22,6 +22,7 @@ import {Observable } from"rxjs";
 import { FirstComponent } from './Component/first/first.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {EditnotesComponent} from './Component/editnotes/editnotes.component';
+import { ReminderComponent } from './Component/reminder/reminder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import {EditnotesComponent} from './Component/editnotes/editnotes.component';
     DashboardComponent,
     NoteComponent,
     FirstComponent,
-    EditnotesComponent
+    EditnotesComponent,
+    ReminderComponent
   ],
   imports: [
     BrowserModule,

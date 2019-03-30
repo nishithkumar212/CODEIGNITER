@@ -14,10 +14,13 @@
             </div>
             <div class="designs" fxLayoutGap="12px ">
                 <mat-menu class="menu" #appMenu="matMenu">
-                    <button mat-menu-item (click)="reminder()"> Later Today 8.00PM</button>
-                    <button mat-menu-item>Tomorrow 8.00AM</button>
-                    <button mat-menu-item>Next Week</button>
-                  <button mat-menu-item (click)="datecalender=true"> <mat-icon>schedule</mat-icon> Datepicker</button>
+                    <p>Reminder</p>
+                    <button mat-menu-item (click)="reminder(1)"> Later Today 8.00PM</button>
+                    <button mat-menu-item (click)="reminder(2)">Tomorrow 8.00AM</button>
+                    <!-- <button mat-menu-item (click)="reminder(3)">Next Week</button> -->
+                    <button mat-menu-item (click)="datecalender=true">
+                        <mat-icon>schedule</mat-icon> Datepicker
+                    </button>
                 </mat-menu>
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">
                     <mat-icon class="image">notifications_none</mat-icon>
@@ -31,47 +34,62 @@
             </div>
         </form>
     </div>
-  
-        <mat-card  *ngFor="let users of details  " [ngStyle]="{'background-color': users.color}" [ngClass]="direction=='row' ? 'row' :'column' " >
-         <div class="last"  (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px" fxLayoutAlign="center center">
-            <p> {{users.title}}</p>
-            <p>{{users.description}} </p>
-            <p> {{users.dateformat}}</p>
+    <mat-card *ngFor="let users of details  " [ngStyle]="{'background-color': users.color}"
+        [ngClass]="direction=='row' ? 'row' :'column' ">
+        <div class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
+            fxLayoutAlign="center center">
+            <div >
+                <p> {{users.title}}</p>
+                <p>{{users.description}} </p>
+                <p> {{users.dateformat}}</p>
+            </div>
         </div>
-            <span class="icons" >
-              
+        <span class="icons">
+
             <mat-icon class="a">notifications_none</mat-icon>
-        <mat-icon class="b">person_add</mat-icon>
-        <mat-icon class="c">insert_photo</mat-icon>
-        <mat-icon class="d">archive</mat-icon>
-        <button mat-icon-button [matMenuTriggerFor]="colorMenu">
-                <mat-icon class="e" >color_lens</mat-icon>
-                </button>
-        <mat-icon class="f">more_vert</mat-icon>
-    </span>
-</mat-card>
+            <mat-icon class="b">person_add</mat-icon>
+            <mat-icon class="c">insert_photo</mat-icon>
+            <mat-icon class="d">archive</mat-icon>
+            <button mat-icon-button [matMenuTriggerFor]="colorMenu">
+                <mat-icon class="e">color_lens</mat-icon>
+            </button>
+            <mat-icon class="f">more_vert</mat-icon>
+        </span>
+    </mat-card>
 
+
+<mat-menu class="colormenu" #colorMenu="matMenu">
+    <div class="menu">
+        <button (click)="colordb(noteform.value.color='#fcf476',users.id)" mat-mini-fab
+            style="background-color:#fcf476;"></button>
+        <button (click)="colordb(noteform.value.color='#f8bc04')" mat-mini-fab
+            style="background-color:#f8bc04;"></button>
+        <button (click)="colordb(noteform.value.color='#aecbfa')" mat-mini-fab
+            style="background-color:#aecbfa;"></button>
+        <button (click)="colordb(noteform.value.color='#ffffff')" mat-mini-fab
+            style="background-color:#ffffff;"></button>
+        <button (click)="colordb(noteform.value.color='#e8eaed')" mat-mini-fab
+            style="background-color:#e8eaed;"></button>
+        <button (click)="colordb(noteform.value.color='#6a5acd')" mat-mini-fab
+            style="background-color: #6a5acd;"></button>
+        <button (click)="colordb(noteform.value.color='#ccff90')" mat-mini-fab
+            style="background-color: #ccff90;"></button>
+        <button (click)="colordb(noteform.value.color='#e8eaed')" mat-mini-fab
+            style="background-color: #e8eaed;"></button>
+        <button (click)="colordb(noteform.value.color='#e6c9a8')" mat-mini-fab
+            style="background-color: #e6c9a8;"></button>
+        <button (click)="colordb(noteform.value.color='#fccfe8')" mat-mini-fab
+            style="background-color: #fccfe8;"></button>
+        <button (click)="colordb(noteform.value.color='#cbf0f8')" mat-mini-fab
+            style="background-color:#cbf0f8;"></button>
+        <button (click)="colordb(noteform.value.color='#d7aefb')" mat-mini-fab
+            style="background-color:#d7aefb;"></button>
+    </div>
+</mat-menu>
 </div>
-<mat-menu  class="colormenu" #colorMenu="matMenu" >
-        <div class="menu">
-                <button  (click)="colordb(noteform.value.color='#fcf476')" mat-mini-fab style="background-color:#fcf476;" ></button>
-                <button  (click)="colordb(noteform.value.color='#f8bc04')" mat-mini-fab style="background-color:#f8bc04;" ></button>
-                <button  (click)="colordb(noteform.value.color='#aecbfa')"  mat-mini-fab style="background-color:#aecbfa;" ></button>
-                <button   (click)="colordb(noteform.value.color='#ffffff')"mat-mini-fab style="background-color:#ffffff;" ></button>
-                <button  (click)="colordb(noteform.value.color='#e8eaed')" mat-mini-fab style="background-color:#e8eaed;" ></button>
-                <button   (click)="colordb(noteform.value.color='#6a5acd')"mat-mini-fab style="background-color: #6a5acd;" ></button>
-                <button  (click)="colordb(noteform.value.color='#ccff90')" mat-mini-fab style="background-color: #ccff90;" ></button>
-                <button   (click)="colordb(noteform.value.color='#e8eaed')"mat-mini-fab style="background-color: #e8eaed;" ></button>
-                <button   (click)="colordb(noteform.value.color='#e6c9a8')"mat-mini-fab style="background-color: #e6c9a8;" ></button>
-                <button   (click)="colordb(noteform.value.color='#fccfe8')"mat-mini-fab style="background-color: #fccfe8;" ></button>
-                <button  (click)="colordb(noteform.value.color='#cbf0f8')"mat-mini-fab style="background-color:#cbf0f8;"></button>
-                <button  (click)="colordb(noteform.value.color='#d7aefb')"mat-mini-fab style="background-color:#d7aefb;"></button>
-      </div>
-    </mat-menu>
-
-    <div *ngIf="datecalender"  fxLayout="row">
-            <form [formGroup]="dateuser">
-        <mat-card class="call" >
+<div *ngIf="datecalender" fxLayout="row">
+    <form [formGroup]="dateuser">
+        <mat-card class="call">
             <p>pick date and time</p>
             <mat-form-field class="example-full-width">
                 <input matInput formControlName="datevalue" [matDatepicker]="picker" placeholder="Choose a date">
@@ -91,4 +109,4 @@
             <input type="button" value="save" (click)="mydate(dateuser.value)">
         </mat-card>
     </form>
-    </div>
+</div>

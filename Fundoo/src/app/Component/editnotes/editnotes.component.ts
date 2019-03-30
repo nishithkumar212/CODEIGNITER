@@ -34,12 +34,23 @@ editdescription:any;
         fdescription:"",
       });
    }
+   updatetitle:any;
+   updatedescription:any;
   updating(values:any)
   {
     debugger;
+    if(values.ftitle ==null || values.ftitle == "")
+    {
+    values.ftitle  = this.title  ;
+    }
+   if(values.fdescription==null || values.fdescription == "")
+    {
+      values.fdescription=this.description;
+    }
    let user= this.eservice.update(values,this.id);
    user.subscribe((res:any)=>
    {
+
    })
   }
   deleteflag=true;

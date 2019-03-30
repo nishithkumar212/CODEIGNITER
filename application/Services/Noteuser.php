@@ -7,6 +7,10 @@ class Noteuser extends CI_Controller
 {
     public function notes($tit,$des,$myhead,$date)
     {
+        if($date=="undefined")
+        {
+            $date="";
+        }
         $key="nishith";
         $client = new Predis\Client(array(
             'host' => '127.0.0.1',
