@@ -23,7 +23,7 @@ class Selection extends CI_Controller
         // $j=$reference->encode($data,$key);
         //  $Decodeemail=$reference->decode($values, $key, array('HS256'));
         $myDecode=$reference->decode($values, $key, array('HS256'));
-        $query="SELECT  * from notes where emailid='$email'";
+        $query="SELECT  * from notes where emailid='$email' AND  archive=0 ";
         $stmt=$this->db->conn_id->prepare($query);
         $stmt->execute();
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);

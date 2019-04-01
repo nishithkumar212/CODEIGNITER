@@ -11,6 +11,7 @@
   line-height: 4px;
   margin-bottom: 30px;
   margin-top: 30px;
+  
 }
 .body{
   max-height: 100%;
@@ -40,6 +41,9 @@
 .designs
 {
   color: rgb(104, 101, 101);
+  margin-top: 30px;
+  padding:15px;
+
 }
 .menu
 {
@@ -48,7 +52,9 @@
 }
 .edge
 {
-  margin-left: 250px;
+ margin-left:180px;
+ margin-top:-20px;
+
 }
 .image
 {
@@ -78,7 +84,7 @@ margin-top:30p;
   height: 180px;
   position: fixed;
   margin-left:208px;
-  margin-top:-86px;
+  margin-top:-482px;
 }
 .arrow
 {
@@ -127,26 +133,26 @@ margin-bottom: 49px;
   padding: 10%;
   margin-top:20px;
 }
-/* .a
+.a
 {
-  margin-left:10px;
+ margin-top:60px;
 }
 .b
 {
-  margin-left:10px;
+ margin-top:60px;
 }
 .c
 {
-  margin-left:10px;
+  margin-top:60px;
 }
 .d
 {
-  margin-left:10px;
+  margin-top:60px;
 }
 .e
 {
-  margin-left:10px;
-} */
+   margin-top:60px;
+} 
 .mat-icon
 {
   margin-top: -14px;

@@ -21,8 +21,9 @@ class Noteuser extends CI_Controller
              if($value)
              {
                  $ref=new JWT();
+                 $ar=0;
                 $email=$ref->decode($value,$key,array('HS256'))->email;
-        $query="INSERT into notes (title,description,emailid,dateformat) values('$tit','$des','$email ','$date')";
+        $query="INSERT into notes (title,description,emailid,reminder,archive) values('$tit','$des','$email ','$date','$ar')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();
         $no=$stmt->rowCount();

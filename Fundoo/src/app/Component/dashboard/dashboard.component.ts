@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import decode from 'jwt-decode';
 import { ViewService } from 'src/app/services/view.service';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import { LabelComponent } from '../label/label.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,7 +13,8 @@ export class DashboardComponent implements OnInit {
   showFiller = false;
   list: any = true;
   grid: any = false;
-  constructor(private view: ViewService) { }
+  dialogConfig;
+  constructor(private view: ViewService,private dialog: MatDialog) { }
 
   "angularCompilerOptions": {
     "preserveWhitespaces": true
@@ -32,6 +35,17 @@ export class DashboardComponent implements OnInit {
       this.list = true;
     }
     this.view.gridview();
+  }
+  opendialog()
+  {
+    this. dialogConfig = new MatDialogConfig();
+    this.dialogConfig.disableClose = false;
+   this.dialogConfig.autoFocus = true;
+   this.dialogConfig.width='600px';
+   this.dialogConfig.height='200px';
+   this.dialogConfig.align='center';
+   this.dialogConfig.direction='ltr';
+   this.dialog.open(LabelComponent,this.dialogConfig);
   }
   signout() {
     localStorage.removeItem('token');

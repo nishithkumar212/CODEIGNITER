@@ -7,6 +7,8 @@ import { ResetComponent } from './Component/reset/reset.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { NoteComponent } from './Component/note/note.component';
 import { FirstComponent } from './Component/first/first.component';
+import { ReminderComponent } from './Component/reminder/reminder.component';
+import { TrashComponent } from './Component/trash/trash.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,14 @@ const routes: Routes = [
                 path: 'note',
                 component: NoteComponent,
             },
-           
+            {
+                path:'reminder',
+                component:ReminderComponent,
+            },
+            {
+                path:'trash',
+                component:TrashComponent,
+            }
         ]
     },
     {path:'details',component:FirstComponent},

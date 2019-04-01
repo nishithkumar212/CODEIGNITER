@@ -23,6 +23,8 @@ import { FirstComponent } from './Component/first/first.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {EditnotesComponent} from './Component/editnotes/editnotes.component';
 import { ReminderComponent } from './Component/reminder/reminder.component';
+import { TrashComponent } from './Component/trash/trash.component';
+import { LabelComponent } from './Component/label/label.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { ReminderComponent } from './Component/reminder/reminder.component';
     NoteComponent,
     FirstComponent,
     EditnotesComponent,
-    ReminderComponent
+    ReminderComponent,
+    TrashComponent,
+    LabelComponent
   ],
   imports: [
     BrowserModule,

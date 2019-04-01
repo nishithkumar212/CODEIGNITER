@@ -28,7 +28,7 @@ new :any;
      //noteuser.append("emailid",tokenvalue);
     this.head=new HttpHeaders().set("Authorization",tokenvalue);
     console.log(this.head);
-    noteuser.append("dateformat",date);
+    noteuser.append("reminder",date);
     //this.new=this.head.get("AUthorization");
     return this.http.post(this.serverurl.host+this.serverurl.note,noteuser,{
       headers:this.head

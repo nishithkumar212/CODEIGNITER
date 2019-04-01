@@ -66,4 +66,6 @@ $route['deletenote']='Deletenote/deleted';
 $route['setcolor']='Editnotes/coloring';
 $route['reminder']='Reminder/setreminder';
 $route['reminders']='Reminder/insertreminder';
+$route['archive']='Archive/setarchive';
+$route['archivedisplay']='Archive/setarchivedisplay';
 $route['translate_uri_dashes'] = FALSE;

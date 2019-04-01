@@ -85,20 +85,64 @@ export class NoteComponent implements OnInit {
   initialize() {
     this.flag = !this.flag;
   }
+
+  currentDateAndTime:any;
+  currentdate:any;
+  timer:any;
+  fulldate:any;
+  // today() {
+  //   var date = new Date();
+  //   this.date = date.toDateString();
+  //   this.currentdate = moment(this.date).format('DD/MM/YY');
+  //   this.currentDateAndTime = this.currentdate + " " + "8:00";
+  //   this.timer = true;
+  //   }
+    
+  //   tomorrow() {
+  //   var date = new Date();
+  //   date.setDate(date.getDate() + 1);
+  //   this.date = date.toDateString();
+  //   this.currentdate = moment(this.date).format('DD/MM/YY');
+  //   this.currentDateAndTime = this.currentdate + " " + "8:00";
+  //   this.timer = true;
+  //   }
+  //     nextWeek() {
+  //       debugger;
+  //       var day = new Date();
+  //       this.fulldate = day.setDate(day.getDate() + ((1 + 7 - day.getDay()) % 7));
+  //       let currentDate = moment(this.fulldate).format("DD/MM/YYYY");
+  //       this.currentDateAndTime = currentDate + " " + " 08:00 PM";
+  //   this.timer = true;
+  //   }
   reminder1date:any;
   reminder(value) {
     if(value==1)
     {
       debugger;
-   this.reminder1date="Today 08.00 AM";
-   this.myremind.insertion(value);
-   
+      var date = new Date();
+      this.date = date.toDateString();
+      this.currentdate = moment(this.date).format('DD/MM/YY');
+      this.currentDateAndTime = this.currentdate + " " + "8:00";
+      this.timer = true;
   }
   else if(value==2)
   {
     debugger;
-    this.reminder1date="Tomorrow 08.00 AM";
-    this.myremind.insertion(value);
+    var date = new Date();
+    date.setDate(date.getDate() + 1);
+    this.date = date.toDateString();
+    this.currentdate = moment(this.date).format('DD/MM/YY');
+    this.currentDateAndTime = this.currentdate + " " + "8:00";
+    this.timer = true;
+  }
+  else if(value==3)
+  {
+    debugger;
+    var day = new Date();
+    this.fulldate = day.setDate(day.getDate() + ((1 + 7 - day.getDay()) % 7));
+    let currentDate = moment(this.fulldate).format("DD/MM/YYYY");
+    this.currentDateAndTime = currentDate + " " + " 08:00 PM"; 
+this.timer = true;
   }
 }
   cardcal
@@ -147,7 +191,7 @@ this.dialogConfig.data={
     this.tokenvalue = localStorage.getItem('token');
     //  this.myvalue=decode(this.tokenvalue);
     // this.emailvalues=this.myvalue['email'];
-    let user = this.service.register(value, this.tokenvalue, this.latest_date);
+    let user = this.service.register(value, this.tokenvalue,  this.currentDateAndTime);
     debugger;
     user.subscribe((res: any) => {
       //   if(res.message=="200")

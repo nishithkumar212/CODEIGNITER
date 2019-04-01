@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material"
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { EditService } from 'src/app/services/edit.service';
+import { debugOutputAstAsTypeScript } from '@angular/compiler';
 
 @Component({
   selector: 'app-editnotes',
@@ -63,6 +64,16 @@ editdescription:any;
     {
 
     })
+  }
+  archive(myid)
+  {
+    debugger;
+   let archiveuser=this.eservice.setarchive(myid);
+   archiveuser.subscribe((res:any)=>
+   {
+
+   });
+
   }
   color:any;
   colordb(colorvalue:any)

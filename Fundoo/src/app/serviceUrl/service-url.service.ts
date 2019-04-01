@@ -20,4 +20,6 @@ export class ServiceUrlService {
   public deletenote="deletenote";
   public setcolor="setcolor";
   public reminder="reminder";
+  public archive="archive";
+  public archivedisplay="archivedisplay";
 }
