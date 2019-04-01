@@ -56,6 +56,7 @@ import { LabelComponent } from './Component/label/label.component';
   ],
   providers: [RegisterService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [EditnotesComponent]
+  entryComponents: [EditnotesComponent,LabelComponent]
+  
 })
 export class AppModule { }

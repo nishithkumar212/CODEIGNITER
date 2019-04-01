@@ -38,10 +38,11 @@ export class DashboardComponent implements OnInit {
   }
   opendialog()
   {
+    debugger;
     this. dialogConfig = new MatDialogConfig();
     this.dialogConfig.disableClose = false;
    this.dialogConfig.autoFocus = true;
-   this.dialogConfig.width='600px';
+   this.dialogConfig.width='400px';
    this.dialogConfig.height='200px';
    this.dialogConfig.align='center';
    this.dialogConfig.direction='ltr';

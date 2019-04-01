@@ -12,7 +12,7 @@ class Archiveuser extends CI_Controller
         }
         public function fetcharchivedisplay()
         {
-                $query="select * from notes where archive=1";
+                $query= " select * from notes where archive=1";
                 $stmt=$this->db->conn_id->prepare($query);
                 $stmt->execute();
                 $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
