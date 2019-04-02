@@ -4,7 +4,7 @@
   border-radius: 8px;
   outline: none;
   padding: 6px 16px;
-  margin-left:20%;
+  margin-left:15%;
   width: 150%;
   max-width: 550px;
   font-size: 10px;
@@ -15,6 +15,10 @@
 }
 .body{
   max-height: 100%;
+
+  width: 1000px;
+  margin-left: 100px;
+
 }
 .second
 {
@@ -22,7 +26,7 @@
   border-radius: 8px;
   outline: none;
   padding: 6px 16px;
-  margin-left:20%;
+  margin-left:15%;
 
   max-width: 550px;
   font-size: 12px;
@@ -53,7 +57,7 @@
 .edge
 {
  margin-left:180px;
- margin-top:-20px;
+ margin-top:-15px;
 
 }
 .image
@@ -83,7 +87,7 @@ margin-top:30p;
    max-width: 155px;
   height: 180px;
   position: fixed;
-  margin-left:208px;
+  margin-left:158px;
   margin-top:-482px;
 }
 .arrow
@@ -94,7 +98,7 @@ margin-top:30p;
 
 .example-full-width
 {
- max-width: 120px;
+ max-width: 115px;
 }
 .example
 {
@@ -108,7 +112,7 @@ margin-top:30p;
 margin-left:53px;
 margin-top:44px;
 margin-bottom: 30px;
-width:220px;
+width:215px;
 height:5%;
 display:inline-block;
 color:#7E858A;
@@ -119,7 +123,7 @@ border-radius: 9px
 .column
 {
   margin-left:150px;
-width:620px;
+width:615px;
 height: 10%;
 display: inline-block;
 color:#7E858A;
@@ -127,34 +131,53 @@ font-family: 'Product Sans',Arial,sans-serif;
 font-size: 15px;
 border-radius: 9px;
 margin-bottom: 49px;
+padding-left: 66px;
 }
 .icons
 {
   padding: 10%;
-  margin-top:20px;
+  margin-top:10px;
 }
 .a
 {
  margin-top:60px;
+ margin-left: 5px;
+
 }
 .b
 {
  margin-top:60px;
+ margin-left: 5px;
+ 
 }
 .c
 {
   margin-top:60px;
+  margin-left: 5px;
+ 
 }
 .d
 {
   margin-top:60px;
+  margin-left: 5px;
 }
 .e
 {
    margin-top:60px;
+   margin-left: 5px;
+ 
 } 
 .mat-icon
 {
   margin-top: -14px;
 }
-
+.dateVisOn{
+  visibility: none;
+  }
+  .dateVisOff{
+  visibility: hidden;
+  }
+  .remins
+  {
+    margin-left:-15px;
+  }

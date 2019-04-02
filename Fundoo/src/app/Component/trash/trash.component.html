@@ -1,4 +1,4 @@
-<mat-card class="remindermat" *ngFor="let users of details">
+<mat-card  [ngStyle]="{'background-color': users.color}" class="remindermat" *ngFor="let users of details">
   <div >
     <p>{{users.title}}</p>
     <p>{{users.description}}</p>

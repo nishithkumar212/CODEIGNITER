@@ -1,16 +1,20 @@
 <div class="body">
     <div fxLayout="row" class="first" *ngIf="flag==true" fxLayoutGap="10px">
-        <mat-form-field>
-            <input matInput placeholder="take a Note" (click)="initialize()">
-        </mat-form-field>
+
+            <input class="takenote" matInput placeholder="take a Note" formControlName="description" (click)="initialize()">
+
     </div>
     <div class="second" *ngIf="flag==false">
         <form class="some" [formGroup]="noteform">
             <div>
-                <input class="title" matInput placeholder="title" formControlName="title">
+                    <input class="takenote" matInput placeholder="title" formControlName="title">
+                
             </div>
             <div>
                 <input class="takenote" matInput placeholder="take a Note" formControlName="description">
+               <div >
+                   <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}}
+                </div>
             </div>
             <div class="designs" fxLayoutGap="12px ">
                 <mat-menu class="menu" #appMenu="matMenu">
@@ -39,14 +43,16 @@
     <mat-card *ngFor="let users of details  " [ngStyle]="{'background-color': users.color}"
         [ngClass]="direction=='row' ? 'row' :'column' ">
         <div class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
-            fxLayoutAlign="center center">
+        fxLayoutAlign="center center">
             <div >
                 <p> {{users.title}}</p>
                 <p>{{users.description}} </p>
-                <p> {{users.dateformat}}</p>
+                <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
+                    <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px;">schedule</mat-icon>{{users.reminder}}
+                </p>
             </div>
         </div>
-        <span class="icons">
+        <span class="icons" style="padding-left:3px;">
 
             <mat-icon class="a">notifications_none</mat-icon>
             <mat-icon class="b">person_add</mat-icon>
@@ -57,37 +63,38 @@
             </button>
             <mat-icon class="f">more_vert</mat-icon>
         </span>
-    </mat-card>
+   
 
 
 <mat-menu class="colormenu" #colorMenu="matMenu" >
     <div class="menu" >
         <button (click)="colordb(noteform.value.color='#fcf476',users.id)" mat-mini-fab
             style="background-color:#fcf476;"></button>
-        <button (click)="colordb(noteform.value.color='#f8bc04')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#f8bc04',users.id)" mat-mini-fab
             style="background-color:#f8bc04;"></button>
-        <button (click)="colordb(noteform.value.color='#aecbfa')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#aecbfa',users.id)" mat-mini-fab
             style="background-color:#aecbfa;"></button>
-        <button (click)="colordb(noteform.value.color='#ffffff')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#ffffff',users.id)" mat-mini-fab
             style="background-color:#ffffff;"></button>
-        <button (click)="colordb(noteform.value.color='#e8eaed')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#e8eaed',users.id)" mat-mini-fab
             style="background-color:#e8eaed;"></button>
-        <button (click)="colordb(noteform.value.color='#6a5acd')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#6a5acd',users.id)" mat-mini-fab
             style="background-color: #6a5acd;"></button>
-        <button (click)="colordb(noteform.value.color='#ccff90')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#ccff90',users.id)" mat-mini-fab
             style="background-color: #ccff90;"></button>
-        <button (click)="colordb(noteform.value.color='#e8eaed')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#e8eaed',users.id)" mat-mini-fab
             style="background-color: #e8eaed;"></button>
-        <button (click)="colordb(noteform.value.color='#e6c9a8')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#e6c9a8',users.id)" mat-mini-fab
             style="background-color: #e6c9a8;"></button>
-        <button (click)="colordb(noteform.value.color='#fccfe8')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#fccfe8',users.id)" mat-mini-fab
             style="background-color: #fccfe8;"></button>
-        <button (click)="colordb(noteform.value.color='#cbf0f8')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#cbf0f8',users.id)" mat-mini-fab
             style="background-color:#cbf0f8;"></button>
-        <button (click)="colordb(noteform.value.color='#d7aefb')" mat-mini-fab
+        <button (click)="colordb(noteform.value.color='#d7aefb',users.id)" mat-mini-fab
             style="background-color:#d7aefb;"></button>
     </div>
 </mat-menu>
+ </mat-card>
 </div>
 <div *ngIf="datecalender" fxLayout="row">
     <form [formGroup]="dateuser">

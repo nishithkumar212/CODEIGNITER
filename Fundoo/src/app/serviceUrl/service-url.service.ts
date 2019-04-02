@@ -22,4 +22,6 @@ export class ServiceUrlService {
   public reminder="reminder";
   public archive="archive";
   public archivedisplay="archivedisplay";
+  public createlabel="createlabel";
+  public getlabel="getlabel";
 }

@@ -29,5 +29,14 @@ class Selection extends CI_Controller
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
         print json_encode($data);
     }
+    public function selectinglabel($email)
+    {
+        $query="select * from editlabel where emailid='$email'";
+        $stmt=$this->db->conn_id->prepare($query);
+        $stmt->execute();
+        $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        print json_encode($data);
+
+    }
 }
 ?>

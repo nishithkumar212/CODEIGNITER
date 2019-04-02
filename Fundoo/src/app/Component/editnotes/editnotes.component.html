@@ -1,8 +1,8 @@
 
   <div [ngStyle]="{'background-color': mycolor}">
     <form [formGroup]="editform">
-    <div><input class="etitle"  matInput value="{{title}}" formControlName="ftitle" ></div>
-    <div><input class="etitle" matInput  value="{{description}}"  formControlName="fdescription" ></div>
+    <div><input class="etitle" [ngStyle]="{'background-color': mycolor}" matInput value="{{title}}" formControlName="ftitle" ></div>
+    <div><input class="etitle" [ngStyle]="{'background-color': mycolor}" matInput  value="{{description}}"  formControlName="fdescription" ></div>
       <div class="icons">
           <mat-icon class="a">notifications_none</mat-icon>
       <mat-icon class="b">person_add</mat-icon>

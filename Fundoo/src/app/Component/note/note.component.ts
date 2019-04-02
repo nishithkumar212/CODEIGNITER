@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { supportsWebAnimations } from '@angular/animations/browser/src/render/web_animations/web_animations_driver';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NoteService } from '../../services/note.service';
-
+import {  EventEmitter, Output } from '@angular/core';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import decode from 'jwt-decode';
 import { variable, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -35,11 +35,12 @@ export class NoteComponent implements OnInit {
   date: any;
   dateuser: FormGroup;
   d: any;
-
+valuechange:any;
   breakpoint: any;
   wrap: string = "wrap";
   direction: string;
   layout: any;
+  remins=false;
   // layout: string = this.direction + " " + this.wrap
  view;
 //  cards:boolean=true;
@@ -58,6 +59,10 @@ export class NoteComponent implements OnInit {
     this.direction="row";
   }
 
+  
+
+
+
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     debugger;
@@ -71,7 +76,7 @@ export class NoteComponent implements OnInit {
     user.subscribe((res: any) => {
       debugger
       this.details = res as string[];
-      console.log("arrayt"+res);
+      
     })
    
     this.vi.getview().subscribe(res => {
@@ -119,24 +124,27 @@ export class NoteComponent implements OnInit {
     if(value==1)
     {
       debugger;
+      this.remins=true;
       var date = new Date();
       this.date = date.toDateString();
       this.currentdate = moment(this.date).format('DD/MM/YY');
-      this.currentDateAndTime = this.currentdate + " " + "8:00";
+      this.currentDateAndTime = this.currentdate + " " + "8:00 PM";
       this.timer = true;
   }
   else if(value==2)
   {
     debugger;
+    this.remins=true;
     var date = new Date();
     date.setDate(date.getDate() + 1);
     this.date = date.toDateString();
     this.currentdate = moment(this.date).format('DD/MM/YY');
-    this.currentDateAndTime = this.currentdate + " " + "8:00";
+    this.currentDateAndTime = this.currentdate + " " + "8:00 AM";
     this.timer = true;
   }
   else if(value==3)
   {
+    this.remins=true;
     debugger;
     var day = new Date();
     this.fulldate = day.setDate(day.getDate() + ((1 + 7 - day.getDay()) % 7));
@@ -148,12 +156,17 @@ this.timer = true;
   cardcal
 datecalender;
 dialogConfig;
+
   mydate(value: any) {
     // this.cards=false;
+    this.remins=true;
     debugger;
-    this.latest_date=moment(this.date).format('DD-MMM');
-    // this.cardcal =false;
-    this.datecalender=false;
+    this.currentDateAndTime=moment(this.date).format("DD/MM/YYYY");
+    // this.latest_date=moment(this.date).format('DD-MMM');
+    // // this.cardcal =false;
+     this.datecalender=false;
+    
+
   }
 
   title:any;
@@ -204,6 +217,11 @@ this.dialogConfig.data={
       //   }
     })
   }
+  @Output() valueChange = new EventEmitter();
+ valuechanged()
+ {
+  this.valuechange.emit(this.details);
+ }
 }
 
 

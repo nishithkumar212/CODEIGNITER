@@ -1,10 +1,11 @@
 .first
 {
-    border:none;
+    border:none; 
     outline:none;
-    line-height: 34px;
- font-size: 16px;
- /* margin-left:50px; */
+     line-height: 34px;
+ font-size: 16px; 
+  margin-left:22px;
+  margin-top:-50px;
 }
 .one
 {
@@ -13,11 +14,11 @@
 }
 .two
 {
-    margin-left:25px;
+    margin-left:32px;
 }
 .legend
 {
-    margin-left:35px;
+    margin-left:40px;
 }
 .editlabel
 {
@@ -30,5 +31,9 @@
 }
 .button
 {
-    margin-left:250px;
+    margin-left:320px;
+}
+.mode
+{
+    margin-left:100px;
 }

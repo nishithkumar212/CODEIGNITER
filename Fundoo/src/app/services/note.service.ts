@@ -38,8 +38,25 @@ new :any;
   {
     debugger;
     let coloruser=new FormData();
-    coloruser.append("setcolor",value.color);
-    coloruser.append("setid",id.id);
+    coloruser.append("setcolor",value);
+    coloruser.append("setid",id);
 return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
   }
+  createlabel(values,email)
+  {
+    debugger;
+    let labeluser=new FormData();
+    labeluser.append("label",values.createlabel);
+    labeluser.append("email",email);
+    return this.http.post(this.serverurl.host+this.serverurl.createlabel,labeluser);
+  }
+
+
+selection1(value)
+{
+  debugger;
+  let selectlabeluser=new FormData();
+  selectlabeluser.append("email",value);
+  return this.http.post(this.serverurl.host+this.serverurl.getlabel,selectlabeluser);
+}
 }

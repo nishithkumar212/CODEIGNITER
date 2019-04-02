@@ -68,4 +68,6 @@ $route['reminder']='Reminder/setreminder';
 $route['reminders']='Reminder/insertreminder';
 $route['archive']='Archive/setarchive';
 $route['archivedisplay']='Archive/setarchivedisplay';
+$route['createlabel']='Note/createlabel';
+$route['getlabel']='selected/calllabel';
 $route['translate_uri_dashes'] = FALSE;

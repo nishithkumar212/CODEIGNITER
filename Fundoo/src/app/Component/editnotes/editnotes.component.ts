@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { EditService } from 'src/app/services/edit.service';
 import { debugOutputAstAsTypeScript } from '@angular/compiler';
-
 @Component({
   selector: 'app-editnotes',
   templateUrl: './editnotes.component.html',
@@ -42,7 +41,7 @@ editdescription:any;
     debugger;
     if(values.ftitle ==null || values.ftitle == "")
     {
-    values.ftitle  = this.title  ;
+    values.ftitle  = this.title;
     }
    if(values.fdescription==null || values.fdescription == "")
     {

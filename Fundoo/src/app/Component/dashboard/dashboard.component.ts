@@ -4,6 +4,7 @@ import decode from 'jwt-decode';
 import { ViewService } from 'src/app/services/view.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { LabelComponent } from '../label/label.component';
+import { NoteService } from '../../services/note.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,16 +15,24 @@ export class DashboardComponent implements OnInit {
   list: any = true;
   grid: any = false;
   dialogConfig;
-  constructor(private view: ViewService,private dialog: MatDialog) { }
+  details;
+  constructor(private view: ViewService,private dialog: MatDialog,private service: NoteService) { }
 
   "angularCompilerOptions": {
     "preserveWhitespaces": true
   }
   email: string;
   ngOnInit() {
+    debugger;
     const token = localStorage.getItem('token');
     var decoded = decode(token);
     this.email = decoded.email;
+    
+    let createlabel=this.service.selection1(this.email);
+    createlabel.subscribe((res:any)=>
+    {
+      this.details=res as String[];
+    })
   }
   clicker() {
     if (this.list == true) {
@@ -38,7 +47,6 @@ export class DashboardComponent implements OnInit {
   }
   opendialog()
   {
-    debugger;
     this. dialogConfig = new MatDialogConfig();
     this.dialogConfig.disableClose = false;
    this.dialogConfig.autoFocus = true;
@@ -46,6 +54,7 @@ export class DashboardComponent implements OnInit {
    this.dialogConfig.height='200px';
    this.dialogConfig.align='center';
    this.dialogConfig.direction='ltr';
+   this.dialogConfig.data=this.email;
    this.dialog.open(LabelComponent,this.dialogConfig);
   }
   signout() {
