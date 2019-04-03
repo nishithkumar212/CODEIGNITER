@@ -16,6 +16,7 @@
                    <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}}
                 </div>
             </div>
+
             <div class="designs" fxLayoutGap="12px ">
                 <mat-menu class="menu" #appMenu="matMenu">
                     <p>Reminder</p>
@@ -26,6 +27,7 @@
                         <mat-icon>schedule</mat-icon> Datepicker
                     </button>
                 </mat-menu>
+                <div fxLayoutGap="10px;"> 
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">
                   
                     <mat-icon class="a">notifications_none</mat-icon>
@@ -36,7 +38,7 @@
                 <mat-icon class="e">color_lens</mat-icon>
                 <mat-icon class="color">more_vert</mat-icon>
                 <button class="edge" mat-icon-button (click)="Forms(noteform.value)">close</button>
-          
+          </div>
             </div>
         </form>
     </div>
@@ -54,14 +56,14 @@
         </div>
         <span class="icons" style="padding-left:3px;">
 
-            <mat-icon class="a">notifications_none</mat-icon>
-            <mat-icon class="b">person_add</mat-icon>
-            <mat-icon class="c">insert_photo</mat-icon>
-            <mat-icon class="d">archive</mat-icon>
+            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">notifications_none</mat-icon>
+            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' "> person_add</mat-icon>
+            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">insert_photo</mat-icon>
+            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon>
             <button mat-icon-button [matMenuTriggerFor]="colorMenu">
-                <mat-icon class="e">color_lens</mat-icon>
+                <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">color_lens</mat-icon>
             </button>
-            <mat-icon class="f">more_vert</mat-icon>
+            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">more_vert</mat-icon>
         </span>
    
 

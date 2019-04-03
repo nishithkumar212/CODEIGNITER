@@ -122,7 +122,7 @@ border-radius: 9px
 }
 .column
 {
-  margin-left:150px;
+margin-left:150px;
 width:615px;
 height: 10%;
 display: inline-block;
@@ -131,12 +131,14 @@ font-family: 'Product Sans',Arial,sans-serif;
 font-size: 15px;
 border-radius: 9px;
 margin-bottom: 49px;
-padding-left: 66px;
+padding-left: 58px;
+margin-left:76px;
 }
 .icons
 {
-  padding: 10%;
+  /* padding-left: 30px; */
   margin-top:10px;
+  /* margin-left:76px; */
 }
 .a
 {
@@ -148,7 +150,8 @@ padding-left: 66px;
 {
  margin-top:60px;
  margin-left: 5px;
- 
+ margin-right: 30px;
+
 }
 .c
 {
@@ -180,4 +183,6 @@ padding-left: 66px;
   .remins
   {
     margin-left:-15px;
+    font-size:17px;
+
   }

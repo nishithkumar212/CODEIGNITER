@@ -13,6 +13,7 @@ class Deletenote extends CI_controller
     public function deleted()
     {
         $eid=$_POST['eid'];
-        $this->ref->deletes($eid);
+      $res =   $this->ref->deletes($eid);
+      return $res;
     }
 }

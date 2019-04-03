@@ -90,7 +90,7 @@
             <span class="editlabels">Edit labels</span>
           </a>
           <div *ngFor="let users of details">
-            <mat-icon class="mylabel">label</mat-icon>{{users.labelname}}
+            <mat-icon class="mylabel">label</mat-icon><span class="new">{{users.labelname}}</span>
           </div>
           <mat-divider></mat-divider>
         </mat-nav-list>

@@ -1,9 +1,9 @@
 
 <span  class="editlabel">Edit Labels</span>
+<form [formGroup]="labelform">
 <div class="one" >
-        <form [formGroup]="labelform">
-<mat-icon >close</mat-icon><input class="first" matInput placeholder= "Create new label" formControlName="createlabel">
-</form>
+<mat-icon >close</mat-icon>
+<input class="first" matInput placeholder= "Create new label" formControlName="createlabel">
 </div>
 <div>
 <mat-icon class="two">label</mat-icon>
@@ -11,3 +11,4 @@
 <mat-icon class="mode">mode_edit</mat-icon>
 </div>
 <button class="button"  mat-button (click)="addlabel(labelform.value)" >Done</button>
+</form>

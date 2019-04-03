@@ -71,17 +71,19 @@ valuechange:any;
     this.emailvalues = this.myvalue['email'];
     let user = this.service.selection(this.emailvalues);
     setInterval(() => {
-      
+     
     }, 1000);
+    
     user.subscribe((res: any) => {
       debugger
       this.details = res as string[];
       
-    })
-   
+    });
     this.vi.getview().subscribe(res => {
       this.view = res;
-      this.direction = this.view.datas;
+      debugger;
+      console.log(this.view)
+      this.direction = this.view.data;
     })
   }
   // onResize(event) {

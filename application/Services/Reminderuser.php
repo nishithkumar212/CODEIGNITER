@@ -4,7 +4,7 @@ class Reminderuser extends CI_Controller
 {
     public function fetchreminder()
     {
-        $query= " SELECT  * from notes where reminder!='null' ";
+        $query= " SELECT  * from notes where reminder!='' ";
           $stmt=$this->db->conn_id->prepare($query);
           $stmt->execute();
           $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
