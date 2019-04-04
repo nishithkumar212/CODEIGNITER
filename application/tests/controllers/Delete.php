@@ -14,14 +14,14 @@ class Delete extends Testcase
     {
       $response = $this->client->post('deletenote', [
           'form_params' => [
-            'eid'=>'1231321'
+            'eid'=>'1'
           ]
       ]);
                   $data=$response->getBody();
               $array=json_decode($data);
   
       $this->assertEquals("200",$array->message,'success');
-    //   $this->assertEquals("204",$array->message, 'Invalid credentials given');
+      $this->assertEquals("204",$array->message, 'failure invalid');
     }
   
 }

@@ -15,6 +15,6 @@ class Login extends CI_Controller
     {
             $email=$_POST['email'];
             $password=$_POST['password'];
-           return  $this->ref->signin($email,$password);
+            return  $this->ref->signin($email,$password);
     }
 }

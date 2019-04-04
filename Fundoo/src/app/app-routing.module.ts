@@ -9,6 +9,8 @@ import { NoteComponent } from './Component/note/note.component';
 import { FirstComponent } from './Component/first/first.component';
 import { ReminderComponent } from './Component/reminder/reminder.component';
 import { TrashComponent } from './Component/trash/trash.component';
+import { ChildComponent } from './Component/child/child.component';
+import { ParentComponent } from './Component/parent/parent.component';
 
 
 const routes: Routes = [
@@ -35,7 +37,8 @@ const routes: Routes = [
         ]
     },
     {path:'details',component:FirstComponent},
-
+    {path:'child',component:ChildComponent},
+    {path:'parent',component:ParentComponent}
 ]
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

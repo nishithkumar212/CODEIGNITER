@@ -34,7 +34,8 @@ class Registermodel extends CI_Model
         $useremail = $request['email'];
         $userpassword = $request['password'];
         //query which is used to fetch the details if it is a valid user
-        $data = $this->db->query("select * from last where email='$useremail' And password='$userpassword' ")->result();
+        $data = $this->db->.
+        ("select * from last where email='$useremail' And password='$userpassword' ")->result();
         return $data;
     }
     public function registration()

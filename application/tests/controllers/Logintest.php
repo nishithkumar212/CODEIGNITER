@@ -21,7 +21,7 @@ class Logintest extends TestCase
                 $data=$response->getBody();
             $array=json_decode($data);
 
-    $this->assertEquals("200",$array->message);
+    $this->assertEquals("200",$array->message,'success');
     $this->assertEquals("204",$array->message, 'Invalid credentials given');
   }
  

@@ -15,6 +15,5 @@ class Reminderuser extends CI_Controller
         $query="insert into notes where reminder='$date'";
         $stmt=$this->db->conn_id->prepare($query);
         $stmt->execute();
-        
     }
 }

@@ -10,6 +10,7 @@ class EmployeeModel extends CI_Model
      */
     public function findalle()
     {
+       
     //writing a query which is used to display all the details regarding to the table 
         $data = $this->db->query('SELECT *  from employee')->result();
         foreach ($data as $row) {

@@ -1,7 +1,15 @@
+
+<div class="body"> 
 <mat-card  [ngStyle]="{'background-color': users.color}" class="remindermat" *ngFor="let users of details">
   <div >
     <p>{{users.title}}</p>
     <p>{{users.description}}</p>
-    <p><mat-icon>schedule</mat-icon>{{users.reminder}}</p>
+    <mat-icon class="a" >notifications_none</mat-icon>
+            <mat-icon class="a" > person_add</mat-icon>
+            <mat-icon class="a" >insert_photo</mat-icon>
+            <mat-icon class="a" >archive</mat-icon>
+                <mat-icon class="a" >color_lens</mat-icon>
+            <mat-icon class="a" >more_vert</mat-icon>
   </div>
 </mat-card>
+</div>

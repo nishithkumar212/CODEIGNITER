@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
    */
   submitForm(value: any) {
     this.submitted = true;
-    console.log(value);
+    // console.log(value);
     let status =this.loginservice.login(value);
     status.subscribe((res: any) => {
       debugger;

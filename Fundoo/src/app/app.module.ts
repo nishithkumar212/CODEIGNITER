@@ -25,6 +25,8 @@ import {EditnotesComponent} from './Component/editnotes/editnotes.component';
 import { ReminderComponent } from './Component/reminder/reminder.component';
 import { TrashComponent } from './Component/trash/trash.component';
 import { LabelComponent } from './Component/label/label.component';
+import { ParentComponent } from './Component/parent/parent.component';
+import { ChildComponent } from './Component/child/child.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { LabelComponent } from './Component/label/label.component';
     EditnotesComponent,
     ReminderComponent,
     TrashComponent,
-    LabelComponent
+    LabelComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

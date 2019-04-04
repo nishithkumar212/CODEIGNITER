@@ -28,7 +28,6 @@ class Signin extends CI_Controller
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-    
         return $this->ref->insertdb($firstname, $lastname, $email, $password);
     }
 }

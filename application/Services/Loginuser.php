@@ -14,7 +14,7 @@ class Loginuser extends CI_Controller
         $query="select * from fundoo where email='$email' AND password='$password'";
         $stmt = $this->db->conn_id->prepare($query);
          $stmt->execute();
-        $no=$stmt->fetchColumn();
+        $no=$stmt->rowCount();
          $res=$stmt->fetchAll(PDO::FETCH_ASSOC);
         //  foreach($res as $temp )
         //  {
@@ -57,7 +57,7 @@ class Loginuser extends CI_Controller
                     "token"=>"$jwt"
                 );
                 // $tokenvalue=$client->get('token');
-                 print json_encode($data);
+                 print  json_encode($data);
         } else {
             $data = array(
                 "message" => "204"
