@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReminderserviceService } from '../../services/reminderservice.service';
+import { EditService } from 'src/app/services/edit.service';
 
 @Component({
   selector: 'app-trash',
@@ -8,7 +9,7 @@ import { ReminderserviceService } from '../../services/reminderservice.service';
 })
 export class TrashComponent implements OnInit {
 
-  constructor(private reminder:ReminderserviceService) { }
+  constructor(private reminder:ReminderserviceService,private eservice:EditService) { }
 details:any;
   ngOnInit() {
     debugger;
@@ -18,5 +19,16 @@ details:any;
         this.details=res as String[];
     })
   }
+  unarchive(myid)
+  {
+    debugger;
+   let archiveuser=this.eservice.setunarchive(myid);
+   archiveuser.subscribe((res:any)=>
+   {
 
+   });
+
+
+
+  }
 }

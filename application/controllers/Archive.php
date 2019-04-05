@@ -15,6 +15,11 @@ class Archive extends CI_Controller
         $value=$_POST['id'];
         $this->ref->insertarchive($value);
     }
+    public function unarchive()
+    {
+        $value=$_POST['id'];
+        $this->ref->unsetarchive($value);
+    }
     public function setarchivedisplay()
     {
          $this->ref->fetcharchivedisplay();

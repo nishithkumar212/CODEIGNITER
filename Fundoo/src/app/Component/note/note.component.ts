@@ -13,6 +13,7 @@ import * as moment from 'moment';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { EditnotesComponent } from '../editnotes/editnotes.component';
 import {ReminderserviceService} from '../../services/reminderservice.service';
+import { EditService } from 'src/app/services/edit.service';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -46,7 +47,7 @@ valuechange:any;
 //  cards:boolean=true;
 
 
-  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog) {
+  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog,private  eservice:EditService) {
     this.noteform = fb.group({
       title: "",
       description: ""
@@ -58,11 +59,6 @@ valuechange:any;
     );
     this.direction="row";
   }
-
-  
-
-
-
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     debugger;
@@ -158,17 +154,17 @@ this.timer = true;
   cardcal
 datecalender;
 dialogConfig;
+notecalender;
 
   mydate(value: any) {
     // this.cards=false;
     this.remins=true;
     debugger;
     this.currentDateAndTime=moment(this.date).format("DD/MM/YYYY");
+    this.service.register(value, this.tokenvalue,  this.currentDateAndTime);
     // this.latest_date=moment(this.date).format('DD-MMM');
     // // this.cardcal =false;
      this.datecalender=false;
-    
-
   }
 
   title:any;
@@ -219,6 +215,38 @@ this.dialogConfig.data={
       //   }
     })
   }
+  archive(myid)
+  {
+    debugger;
+   let archiveuser=this.eservice.setarchive(myid);
+   archiveuser.subscribe((res:any)=>
+   {
+
+   });
+
+
+
+  }
+
+  deleteflag=true;
+
+  deleted(values:any)
+  {
+    this.deleteflag=false;
+    debugger;
+    let duser=this.eservice.delete(values,values);
+    duser.subscribe((res:any)=>
+    {
+
+    })
+  }
+
+
+
+
+
+
+
   @Output() valueChange = new EventEmitter();
  valuechanged()
  {

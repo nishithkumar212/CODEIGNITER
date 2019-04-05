@@ -26,11 +26,15 @@ export class EditService {
   }
   delete(value,id)
   {
-
     debugger;
     let dataa=new FormData();
     dataa.append("eid",id);
     return this.http.post(this.serviceurl.host+this.serviceurl.deletenote,dataa);
+  }
+  selectiondelete()
+  {
+    debugger;
+    return this.http.get(this.serviceurl.host+this.serviceurl.selectiondelete)
   }
   editcolor(value,id)
   {
@@ -46,6 +50,12 @@ export class EditService {
      let archivedata=new FormData();
      archivedata.append("id",value);
      return this.http.post(this.serviceurl.host+this.serviceurl.archive,archivedata);
-
+  }
+  setunarchive(value)
+  {
+    debugger;
+     let archivedata=new FormData();
+     archivedata.append("id",value);
+     return this.http.post(this.serviceurl.host+this.serviceurl.unarchive,archivedata);
   }
 }

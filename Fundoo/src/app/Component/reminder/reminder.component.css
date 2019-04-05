@@ -13,8 +13,9 @@
 }
 .icons
 {
-    margin-top:20px;
+    margin-top:10px;
 }
+
 .edge
 {
   margin-left:10px;
@@ -27,3 +28,22 @@
     margin-left: 100px;
   
   }
+  .a
+{
+ margin-top:60px;
+ margin-left: 5px;
+
+}
+.e
+{
+   margin-top:60px;
+   margin-left: 5px;
+ 
+} 
+.a{
+  margin-top:-15px;
+}
+.menu
+{
+  width:160px;
+}

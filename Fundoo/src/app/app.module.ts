@@ -27,6 +27,7 @@ import { TrashComponent } from './Component/trash/trash.component';
 import { LabelComponent } from './Component/label/label.component';
 import { ParentComponent } from './Component/parent/parent.component';
 import { ChildComponent } from './Component/child/child.component';
+import { DeleteComponent } from './Component/delete/delete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,9 @@ import { ChildComponent } from './Component/child/child.component';
     TrashComponent,
     LabelComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    DeleteComponent,
+
   ],
   imports: [
     BrowserModule,

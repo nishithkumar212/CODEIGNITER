@@ -1,0 +1,21 @@
+<div  class="body">
+
+  <mat-card  [ngStyle]="{'background-color': users.color}" class="card" 
+    *ngFor="let users of details">
+    <form class="some" [formGroup]="noteform">
+    <div>
+      <p>{{users.title}}</p>
+      <p>{{users.description}}</p>
+      <p>
+        <mat-icon>schedule</mat-icon>{{users.reminder}}
+      </p>
+      <button mat-icon-button [matMenuTriggerFor]="newmenu" class="iconbtn">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+     <mat-menu #newMenu="matMenu">
+      <h1>hello</h1>
+     </mat-menu>
+   </div>
+   </form>
+   </mat-card>
+   </div>

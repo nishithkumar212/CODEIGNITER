@@ -10,6 +10,12 @@ class Archiveuser extends CI_Controller
             $stmt=$this->db->conn_id->prepare($query);
              $stmt->execute();
         }
+        public function unsetarchive($value)
+        {
+                $query="UPDATE notes set archive=0 where id='$value' ";
+            $stmt=$this->db->conn_id->prepare($query);
+             $stmt->execute();
+        }
         public function fetcharchivedisplay()
         {
                 $query= " select * from notes where archive=1";

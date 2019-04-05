@@ -21,7 +21,9 @@ export class ServiceUrlService {
   public setcolor="setcolor";
   public reminder="reminder";
   public archive="archive";
+  public unarchive="unarchive";
   public archivedisplay="archivedisplay";
   public createlabel="createlabel";
   public getlabel="getlabel";
+  public selectiondelete="selectiondelete";
 }

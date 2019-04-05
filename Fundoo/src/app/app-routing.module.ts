@@ -11,6 +11,7 @@ import { ReminderComponent } from './Component/reminder/reminder.component';
 import { TrashComponent } from './Component/trash/trash.component';
 import { ChildComponent } from './Component/child/child.component';
 import { ParentComponent } from './Component/parent/parent.component';
+import { DeleteComponent } from './Component/delete/delete.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
             {
                 path:'trash',
                 component:TrashComponent,
+            },
+            {
+                path:'delete',
+                component:DeleteComponent,
             }
         ]
     },
