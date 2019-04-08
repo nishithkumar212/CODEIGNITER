@@ -22,8 +22,9 @@ class Noteuser extends CI_Controller
              {
                  $ref=new JWT();
                  $ar=0;
+                 $unactive=0;
                 $email=$ref->decode($value,$key,array('HS256'))->email;
-        $query="INSERT into notes (title,description,emailid,reminder,archive) values('$tit','$des','$email ','$date','$ar')";
+        $query="INSERT into notes (title,description,emailid,reminder,archive,unactive) values('$tit','$des','$email ','$date','$ar','$unactive')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();
         $no=$stmt->rowCount();
@@ -37,6 +38,7 @@ class Noteuser extends CI_Controller
         }
     }
 }
+
 public function createlabels($value,$email)
 {
     $query="insert into editlabel (labelname,emailid) values('$value','$email')"; 

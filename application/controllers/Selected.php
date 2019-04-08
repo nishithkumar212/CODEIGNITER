@@ -21,4 +21,9 @@ class Selected extends CI_Controller
         $email=$_POST['email'];
         $this->ref->selectinglabel($email);
     }
+    public function labelcalling()
+    {
+        $tokenemail=$_POST['tokenemail'];
+        return  $this->ref->retrievelabel($tokenemail);
+    }
 }

@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {LoginService } from '../../services/login.service';
 import {Router} from '@angular/router';
+import {
+	AuthService,
+	FacebookLoginProvider,
+	GoogleLoginProvider
+} from "angular-6-social-login";
+import { getAuthServiceConfigs } from "../../Models/socialloginconfig"
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +26,7 @@ export class LoginComponent implements OnInit {
    * @param fb creating an FormBuilder instance instead of formcontrol and form group 
    * It includes validations for the controllers.
    */
-  constructor(fb: FormBuilder,private  loginservice:LoginService,private route:Router ) {
+  constructor(fb: FormBuilder,private  loginservice:LoginService,private route:Router, private socialAuthService: AuthService,private _cookieService: CookieService,) {
     this.loginForm = fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
@@ -53,4 +60,54 @@ export class LoginComponent implements OnInit {
       
   });
   }
+
+  public socialSignIn(socialPlatform: string) {
+		debugger;
+		let socialPlatformProvider;
+		if (socialPlatform == "facebook") {
+			socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+		} else if (socialPlatform == "google") {
+			socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+		}
+
+		this.socialAuthService.signIn(socialPlatformProvider).then(userData => {
+			debugger;
+			this.sendToRestApiMethod(
+				userData.token,
+				userData.email,
+				userData.image,
+				userData.name
+			);
+		});
+  }
+
+  iserror:any;
+  errorMessage :any;
+	sendToRestApiMethod(token, email, image, name): void {
+		let obsss = this.loginservice.socialLoginData(email, name);
+		obsss.subscribe(
+			(res: any) => {
+				debugger;
+				if (res.message == "200") {
+					this._cookieService.set("email", email);
+					localStorage.setItem("token", res.token);
+					this._cookieService.set("image", image);
+
+					this.route.navigate(["/fundoo"]);
+					// obsss.unsubscribe();
+				} else {
+					this._cookieService.set("email", email);
+					localStorage.setItem("token", res.token);
+					this._cookieService.set("image", image);
+
+					this.route.navigate(["/fundoo"]);
+					// obsss.unsubscribe();
+				}
+			},
+			error => {
+				this.iserror = true;
+				this.errorMessage = error.message;
+			}
+		);
+	}
 }

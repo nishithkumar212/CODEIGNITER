@@ -36,9 +36,6 @@
             <button mat-menu-item>AppDownloads</button>
             <button mat-menu-item>Addshortcuts</button>
           </mat-menu>
-
-
-
           <button mat-icon-button class="iconbtn">
             <mat-icon style="font-size:25px;">apps</mat-icon>
           </button>
@@ -90,7 +87,7 @@
             <span class="editlabels">Edit labels</span>
           </a>
           <div *ngFor="let users of details">
-            <mat-icon class="mylabel">label</mat-icon><span class="new" >{{users.labelname}}</span>
+           <mat-icon class="mylabel">label</mat-icon><button  mat-icon-button routerLink="editlabel" >{{users.labelname}}</button>
           </div>
           <mat-divider></mat-divider>
         </mat-nav-list>

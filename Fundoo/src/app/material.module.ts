@@ -9,6 +9,7 @@ MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule,
 MatSelectModule ,MatFormFieldModule,MatSidenavModule,MatDividerModule, MatListModule,
 MatDatepickerModule ,MatNativeDateModule ,MAT_DIALOG_DATA
 } from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
 imports: [
 CommonModule, 
@@ -30,6 +31,7 @@ MatDividerModule,
 MatListModule,
 MatDatepickerModule,
 MatNativeDateModule,
+MatCheckboxModule
 
 ],
 exports: [
@@ -48,6 +50,7 @@ MatFormFieldModule,
 MatSidenavModule,
 MatDividerModule,
 MatListModule,
+MatCheckboxModule
 ],
 })
 export class CustomMaterial { }

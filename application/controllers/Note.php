@@ -19,6 +19,14 @@ class Note extends CI_Controller
        $date=$_POST['reminder'];
        return  $this->ref->notes($tit,$des,$myhead,$date);
     }
+    // public function labeldatainsertion()
+    // {
+    //         $tit=$_POST['title'];
+    //         $des=$_POST['description'];
+    //         $labelname=$_POST['labelname'];
+        
+
+    // }
     public function createlabel()
     {
         $label=$_POST['label'];

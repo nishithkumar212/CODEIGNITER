@@ -19,6 +19,13 @@ new :any;
      selectuser.append("tokenemail",values);
      return this.http.post(this.serverurl.host+this.serverurl.selected,selectuser);
    }
+   selectionlabel(values)
+   {
+     
+      let selectionlabel=new FormData();
+      selectionlabel.append("tokenemail",values);
+      return this.http.post(this.serverurl.host+this.serverurl.selectedlabel,selectionlabel);
+   }
   register(Notes:note,tokenvalue,date)
   {
     debugger;
@@ -33,6 +40,14 @@ new :any;
     return this.http.post(this.serverurl.host+this.serverurl.note,noteuser,{
       headers:this.head
     });
+  }
+  register1(value)
+  {
+    let labeledituser=new FormData();
+    labeledituser.append("title",value.title);
+    labeledituser.append("description",value.description);
+    labeledituser.append("labelname",value.labelname);
+    return this.http.post(this.serverurl.host+this.serverurl.notes,labeledituser);
   }
   coloring(value,id)
   {

@@ -31,6 +31,7 @@ export class NoteComponent implements OnInit {
   data: string[];
   mytitle: string;
   details: string[];
+  labeldetails:string[];
   mydescription: string;
   latest_date: any;
   date: any;
@@ -57,15 +58,24 @@ valuechange:any;
         datevalue: ""
       }
     );
+    
     this.direction="row";
   }
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-    debugger;
     this.tokenvalue = localStorage.getItem('token');
     this.myvalue = decode(this.tokenvalue);
     this.emailvalues = this.myvalue['email'];
     let user = this.service.selection(this.emailvalues);
+    debugger;
+    let selectionlabel=this.service.selectionlabel(this.emailvalues);
+    selectionlabel.subscribe((res:any)=>
+    {
+  
+      this.labeldetails = res as string[];
+      console.log(this.labeldetails);
+    });
+
     setInterval(() => {
      
     }, 1000);
@@ -195,6 +205,7 @@ this.dialogConfig.data={
     })
   }
   noteshow;
+  
   Forms(value: any) {
     debugger;
     console.log(value);
@@ -213,7 +224,12 @@ this.dialogConfig.data={
       //   {
       //     this.errormsg="some thing went wrong in insertion ";
       //   }
+      
     })
+  }
+  addinglabel(value,id)
+  {
+
   }
   archive(myid)
   {

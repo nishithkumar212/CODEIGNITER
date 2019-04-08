@@ -19,4 +19,13 @@ login(login:Login)
   loginuser.append('password',login.password);
    return this.http.post(this.serverurl.host+this.serverurl.login,loginuser);
 }
+socialLoginData(email, name) {
+  let socialLoginData = new FormData();
+  socialLoginData.append("email", email);
+  socialLoginData.append("name", name);
+  return this.http.post(
+    this.serverurl.host + this.serverurl.sociallogindata,
+    socialLoginData
+  );
+}
 }

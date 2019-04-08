@@ -28,6 +28,16 @@ import { LabelComponent } from './Component/label/label.component';
 import { ParentComponent } from './Component/parent/parent.component';
 import { ChildComponent } from './Component/child/child.component';
 import { DeleteComponent } from './Component/delete/delete.component';
+import { EditlabelComponent } from './Component/editlabel/editlabel.component';
+import{
+SocialLoginModule,
+    AuthServiceConfig,
+    GoogleLoginProvider,
+    FacebookLoginProvider,
+    AuthService,
+} from "angular-6-social-login";
+import { getAuthServiceConfigs } from "./Models/socialloginconfig";
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +55,7 @@ import { DeleteComponent } from './Component/delete/delete.component';
     ParentComponent,
     ChildComponent,
     DeleteComponent,
+    EditlabelComponent,
 
   ],
   imports: [
@@ -61,9 +72,16 @@ import { DeleteComponent } from './Component/delete/delete.component';
     MatGridListModule,
     MatDialogModule
   ],
-  providers: [RegisterService,DatePipe],
+  
+  providers: [RegisterService,DatePipe,AuthService,CookieService,
+   {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [EditnotesComponent,LabelComponent]
   
 })
+
 export class AppModule { }

@@ -15,7 +15,9 @@ export class ServiceUrlService {
   public reset="reset";
   public getemail="fetchemails";
   public note="note";
+  public notes="notes";
   public selected="selected";
+  public selectedlabel="selectedlabel";
   public noteedit="noteedit";
   public deletenote="deletenote";
   public setcolor="setcolor";
@@ -26,4 +28,5 @@ export class ServiceUrlService {
   public createlabel="createlabel";
   public getlabel="getlabel";
   public selectiondelete="selectiondelete";
+  public sociallogindata="sociallogindata";
 }

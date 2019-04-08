@@ -12,8 +12,7 @@ import { TrashComponent } from './Component/trash/trash.component';
 import { ChildComponent } from './Component/child/child.component';
 import { ParentComponent } from './Component/parent/parent.component';
 import { DeleteComponent } from './Component/delete/delete.component';
-
-
+import { EditlabelComponent } from './Component/editlabel/editlabel.component';
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -38,6 +37,10 @@ const routes: Routes = [
             {
                 path:'delete',
                 component:DeleteComponent,
+            },
+            {
+                path:'editlabel',
+                component:EditlabelComponent,
             }
         ]
     },

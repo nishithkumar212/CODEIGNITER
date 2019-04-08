@@ -17,4 +17,18 @@ class Login extends CI_Controller
             $password=$_POST['password'];
             return  $this->ref->signin($email,$password);
     }
+    public function signin()
+    {
+        $email = $_POST["email"];
+        $name  = $_POST["name"];
+        $key   = explode("@", $email);
+        $key   = $key[0];
+        /**
+         * adding user email to the redis
+         */
+        $this->load->library('Redis');
+        $redis = $this->redis->config();
+        $redis->set($email, $email);
+        $this->ref->socialSignIn($email, $name);
+    }
 }
