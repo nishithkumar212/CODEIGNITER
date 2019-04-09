@@ -38,7 +38,6 @@ class Noteuser extends CI_Controller
         }
     }
 }
-
 public function createlabels($value,$email)
 {
     $query="insert into editlabel (labelname,emailid) values('$value','$email')"; 

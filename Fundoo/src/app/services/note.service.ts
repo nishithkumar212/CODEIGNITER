@@ -21,7 +21,7 @@ new :any;
    }
    selectionlabel(values)
    {
-     
+      debugger;
       let selectionlabel=new FormData();
       selectionlabel.append("tokenemail",values);
       return this.http.post(this.serverurl.host+this.serverurl.selectedlabel,selectionlabel);

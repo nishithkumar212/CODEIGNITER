@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
 		}
 
 		this.socialAuthService.signIn(socialPlatformProvider).then(userData => {
-			debugger;
 			this.sendToRestApiMethod(
 				userData.token,
 				userData.email,
@@ -80,7 +79,6 @@ export class LoginComponent implements OnInit {
 			);
 		});
   }
-
   iserror:any;
   errorMessage :any;
 	sendToRestApiMethod(token, email, image, name): void {
@@ -92,7 +90,6 @@ export class LoginComponent implements OnInit {
 					this._cookieService.set("email", email);
 					localStorage.setItem("token", res.token);
 					this._cookieService.set("image", image);
-
 					this.route.navigate(["/fundoo"]);
 					// obsss.unsubscribe();
 				} else {

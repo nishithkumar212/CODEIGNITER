@@ -78,12 +78,11 @@ valuechange:any;
 
     setInterval(() => {
      
+   
     }, 1000);
-    
-    user.subscribe((res: any) => {
+     user.subscribe((res: any) => {
       debugger
       this.details = res as string[];
-      
     });
     this.vi.getview().subscribe(res => {
       this.view = res;
@@ -162,7 +161,7 @@ this.timer = true;
   }
 }
   cardcal
-datecalender;
+ datecalender:any;;
 dialogConfig;
 notecalender;
 
@@ -176,7 +175,6 @@ notecalender;
     // // this.cardcal =false;
      this.datecalender=false;
   }
-
   title:any;
   description:any;
   dateformat:any;

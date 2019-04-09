@@ -5,7 +5,7 @@
 
         <!--Declaring the div section  including the mat-form field to include the labels -->
     </div>
-    <form class="myform" [formGroup]="loginForm" (ngSubmit)='submitForm(loginForm.value)' novalidate>
+    <form class="myform" [formGroup]="loginForm" novalidate>
         <mat-form-field matinput [ngClass]="{'has-error':!loginForm.controls['email'].valid}">
             <input type="email" matInput placeholder=" email" formControlName="email"
                 [formControl]="loginForm.controls['email']" required>
@@ -30,7 +30,7 @@
             <div class="validate" *ngIf="loginForm.controls['password'].errors.required">password is required</div>
         </div>
         <div class="bfield">
-            <button mat-button>Login</button>
+            <button mat-button (click)="submitForm(loginForm.value)">Login</button>
             <button mat-button routerLink="../register">Register</button>
             <button  mat-raised-button color="primary" (click)="socialSignIn('facebook')">Sign in with Facebook</button>
             <button  mat-raised-button color="primary" (click)="socialSignIn('google')">Sign in with Google</button>              

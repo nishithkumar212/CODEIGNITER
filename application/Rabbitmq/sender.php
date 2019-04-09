@@ -26,13 +26,9 @@ class SendMail
             "subject"    => $subject,
             "message"    => $body,
         ));
-
         $msg = new AMQPMessage($data, array('delivery_mode' => 2));
-
         $channel->basic_publish($msg, '',$Rabbit->queuename );
-    
         $obj = new Receiver();
-
         $obj->receiverMail();
         $channel->close();
         $connection->close();

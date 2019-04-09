@@ -44,11 +44,10 @@
                <button  mat-menu-item [matMenuTriggerFor]="addlabel">Add Label</button>
                 <mat-menu   #addlabel="matMenu">
                 <p>Label Note</p>
-                <button *ngFor="let user of labeldetails"></button>
+                <!-- <button *ngFor="let user of labeldetails"></button> -->
                 <input class="createlabel" matInput placeholder="Enter label name">
-                <mat-icon style="font-size:10px;">search</mat-icon>
-                <mat-checkbox>{{user.labelname}}</mat-checkbox>
-                
+                <mat-icon style="font-size:10px;">search</mat-icon> 
+                <!-- <mat-checkbox>{{user.labelname}}</mat-checkbox> -->
                 </mat-menu> 
             </mat-menu>
                 <button class="edge" mat-icon-button (click)="Forms(noteform.value)">close</button>

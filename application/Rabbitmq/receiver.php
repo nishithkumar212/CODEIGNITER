@@ -1,5 +1,4 @@
 <?php
-
 require_once '/var/www/html/codeigniter/application/Rabbitmq/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 class Receiver
@@ -24,8 +23,6 @@ class Receiver
                 ->setPassword($Rabbit->senderPassword);
            
             $mailer = new Swift_Mailer($transport);
-
-           
             $message = (new Swift_Message($subject))
                 ->setFrom($Rabbit->senderEmailID)
                 ->setTo([$to_email])

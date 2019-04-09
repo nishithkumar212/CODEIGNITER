@@ -10,7 +10,6 @@ class Forgot extends Testcase
             'exceptions' => false
         ]);
     }
-
     public function testforgot()
     {
         $response = $this->client->post('forgot', [
@@ -20,7 +19,6 @@ class Forgot extends Testcase
         ]);
                     $data=$response->getBody();
                 $array=json_decode($data);
-    
         $this->assertEquals("200",$array->message,'success');
         $this->assertEquals("204",$array->message, 'Invalid credentials given');
       }
