@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { EditService } from 'src/app/services/edit.service';
 import { debugOutputAstAsTypeScript } from '@angular/compiler';
+import decode from 'jwt-decode';
 @Component({
   selector: 'app-editnotes',
   templateUrl: './editnotes.component.html',
@@ -54,10 +55,14 @@ editdescription:any;
    })
   }
   deleteflag=true;
+token:any;
+tokenemail;
   deleted(values:any)
   {
     this.deleteflag=false;
-    debugger;
+  //   debugger;
+  //  this.token =localStorage.getItem("token")
+  //               this.tokenemail=decode(this.token);
     let duser=this.eservice.delete(values,this.id);
     duser.subscribe((res:any)=>
     {

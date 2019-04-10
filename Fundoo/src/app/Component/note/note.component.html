@@ -11,7 +11,11 @@
             <div>
                 <input class="takenote" matInput placeholder="take a Note" formControlName="description">
                <div >
+                   <mat-chip-list>
+                   <mat-chip>
                    <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}}
+                </mat-chip>
+            </mat-chip-list>
                 </div>
             </div>
             <div class="designs" fxLayoutGap="12px ">
@@ -59,11 +63,16 @@
         [ngClass]="direction=='row' ? 'row' :'column' ">
         <div class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
         fxLayoutAlign="center center">
-            <div >
+            <div cdkdrag >
                 <p> {{users.title}}</p>
                 <p>{{users.description}} </p>
                 <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
-                    <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px;">schedule</mat-icon>{{users.reminder}}
+
+                        <mat-chip-list>
+                                <mat-chip>
+                                        <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px; margin-top: 5px;">schedule</mat-icon>{{users.reminder}}
+                                    </mat-chip>
+                         </mat-chip-list>
                 </p>
             </div>
         </div>

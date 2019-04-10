@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import {MatChipsModule} from '@angular/material/chips';
 import {
 MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
 MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule,
@@ -31,8 +31,8 @@ MatDividerModule,
 MatListModule,
 MatDatepickerModule,
 MatNativeDateModule,
-MatCheckboxModule
-
+MatCheckboxModule,
+MatChipsModule
 ],
 exports: [
 CommonModule,
@@ -50,7 +50,8 @@ MatFormFieldModule,
 MatSidenavModule,
 MatDividerModule,
 MatListModule,
-MatCheckboxModule
+MatCheckboxModule,
+MatChipsModule
 ],
 })
 export class CustomMaterial { }

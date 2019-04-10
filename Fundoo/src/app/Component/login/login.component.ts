@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   }
 
   public socialSignIn(socialPlatform: string) {
-		debugger;
+	//	debugger;
 		let socialPlatformProvider;
 		if (socialPlatform == "facebook") {
 			socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
@@ -71,6 +71,8 @@ export class LoginComponent implements OnInit {
 		}
 
 		this.socialAuthService.signIn(socialPlatformProvider).then(userData => {
+      console.log(userData,"Hghg");
+      debugger;
 			this.sendToRestApiMethod(
 				userData.token,
 				userData.email,
@@ -81,25 +83,28 @@ export class LoginComponent implements OnInit {
   }
   iserror:any;
   errorMessage :any;
+
 	sendToRestApiMethod(token, email, image, name): void {
+   // debugger;
 		let obsss = this.loginservice.socialLoginData(email, name);
 		obsss.subscribe(
 			(res: any) => {
-				debugger;
+        
+        console.log(res,"jkhnij");
 				if (res.message == "200") {
-					this._cookieService.set("email", email);
+					 this._cookieService.set("email", email);
 					localStorage.setItem("token", res.token);
 					this._cookieService.set("image", image);
-					this.route.navigate(["/fundoo"]);
+				this.route.navigate(["/dashboard"]);
 					// obsss.unsubscribe();
-				} else {
-					this._cookieService.set("email", email);
-					localStorage.setItem("token", res.token);
-					this._cookieService.set("image", image);
-
-					this.route.navigate(["/fundoo"]);
-					// obsss.unsubscribe();
-				}
+        } 
+        // else {
+				// 	// this._cookieService.set("email", email);
+				// 	localStorage.setItem("token", res.token);
+				// 	// this._cookieService.set("image", image);
+        //   this.route.navigate(["/dashboard"]);
+				// 	// obsss.unsubscribe();
+				// }
 			},
 			error => {
 				this.iserror = true;

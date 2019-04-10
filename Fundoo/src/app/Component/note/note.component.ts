@@ -14,6 +14,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material";
 import { EditnotesComponent } from '../editnotes/editnotes.component';
 import {ReminderserviceService} from '../../services/reminderservice.service';
 import { EditService } from 'src/app/services/edit.service';
+
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -61,6 +62,7 @@ valuechange:any;
     
     this.direction="row";
   }
+
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     this.tokenvalue = localStorage.getItem('token');
@@ -68,6 +70,10 @@ valuechange:any;
     this.emailvalues = this.myvalue['email'];
     let user = this.service.selection(this.emailvalues);
     debugger;
+    user.subscribe((res: any) => {
+      debugger
+      this.details = res as string[];
+    });
     let selectionlabel=this.service.selectionlabel(this.emailvalues);
     selectionlabel.subscribe((res:any)=>
     {
@@ -77,13 +83,10 @@ valuechange:any;
     });
 
     setInterval(() => {
-     
+    
    
     }, 1000);
-     user.subscribe((res: any) => {
-      debugger
-      this.details = res as string[];
-    });
+
     this.vi.getview().subscribe(res => {
       this.view = res;
       debugger;
@@ -243,11 +246,14 @@ this.dialogConfig.data={
   }
 
   deleteflag=true;
-
+// token:any;
+// tokenemail:any;
   deleted(values:any)
   {
-    this.deleteflag=false;
-    debugger;
+    // this.token=localStorage.getItem("token");
+    // this.tokenemail=decode(this.token);
+    // this.deleteflag=false;
+    // debugger;
     let duser=this.eservice.delete(values,values);
     duser.subscribe((res:any)=>
     {

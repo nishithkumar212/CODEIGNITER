@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 include_once "/var/www/html/codeigniter/application/Services/jwt.php";
 include_once "/var/www/html/codeigniter/application/predis-1.1/autoload.php";
 use \Firebase\JWT\JWT;
-
 class Loginuser extends CI_Controller
 {
     public function signin($email, $password)
@@ -51,7 +50,8 @@ class Loginuser extends CI_Controller
                 'port' => 6379,
                 'password' => null,
             ));
-            $client->set($jwt, $jwt);
+            //(actual) $client->set($jwt, $jwt);
+            $client->set('token',$jwt);
             // $value=$client->get('token');
             $data = array(
                 "message" => "200",
@@ -71,41 +71,47 @@ class Loginuser extends CI_Controller
     }
     public function socialsignin($email, $name)
     {
+        $token=0;
         // $query="insert into Fundoo (Firstname,email) values ('$name','$email')";
         // $stmt=$this->db->conn_id->prepare($query);
         // $stmt->execute();
 
         $variable = $this->checkemail($email);
         $ref = new JWT();
-        $key = "nishithache";
+        $key = "nishith";
         $client = new Predis\Client(array(
             'host' => '127.0.0.1',
             'port' => 6379,
             'password' => null,
         ));
+        // $conn=$client->connection();
         if ($variable) {
-            $jwttoken = $ref->encode($email, $key);
-            $client->set($jwt, $jwttoken);
+            $tokenres = array("email"=>$email);
+            
+            $jwttoken = $ref->encode($tokenres, $key);
+            $client->set("token",$jwttoken);
+        //    $client->set($jwt, $jwttoken);
+        // $query="select * from notes where emailid='$email'";
+        // $stmt=$this->db->conn_id->prepare($query);
+        // $stmt->execute();
             $data = array(
                 "message" => "200",
-                "token" => "$jwt",
+                "token" => "$jwttoken",
             );
             print json_encode($data);
-            return $data;
         } else {
           $query="Insert into registrations (firstname,email) values ('$name','$email')";
           $stmt = $this->db->conn_id->prepare($query);
           $res=$stmt->execute();
         $jwttoken = $ref->encode($email, $key);
-
-        $client->set($jwt, $jwttoken);
+        $client->set($token, $jwttoken);
         $data = array(
             "message" => "200",
-            "token" => "$jwt",
+            "token" => "$jwttoken",
         );
         print json_encode($data);
-        return $data;
     }
+    return $data;
 }
     public function checkemail($email)
     {

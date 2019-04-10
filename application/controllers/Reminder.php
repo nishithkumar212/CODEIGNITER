@@ -12,7 +12,8 @@ class Reminder extends CI_Controller
     }
     public function setreminder()
     {
-         return $this->ref->fetchreminder();
+        $email=$_POST['email'];
+         return $this->ref->fetchreminder($email);
     }
     public function insertreminder()
     {

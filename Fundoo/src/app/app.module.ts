@@ -29,6 +29,7 @@ import { ParentComponent } from './Component/parent/parent.component';
 import { ChildComponent } from './Component/child/child.component';
 import { DeleteComponent } from './Component/delete/delete.component';
 import { EditlabelComponent } from './Component/editlabel/editlabel.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 import{
 SocialLoginModule,
     AuthServiceConfig,
@@ -56,7 +57,7 @@ import { CookieService } from 'ngx-cookie-service';
     ChildComponent,
     DeleteComponent,
     EditlabelComponent,
-
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,

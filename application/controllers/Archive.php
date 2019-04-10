@@ -22,6 +22,7 @@ class Archive extends CI_Controller
     }
     public function setarchivedisplay()
     {
-         $this->ref->fetcharchivedisplay();
+         $email=$_POST['email'];
+         $this->ref->fetcharchivedisplay($email);
     }
 }

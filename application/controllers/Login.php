@@ -29,6 +29,6 @@ class Login extends CI_Controller
         // $this->load->library('Redis');
         // $redis = $this->redis->config();
         // $redis->set($email, $email);
-        $this->ref->socialSignIn($email, $name);
+        return  $this->ref->socialSignIn($email, $name);
     }
 }

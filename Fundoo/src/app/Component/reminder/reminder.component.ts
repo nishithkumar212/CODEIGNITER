@@ -3,6 +3,7 @@ import { ReminderserviceService } from '../../services/reminderservice.service';
 import { EditService } from 'src/app/services/edit.service';
 import { NoteService } from 'src/app/services/note.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import decode from 'jwt-decode';
 @Component({
   selector: 'app-reminder',
   templateUrl: './reminder.component.html',
@@ -18,10 +19,13 @@ noteform: FormGroup;
       description: ""
     });
    }
-
+email:any;
+remail:any;
   ngOnInit() {
           debugger;
-     let reminderuser=this.reminder.selection();
+          this.email=localStorage.getItem('token');
+           this.remail=decode(this.email);
+     let reminderuser=this.reminder.selection(this.remail);
      reminderuser.subscribe((res:any)=>
      {
          this.details=res as String[];
@@ -29,10 +33,14 @@ noteform: FormGroup;
 
   }
   deleteflag=true;
+  // tokenemail:any;
+  // token:any;
   deleted(values:any)
   {
     this.deleteflag=false;
-    debugger;
+    // debugger;
+    // this.tokenemail=localStorage.getItem("token");
+    // this.token=decode(this.tokenemail);
     let duser=this.eservice.delete(values,values);
     duser.subscribe((res:any)=>
     {

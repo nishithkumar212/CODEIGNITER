@@ -17,7 +17,8 @@ class Noteuser extends CI_Controller
             'port' => 6379,
             'password' => null,
             ));
-             $value=$client->get($myhead['Authorization']);
+            //  $value=$client->get($myhead['Authorization']);
+            $value=$client->get('token');
              if($value)
              {
                  $ref=new JWT();

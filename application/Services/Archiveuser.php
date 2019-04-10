@@ -16,9 +16,9 @@ class Archiveuser extends CI_Controller
             $stmt=$this->db->conn_id->prepare($query);
              $stmt->execute();
         }
-        public function fetcharchivedisplay()
+        public function fetcharchivedisplay($email)
         {
-                $query= " select * from notes where archive=1";
+                $query= " select * from notes where archive=1 AND emailid='$email' ";
                 $stmt=$this->db->conn_id->prepare($query);
                 $stmt->execute();
                 $data=$stmt->fetchAll(PDO::FETCH_ASSOC);

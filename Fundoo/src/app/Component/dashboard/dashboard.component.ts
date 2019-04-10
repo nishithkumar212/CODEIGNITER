@@ -5,6 +5,8 @@ import { ViewService } from 'src/app/services/view.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { LabelComponent } from '../label/label.component';
 import { NoteService } from '../../services/note.service';
+import { CookieService} from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,14 +18,19 @@ export class DashboardComponent implements OnInit {
   grid: any = false;
   dialogConfig;
   details;
-  constructor(private view: ViewService,private dialog: MatDialog,private service: NoteService) { }
+  googleimages;
+  constructor(private view: ViewService,private dialog: MatDialog,private route:Router,private service: NoteService,private cookies:CookieService) { 
+  this.googleimages=this.cookies.get("image");
+  }
 
   "angularCompilerOptions": {
     "preserveWhitespaces": true
   }
   email: string;
+  myimages:any;
   ngOnInit() {
     debugger;
+    //this.googleimages=this.cookies.get("image");
     const token = localStorage.getItem('token');
     var decoded = decode(token);
     this.email = decoded.email;
@@ -45,6 +52,11 @@ export class DashboardComponent implements OnInit {
     }
     this.view.gridview();
   }
+  remove()
+  {
+    localStorage.removeItem("token");
+    this.route.navigate(["/login"]);
+  }
   opendialog()
   {
     this. dialogConfig = new MatDialogConfig();
@@ -60,4 +72,5 @@ export class DashboardComponent implements OnInit {
   signout() {
     localStorage.removeItem('token');
   }
+  //googleimages=this.cookies.get("image");
 }

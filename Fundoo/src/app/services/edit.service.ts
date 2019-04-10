@@ -29,12 +29,15 @@ export class EditService {
     debugger;
     let dataa=new FormData();
     dataa.append("eid",id);
+    //  dataa.append("email",token);
     return this.http.post(this.serviceurl.host+this.serviceurl.deletenote,dataa);
   }
-  selectiondelete()
+  selectiondelete(email)
   {
     debugger;
-    return this.http.get(this.serviceurl.host+this.serviceurl.selectiondelete)
+    let selectiondelete=new FormData();
+    selectiondelete.append("email",email.email);
+    return this.http.post(this.serviceurl.host+this.serviceurl.selectiondelete,selectiondelete);
   }
   editcolor(value,id)
   {

@@ -42,18 +42,19 @@
 
 
           <!-- <button mat-icon-button ><mat-icon style="font-size:25px;">account_box</mat-icon></button> -->
-
+          
           <button mat-icon-button class="source" [matMenuTriggerFor]="mymenu">
-            <mat-icon>account_box</mat-icon>
+            <!-- <mat-icon>account_box</mat-icon> -->
+           <mat-icon ><img style="border-radius:100px;" src="{{googleimages}}"></mat-icon>
           </button>
           <mat-menu class="menubar" #mymenu="matMenu">
             <div>
-              <img class="source" src="../../../assets/pexels-photo-236047.jpeg"> {{email}}
+              <img class="source" src="{{googleimages}}"> {{email}}
             </div>
             <mat-divider></mat-divider>
             <div class="pixels" fxLayoutGap="10px"><input type="button"
                 style="color: rgb(104, 101, 101); margin-bottom: 20px;" value="AddAccount">
-              <input type="button" style="color: rgb(104, 101, 101);" value="RemoveAccount">
+              <input type="button" style="color: rgb(104, 101, 101);" value="RemoveAccount" (click)="remove()" >
             </div>
           </mat-menu>
 
