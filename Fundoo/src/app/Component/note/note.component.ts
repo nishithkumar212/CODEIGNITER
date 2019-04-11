@@ -10,11 +10,12 @@ import { DatePipe } from '@angular/common'
 import { HttpHeaders } from '@angular/common/http';
 import { ViewService } from 'src/app/services/view.service';
 import * as moment from 'moment';
+// import {note } from "../../Models/note";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { EditnotesComponent } from '../editnotes/editnotes.component';
 import {ReminderserviceService} from '../../services/reminderservice.service';
 import { EditService } from 'src/app/services/edit.service';
-
+// import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -65,13 +66,13 @@ valuechange:any;
 
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
+    debugger;
     this.tokenvalue = localStorage.getItem('token');
     this.myvalue = decode(this.tokenvalue);
     this.emailvalues = this.myvalue['email'];
     let user = this.service.selection(this.emailvalues);
-    debugger;
+    console.log(user);
     user.subscribe((res: any) => {
-      debugger
       this.details = res as string[];
     });
     let selectionlabel=this.service.selectionlabel(this.emailvalues);
@@ -84,7 +85,7 @@ valuechange:any;
 
     setInterval(() => {
     
-   
+      // this.reminderalert()
     }, 1000);
 
     this.vi.getview().subscribe(res => {
@@ -96,6 +97,22 @@ valuechange:any;
   }
   // onResize(event) {
   //   // this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+  // }
+  // reminderalert()
+  // {
+  //   let day=new Date();
+  //   this.fulldate=day.toDateString()+""+(day.getHours()%12)+ ":"+day.getMinutes();
+  //   this.fulldate = moment(this.fulldate).format("DD/MM/YYYY hh:mm") + " pm";
+  //   this.details.forEach(element => {
+	// 		/**
+	// 		 * compare with present time if equal alert remainder
+	// 		 */
+	// 		if (this.fulldate == this.currentDateAndTime) {
+	// 			this.snackBar.open("alertmessage", "", {
+	// 				duration: 2000
+	// 			});
+	// 		}
+	// 	});
   // }
   initialize() {
     this.flag = !this.flag;
@@ -160,6 +177,7 @@ valuechange:any;
     this.fulldate = day.setDate(day.getDate() + ((1 + 7 - day.getDay()) % 7));
     let currentDate = moment(this.fulldate).format("DD/MM/YYYY");
     this.currentDateAndTime = currentDate + " " + " 08:00 PM"; 
+
 this.timer = true;
   }
 }
@@ -206,7 +224,25 @@ this.dialogConfig.data={
     })
   }
   noteshow;
-  
+  selectedFile;
+  base64textString
+  Mainimage
+  handleFileSelect(event) {
+
+    var files = event.target.files;
+    var file = files[0];
+  if (files && file) {
+      var reader = new FileReader();
+      reader.onload =this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+  }
+}
+_handleReaderLoaded(readerEvt) {
+  debugger;
+ var binaryString = readerEvt.target.result;
+        this.base64textString= btoa(binaryString);
+        this.Mainimage = "data:image/jpeg;base64," + this.base64textString;
+}
   Forms(value: any) {
     debugger;
     console.log(value);

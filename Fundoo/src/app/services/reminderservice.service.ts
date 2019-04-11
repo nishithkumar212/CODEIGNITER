@@ -18,8 +18,9 @@ export class ReminderserviceService {
   }
   selection1(email)
   {
+    debugger;
     let selecttrash=new FormData();
-    selecttrash.append("email",email);
+    selecttrash.append("email",email.email);
     return this.http.post(this.serviceurl.host+this.serviceurl.archivedisplay,selecttrash);
   }
   insertion(value)

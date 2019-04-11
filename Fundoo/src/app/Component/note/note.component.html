@@ -1,6 +1,5 @@
 <div class="body">
     <div fxLayout="row" class="first" *ngIf="flag==true" fxLayoutGap="10px">
-
             <input class="takenote" matInput placeholder="take a Note" formControlName="description" (click)="initialize()">
     </div>
     <div class="second" *ngIf="flag==false">
@@ -34,9 +33,19 @@
                     <mat-icon class="a">notifications_none</mat-icon>
                 </button>
                 <mat-icon class="b">person_add</mat-icon>
-                <mat-icon class="c">insert_photo</mat-icon>
+                <img src={{Mainimage}}>
+                <button matTooltip="Add image " (click)="file.click()" mat-icon-button>
+                        <mat-icon>
+                          insert_photo</mat-icon>
+                      </button>
+                      <input style="display: none;" type="file" #file (change)="handleFileSelect($event)" />
+                <!-- <button mat-icon-button>
+                <mat-icon  (click)="file.click()" class="c">insert_photo</mat-icon>
+                <input  style="display :none ;"type="file" accept="image/*" #file>
+            </button> -->
+                <!-- <mat-icon class="c">insert_photo</mat-icon> -->
                 <mat-icon class="d">archive</mat-icon>
-                <button mat-icon-button [matMenuTriggerFor]="colorMenu">
+                <button  mat-icon-button [matMenuTriggerFor]="colorMenu">
                     <mat-icon class="a" >color_lens</mat-icon>
                 </button>
                 <!-- <mat-icon class="e">color_lens</mat-icon> -->
@@ -82,7 +91,13 @@
             </button>
             <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">notifications_none</mat-icon> -->
             <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' "> person_add</mat-icon>
-            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">insert_photo</mat-icon>
+
+            <img src={{Mainimage}}>
+            <button matTooltip="Add image " (click)="file.click()" mat-icon-button>
+                    <mat-icon>
+                      insert_photo</mat-icon>
+                  </button>
+                  <input style="display: none;" type="file" #file (change)="handleFileSelect($event)" />
             <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon> -->
             <button mat-icon-button ><mat-icon (click)="archive(users.id)" class="d" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon></button>
             <button mat-icon-button [matMenuTriggerFor]="colorMenu">

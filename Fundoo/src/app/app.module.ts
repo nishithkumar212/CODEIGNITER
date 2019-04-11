@@ -39,6 +39,11 @@ SocialLoginModule,
 } from "angular-6-social-login";
 import { getAuthServiceConfigs } from "./Models/socialloginconfig";
 import { CookieService } from 'ngx-cookie-service';
+import { DraganddropComponent } from './Component/draganddrop/draganddrop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NewComponent } from './Component/new/new.component';
+import { SearchPipe } from './pipefile/search.pipe';
+import { SearchfilterPipe } from './services/searchfilter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +63,10 @@ import { CookieService } from 'ngx-cookie-service';
     DeleteComponent,
     EditlabelComponent,
     FileSelectDirective,
+    DraganddropComponent,
+    NewComponent,
+    SearchPipe,
+    SearchfilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +80,8 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     MatDatepickerModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
   ],
   
   providers: [RegisterService,DatePipe,AuthService,CookieService,

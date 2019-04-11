@@ -13,6 +13,8 @@ import { ChildComponent } from './Component/child/child.component';
 import { ParentComponent } from './Component/parent/parent.component';
 import { DeleteComponent } from './Component/delete/delete.component';
 import { EditlabelComponent } from './Component/editlabel/editlabel.component';
+import { DraganddropComponent } from './Component/draganddrop/draganddrop.component';
+import { NewComponent } from './Component/new/new.component';
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -41,12 +43,18 @@ const routes: Routes = [
             {
                 path:'editlabel',
                 component:EditlabelComponent,
+            },
+            {
+                path:'new',
+                component:NewComponent
             }
+           
         ]
     },
     {path:'details',component:FirstComponent},
     {path:'child',component:ChildComponent},
-    {path:'parent',component:ParentComponent}
+    {path:'parent',component:ParentComponent},
+    {path:'drag',component:DraganddropComponent}
 ]
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

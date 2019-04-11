@@ -7,6 +7,7 @@ import { LabelComponent } from '../label/label.component';
 import { NoteService } from '../../services/note.service';
 import { CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import { SearchService } from 'src/app/services/search.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit {
   dialogConfig;
   details;
   googleimages;
-  constructor(private view: ViewService,private dialog: MatDialog,private route:Router,private service: NoteService,private cookies:CookieService) { 
+  constructor(private view: ViewService,private dialog: MatDialog,private route:Router,private service: NoteService,private cookies:CookieService,private search:SearchService) { 
   this.googleimages=this.cookies.get("image");
   }
 
@@ -72,5 +73,18 @@ export class DashboardComponent implements OnInit {
   signout() {
     localStorage.removeItem('token');
   }
+  searchtext:String;
+  searching()
+  {
+    console.log(this.searchtext);
+    
+    debugger;
+    this.search.searchingdata(this.searchtext);
+  }
+
+
+
+
+
   //googleimages=this.cookies.get("image");
 }
