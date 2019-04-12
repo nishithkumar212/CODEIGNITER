@@ -79,7 +79,11 @@ export class DashboardComponent implements OnInit {
     console.log(this.searchtext);
     
     debugger;
-    this.search.searchingdata(this.searchtext);
+    if(this.searchtext != undefined)
+    {    this.search.searchingdata(this.searchtext);
+
+
+    }
   }
 
 

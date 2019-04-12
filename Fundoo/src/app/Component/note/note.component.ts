@@ -15,6 +15,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material";
 import { EditnotesComponent } from '../editnotes/editnotes.component';
 import {ReminderserviceService} from '../../services/reminderservice.service';
 import { EditService } from 'src/app/services/edit.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 // import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-note',
@@ -308,9 +309,11 @@ _handleReaderLoaded(readerEvt) {
  {
   this.valuechange.emit(this.details);
  }
+
+
+
+
+ drop(event: CdkDragDrop<string[]>) {
+  moveItemInArray(this.details, event.previousIndex, event.currentIndex);
 }
-
-
-
-
-
+}

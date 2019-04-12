@@ -42,7 +42,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { DraganddropComponent } from './Component/draganddrop/draganddrop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NewComponent } from './Component/new/new.component';
-import { SearchPipe } from './pipefile/search.pipe';
 import { SearchfilterPipe } from './services/searchfilter.pipe';
 @NgModule({
   declarations: [
@@ -65,7 +64,6 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     FileSelectDirective,
     DraganddropComponent,
     NewComponent,
-    SearchPipe,
     SearchfilterPipe,
   ],
   imports: [

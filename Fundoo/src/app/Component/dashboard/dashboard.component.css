@@ -224,10 +224,15 @@ max-width:500%;
 }
 .source
 {
-  border-radius:100px;;
+  border-radius:60px;;
   width: 35%;
-  margin-top: -20px;
+  /* margin-top: -15px; */
+  margin-bottom: 15px;
    
+}
+.searchicon
+{
+  margin-left:-230px;
 }
 .pixels
 {
@@ -241,4 +246,10 @@ max-width:500%;
 {
   margin-top:-100px;
   margin-left:20px;
+}
+.google
+{
+  border-radius: -120px;
+  margin-left:-100px;
+  /* margin-top: 50px; */
 }

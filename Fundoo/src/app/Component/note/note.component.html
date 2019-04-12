@@ -68,11 +68,12 @@
             </div>
         </form>
     </div>
-    <mat-card *ngFor="let users of details  " [ngStyle]="{'background-color': users.color}"
+    <div  cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-card *ngFor="let users of details" cdkDrag  [ngStyle]="{'background-color': users.color}"
         [ngClass]="direction=='row' ? 'row' :'column' ">
         <div class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
         fxLayoutAlign="center center">
-            <div cdkdrag >
+            <div>
                 <p> {{users.title}}</p>
                 <p>{{users.description}} </p>
                 <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
@@ -85,7 +86,7 @@
                 </p>
             </div>
         </div>
-        <span class="icons" style="padding-left:3px;">
+        <span class="icons" >
             <button mat-icon-button [matMenuTriggerFor]="reminderMenu">
                 <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">notifications_none</mat-icon>
             </button>
@@ -159,7 +160,7 @@
             style="background-color:#d7aefb;"></button>
     </div>
 </mat-menu>
- </mat-card>
+ </mat-card></div>
 </div>
 <div *ngIf="datecalender" fxLayout="row">
     <form [formGroup]="dateuser">

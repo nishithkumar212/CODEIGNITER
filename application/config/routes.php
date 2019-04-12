@@ -76,3 +76,4 @@ $route['getlabel']='selected/calllabel';
 $route['translate_uri_dashes'] = FALSE;
 $route['selectiondelete']='Deletenote/selection';
 $route['sociallogindata']='Login/signin';
+$route['setdata']='Doctrineuser/setter';

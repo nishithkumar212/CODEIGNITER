@@ -11,9 +11,8 @@
         </button>
         <img src="../../../assets/keep_48dp.png">FundooKeep
         <input  type="text" class="searchbox" matInput placeholder="search"  routerLink="new" [(ngModel)]="searchtext">
-         <button mat-button (click)="searching()" > <mat-icon>search</mat-icon></button>
+         <button mat-button (click)="searching()" ><mat-icon  class="searchicon">search</mat-icon></button>
         <div class="one">
-
           <button mat-icon-button class="iconbtn">
             <mat-icon>refresh</mat-icon>
           </button>
@@ -45,7 +44,7 @@
           
           <button mat-icon-button class="source" [matMenuTriggerFor]="mymenu">
             <!-- <mat-icon>account_box</mat-icon> -->
-           <mat-icon ><img style="border-radius:100px;" src="{{googleimages}}"></mat-icon>
+           <mat-icon  class="google"><img style="border-radius:100px; position: fixed;" src="{{googleimages}}"></mat-icon>
           </button>
           <mat-menu class="menubar" #mymenu="matMenu">
             <div>
