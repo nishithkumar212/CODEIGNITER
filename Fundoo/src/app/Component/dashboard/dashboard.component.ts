@@ -8,6 +8,8 @@ import { NoteService } from '../../services/note.service';
 import { CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
+import { LoginService } from 'src/app/services/login.service';
+import { note } from 'src/app/Models/note';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,25 +20,38 @@ export class DashboardComponent implements OnInit {
   list: any = true;
   grid: any = false;
   dialogConfig;
+  notes:note[];
   details;
+  updatedimage;
   googleimages;
-  constructor(private view: ViewService,private dialog: MatDialog,private route:Router,private service: NoteService,private cookies:CookieService,private search:SearchService) { 
+  constructor(private view: ViewService,private dialog: MatDialog,private route:Router,private service: NoteService,private cookies:CookieService,private search:SearchService,private  serve:LoginService) { 
   this.googleimages=this.cookies.get("image");
   }
-
   "angularCompilerOptions": {
     "preserveWhitespaces": true
   }
   email: string;
   myimages:any;
+  selectionuser:any;
+  notesdetails:any;
   ngOnInit() {
     debugger;
     //this.googleimages=this.cookies.get("image");
     const token = localStorage.getItem('token');
     var decoded = decode(token);
     this.email = decoded.email;
-    
-    let createlabel=this.service.selection1(this.email);
+    this.selectionuser=this.service.imageselection(this.email); 
+     this.selectionuser.subscribe((res:any)=>
+     {
+       debugger;
+      this.notes = res;
+
+      this.notes.forEach(element => {
+        this.updatedimage ="data:image/jpeg;base64,"+element.image 
+      });
+       console.log(res+"aaaa");
+     });
+     let createlabel=this.service.selection1(this.email);
     createlabel.subscribe((res:any)=>
     {
       this.details=res as String[];
@@ -85,10 +100,37 @@ export class DashboardComponent implements OnInit {
 
     }
   }
+google=true;
+changefile($event)
+{
+  this.google=false;
+  debugger;
+ var  files= $event.target.files;
+ var file=files[0];
+ if(file&&files)
+ {
+    var reader=new FileReader();
+   reader.onload =this._handleReaderLoaded.bind(this);
+   reader.readAsBinaryString(file);
+ }
+}
+base64string;
 
+_handleReaderLoaded(readerEvt)
+{
+  debugger;
+ var binarystring =readerEvt.target.result;
+this.base64string=btoa(binarystring);
+console.log(this.base64string);
+ let imageuser=this.serve.imageinsertion(this.email,this.base64string);
+ imageuser.subscribe((res:any)=>
+ {
 
-
-
-
-  //googleimages=this.cookies.get("image");
+ });
+ 
+// users.subscribe((res:any)=>
+// {
+ 
+// });
+}
 }

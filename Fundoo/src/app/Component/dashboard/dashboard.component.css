@@ -224,11 +224,13 @@ max-width:500%;
 }
 .source
 {
-  border-radius:60px;;
-  width: 35%;
+  border-radius:100px;;
   /* margin-top: -15px; */
   margin-bottom: 15px;
-   
+  
+  width: 40px;
+  top: 5px;
+
 }
 .searchicon
 {

@@ -77,3 +77,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['selectiondelete']='Deletenote/selection';
 $route['sociallogindata']='Login/signin';
 $route['setdata']='Doctrineuser/setter';
+$route['imageinsertion']='Login/imageinsertion';
+$route['imageinsertionnote']='Login/imageinsertionnote';
+$route['imageselection']='selected/imageselection';

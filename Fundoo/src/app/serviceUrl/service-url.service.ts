@@ -7,7 +7,6 @@ import {environment} from '../../environments/environment';
 export class ServiceUrlService {
 
   constructor() { }
-
   public host = environment.baseUrl;
   public register = "register";
   public login = "login";
@@ -29,4 +28,7 @@ export class ServiceUrlService {
   public getlabel="getlabel";
   public selectiondelete="selectiondelete";
   public sociallogindata="sociallogindata";
+  public imageinsertion="imageinsertion";
+  public imageinsertionnote="imageinsertionnote";
+  public imageselection="imageselection";
 }

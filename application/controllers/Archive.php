@@ -1,7 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Authorization");
-
 include_once("/var/www/html/codeigniter/application/Services/Archiveuser.php");
 class Archive extends CI_Controller
 {

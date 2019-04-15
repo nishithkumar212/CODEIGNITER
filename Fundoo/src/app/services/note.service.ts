@@ -14,21 +14,20 @@ new :any;
    }
    selection(values)
    {
-     debugger;
      let selectuser=new FormData();
      selectuser.append("tokenemail",values);
      return this.http.post(this.serverurl.host+this.serverurl.selected,selectuser);
    }
    selectionlabel(values)
    {
-      debugger;
+      
       let selectionlabel=new FormData();
       selectionlabel.append("tokenemail",values);
       return this.http.post(this.serverurl.host+this.serverurl.selectedlabel,selectionlabel);
    }
   register(Notes:note,tokenvalue,date)
   {
-    debugger;
+  
     let noteuser=new FormData();
     noteuser.append("title",Notes.title);
     noteuser.append("description",Notes.description);
@@ -51,7 +50,6 @@ new :any;
   }
   coloring(value,id)
   {
-    debugger;
     let coloruser=new FormData();
     coloruser.append("setcolor",value);
     coloruser.append("setid",id);
@@ -59,7 +57,7 @@ return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
   }
   createlabel(values,email)
   {
-    debugger;
+  
     let labeluser=new FormData();
     labeluser.append("label",values.createlabel);
     labeluser.append("email",email);
@@ -69,9 +67,33 @@ return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
 
 selection1(value)
 {
-  debugger;
+
   let selectlabeluser=new FormData();
   selectlabeluser.append("email",value);
   return this.http.post(this.serverurl.host+this.serverurl.getlabel,selectlabeluser);
 }
+imageinsertion(email,image)
+{
+  
+  let imageuser=new FormData();
+  imageuser.append("email",email);
+  imageuser.append("image",image);
+  return this.http.post(this.serverurl.host+this.serverurl.imageinsertion,imageuser);
+}
+imageinsertionnote(image,id)
+{
+  
+  let imageinsertionnote=new FormData();
+  imageinsertionnote.append("image",image);
+  imageinsertionnote.append("id",id);
+  return this.http.post(this.serverurl.host+this.serverurl.imageinsertionnote,imageinsertionnote)
+}
+
+ imageselection(values)
+ {
+   debugger;
+  let selectuser=new FormData();
+  selectuser.append("email",values);
+  return this.http.post(this.serverurl.host+this.serverurl.imageselection,selectuser);
+ }
 }

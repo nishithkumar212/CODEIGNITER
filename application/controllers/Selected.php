@@ -26,4 +26,9 @@ class Selected extends CI_Controller
         $tokenemail=$_POST['tokenemail'];
         return  $this->ref->retrievelabel($tokenemail);
     }
+    public function imageselection()
+    {
+            $email=$_POST['email'];
+            return $this->ref->imageselection($email);
+    }
 }

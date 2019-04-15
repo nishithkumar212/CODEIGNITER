@@ -76,8 +76,8 @@
             <div>
                 <p> {{users.title}}</p>
                 <p>{{users.description}} </p>
+                <p>{{users.image}}</p>
                 <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
-
                         <mat-chip-list>
                                 <mat-chip>
                                         <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px; margin-top: 5px;">schedule</mat-icon>{{users.reminder}}
@@ -98,7 +98,7 @@
                     <mat-icon>
                       insert_photo</mat-icon>
                   </button>
-                  <input style="display: none;" type="file" #file (change)="handleFileSelect($event)" />
+                  <input style="display: none;" type="file" #file (change)="handleFileSelect($event,users.id)" />
             <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon> -->
             <button mat-icon-button ><mat-icon (click)="archive(users.id)" class="d" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon></button>
             <button mat-icon-button [matMenuTriggerFor]="colorMenu">
@@ -167,24 +167,23 @@
         <mat-card class="call">
             <p>pick date and time</p>
             <mat-form-field class="example-full-width">
-                <input matInput formControlName="datevalue" [matDatepicker]="picker" placeholder="Choose a date">
+                <input matInput formControlName="datevalue" [matDatepicker]="picker" placeholder="Choose a date" ([ngmodel])="datechooser">
                 <mat-datepicker-toggle matSuffix [for]="picker">
                     <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="line">
-                <select matNativeControl required>
-                    <option value="Morning ">MORNING 08.00AM</option>
-                    <option value="AFTERNOON">AFTERNOON 12.00AM </option>
-                    <option value="EVENING">EVENING 06.00 PM</option>
-                    <option value="CUSTOM">CUSTOM</option>
+                <select  (change)="selectChangeHandler($event)"  matNativeControl required>
+                    <option value="08.00 AM">MORNING 08.00AM</option>
+                    <option value="12.00 AM">AFTERNOON 12.00AM </option>
+                    <option value="06.00 PM">EVENING 06.00 PM</option>
+                    <option value= "08.00 PM">NIGHT</option>
                 </select>
             </mat-form-field>
             <input type="button" value="save" (click)="mydate(dateuser.value)">
         </mat-card>
     </form>
 </div>
-
 
 

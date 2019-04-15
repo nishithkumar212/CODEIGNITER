@@ -69,7 +69,7 @@ class Loginuser extends CI_Controller
         return $data;
 
     }
-    public function socialsignin($email, $name)
+    public function socialsignin($email, $name,$image)
     {
         $token=0;
         // $query="insert into Fundoo (Firstname,email) values ('$name','$email')";
@@ -100,7 +100,7 @@ class Loginuser extends CI_Controller
             );
             print json_encode($data);
         } else {
-          $query="Insert into registrations (firstname,email) values ('$name','$email')";
+          $query="Insert into registrations (firstname,email,image) values ('$name','$email','$image')";
           $stmt = $this->db->conn_id->prepare($query);
           $res=$stmt->execute();
         $jwttoken = $ref->encode($email, $key);
@@ -135,5 +135,18 @@ class Loginuser extends CI_Controller
             return false;
         }
 
+    }
+
+    public function databaseimageinsertion($email,$image)
+    {
+        $query="UPDATE  fundoo set  image='$image' where email='$email'";
+        $stmt=$this->db->conn_id->prepare($query);
+        $stmt->execute();
+    }
+    public function noteimage($image,$id)
+    {
+        $query=" UPDATE notes set notesimage='$image' where id='$id'";
+        $stmt=$this->db->conn_id->prepare($query);
+        $stmt->execute();
     }
 }

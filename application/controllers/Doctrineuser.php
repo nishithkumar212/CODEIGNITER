@@ -8,7 +8,6 @@ class Doctrineuser extends  CI_Controller
     function __construct()
     {
         parent::__construct();
-
         // Not required if you autoload the library
         $this->load->library('doctrine');
         $this->em = $this->doctrine->em;
@@ -20,7 +19,6 @@ class Doctrineuser extends  CI_Controller
 $user->setUsername('nishith');
 $user->setPassword('123456');
 $user->setEmail('acha.nishith212@gmail.com');
-
 $this->em->persist($user);
 $this->em->flush();
     }

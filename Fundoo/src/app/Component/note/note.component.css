@@ -11,13 +11,14 @@
   line-height: 4px;
   margin-bottom: 30px;
   margin-top: 30px;
-  
 }
 .body{
   max-height: 100%;
 
+  margin-left: 50px;
+
   width: 1000px;
-  margin-left: 100px;
+
 
 }
 .createlabel
@@ -92,7 +93,7 @@ margin-top:30p;
 }
 .call
 {
-   max-width: 15-9px;
+  width:182px;
   height: 180px;
   position: fixed;
   margin-left:158px;
@@ -130,7 +131,7 @@ border-radius: 9px
 }
 .column
 {
-  width: 568px;height: 60px;padding-top: 22px;
+  width: 568px;
 margin-left:150px;
 
 display: inline-block;
@@ -141,18 +142,19 @@ border-radius: 9px;
 margin-bottom: 49px;
 padding-left: 58px;
 margin-left:76px;
+height: 100px;
+padding-top: 30px;
 }
 .icons
 {
   /* padding-left: 30px; */
-  margin-top:10px;
+  margin-top:0px;
   /* margin-left:76px; */
 }
 .a
 {
  margin-top:60px;
  /* margin-left: -9px; */
-
 }
 .b
 {

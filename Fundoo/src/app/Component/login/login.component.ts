@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
 
 	sendToRestApiMethod(token, email, image, name): void {
    // debugger;
-		let obsss = this.loginservice.socialLoginData(email, name);
+		let obsss = this.loginservice.socialLoginData(email, name,image);
 		obsss.subscribe(
 			(res: any) => {
         

@@ -21,14 +21,19 @@ class Login extends CI_Controller
     {
         $email = $_POST["email"];
         $name  = $_POST["name"];
-        // $key   = explode("@", $email);
-        // $key   = $key[0];
-        // /**
-        //  * adding user email to the redis
-        //  */
-        // $this->load->library('Redis');
-        // $redis = $this->redis->config();
-        // $redis->set($email, $email);
-        return  $this->ref->socialSignIn($email, $name);
+        $image=$_POST["image"];
+        return  $this->ref->socialSignIn($email, $name,$image);
+    }
+    public function imageinsertion()
+    {
+                $email=$_POST['email'];
+                $image=$_POST['image'];
+                return $this->ref->databaseimageinsertion($email,$image);
+    }
+    public function imageinsertionnote()
+    {
+                    $image=$_POST['image'];
+                     $id= $_POST['id'];
+                     return $this->ref->noteimage($image,$id);
     }
 }
