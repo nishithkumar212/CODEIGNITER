@@ -54,13 +54,17 @@ $route['create']='Mycontroller/create';
 $route['update']='Mycontroller/update';
 $route['delete/(:num)']='Mycontroller/delete/$1';
 $route['register']='Signin/insertion';
+
+// $route['register']='RegistrationDoctrine/setregistrationdata';
+
+
 $route['login']='Login/login';
 $route['forgot']='Forgotpassword/forgot';
 $route['reset']='Resetpassword/reset';
 $route['note']='Note/noteregister';
 $route['notes']='Note/labeldatainsertion';
 $route['selected']='selected/calling';
-$route['selectedlabel']='selected/labelcalling';
+$route['selectedlabel']='Selected/labelcalling';
 $route['fetchemails']='Resetpassword/getemail';
 $route['404_override'] = '';
 $route['noteedit']='Editnotes/edit';
@@ -76,7 +80,12 @@ $route['getlabel']='selected/calllabel';
 $route['translate_uri_dashes'] = FALSE;
 $route['selectiondelete']='Deletenote/selection';
 $route['sociallogindata']='Login/signin';
-$route['setdata']='Doctrineuser/setter';
+
 $route['imageinsertion']='Login/imageinsertion';
 $route['imageinsertionnote']='Login/imageinsertionnote';
 $route['imageselection']='selected/imageselection';
+$route['searchdata']='Editnotes/searching';
+$route['childlabel']= 'Childlabel/label';
+
+$route['setdata']='Doctrineuser/setter';
+$route['setregister']='RegistrationDoctrine/setregistrationdata';

@@ -23,16 +23,16 @@ details:string[];
     {
         this.details=res;
     });
+    // this.fetchsearch();
   }
   mydata;
-fetchsearch()
-{
-  this.search.searchingreturn().subscribe((res:any)=>
-  {
-  
-      this.mydata=res.data;
-      console.log(this.mydata);
-  });
-}
+// fetchsearch()
+// {
+//   this.search.searchingreturn().subscribe((res:any)=>
+//   {
+//       this.mydata=res.data;
+//       console.log(this.mydata);
+//   });
+// }
 
 }

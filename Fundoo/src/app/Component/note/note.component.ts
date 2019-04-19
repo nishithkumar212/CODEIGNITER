@@ -81,7 +81,7 @@ valuechange:any;
     selectionlabel.subscribe((res:any)=>
     {
       
-      this.labeldetails = res as string[];
+      this.labeldetails = res;
       console.log(this.labeldetails);
     });
     setInterval(() => {
@@ -91,10 +91,16 @@ valuechange:any;
     this.checkdate= this.checkingreminder();
     user.subscribe((res: any) => {
       this.details = res ;
+      console.log(this.details,"notes");
+      this.details.array.forEach(element => {
+       console.log(element.notesimage);
+        this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
+      });
       // if(this.checkdate==this.details.reminder)
       // {
       //     console.log("alert reminder");
       // }
+
     });
     this.vi.getview().subscribe(res => {
       this.view = res;
@@ -199,13 +205,15 @@ selectChangeHandler (event: any) {
   debugger;
       this.timevariable = event.target.value;
 }
+templabel:any;
   mydate(value: any) {
     // this.cards=false;
     this.remins=true;
     debugger;
+    
     this.currentDateAndTime=moment(this.date).format("MM/DD");
     this.currentDateAndTime=this.currentDateAndTime+this.timevariable;
-    this.service.register(value, this.tokenvalue,  this.currentDateAndTime);
+    this.service.register(value,this.templabel, this.tokenvalue,  this.currentDateAndTime);
     // this.latest_date=moment(this.date).format('DD-MMM');
     // // this.cardcal =false;
      this.datecalender=false;
@@ -258,7 +266,6 @@ this.dialogConfig.data={
       var reader = new FileReader();
       reader.onload =this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
-     
   }
 }
 _handleReaderLoaded(readerEvt) {
@@ -272,14 +279,14 @@ _handleReaderLoaded(readerEvt) {
 
        });
 }
-  Forms(value: any) {
+  Forms(value: any,labelid:any) {
     debugger;
     console.log(value);
     this.flag =true;
     this.tokenvalue = localStorage.getItem('token');
     //  this.myvalue=decode(this.tokenvalue);
     // this.emailvalues=this.myvalue['email'];
-    let user = this.service.register(value, this.tokenvalue,  this.currentDateAndTime);
+    let user = this.service.register(value, labelid,this.tokenvalue,  this.currentDateAndTime);
     debugger;
     user.subscribe((res: any) => {
       //   if(res.message=="200")
@@ -327,7 +334,10 @@ _handleReaderLoaded(readerEvt) {
  {
   this.valuechange.emit(this.details);
  }
- drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>) {
+    debugger
   moveItemInArray(this.details, event.previousIndex, event.currentIndex);
+  console.log("previousIndex",event.previousIndex);
+  console.log("currentIndex",event.currentIndex);
 }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ServiceUrlService} from '../serviceUrl/service-url.service'
 import {HttpClient,HttpHeaders} from  '@angular/common/http';
 import{note} from '../Models/note';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,17 +21,27 @@ new :any;
    }
    selectionlabel(values)
    {
-      
+      debugger;
       let selectionlabel=new FormData();
       selectionlabel.append("tokenemail",values);
       return this.http.post(this.serverurl.host+this.serverurl.selectedlabel,selectionlabel);
    }
-  register(Notes:note,tokenvalue,date)
+   subject1=new Subject();
+   sendlabel(value)
+   {
+     debugger;
+     this.subject1.next({data:value});
+   }
+   viewlabel()
+   {
+     return this.subject1.asObservable();
+   }
+  register(Notes:note,labelid,tokenvalue,date)
   {
-  
     let noteuser=new FormData();
     noteuser.append("title",Notes.title);
     noteuser.append("description",Notes.description);
+    noteuser.append("labelid",labelid);
      //noteuser.append("emailid",tokenvalue);
     this.head=new HttpHeaders().set("Authorization",tokenvalue);
     console.log(this.head);
@@ -50,6 +61,7 @@ new :any;
   }
   coloring(value,id)
   {
+    debugger;
     let coloruser=new FormData();
     coloruser.append("setcolor",value);
     coloruser.append("setid",id);
@@ -57,7 +69,7 @@ return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
   }
   createlabel(values,email)
   {
-  
+  debugger;
     let labeluser=new FormData();
     labeluser.append("label",values.createlabel);
     labeluser.append("email",email);
@@ -82,7 +94,7 @@ imageinsertion(email,image)
 }
 imageinsertionnote(image,id)
 {
-  
+  debugger;
   let imageinsertionnote=new FormData();
   imageinsertionnote.append("image",image);
   imageinsertionnote.append("id",id);
@@ -96,4 +108,18 @@ imageinsertionnote(image,id)
   selectuser.append("email",values);
   return this.http.post(this.serverurl.host+this.serverurl.imageselection,selectuser);
  }
+
+ selectioncreatelabel()
+ {
+
+ }
+
+  childlabel(labelid)
+  {
+    debugger;
+    let childlabel=new FormData();
+    childlabel.append("labelid",labelid);
+    return this.http.post(this.serverurl.host+this.serverurl.childlabel,childlabel);
+  }
+
 }

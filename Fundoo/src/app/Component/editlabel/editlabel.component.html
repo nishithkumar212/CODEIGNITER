@@ -23,3 +23,10 @@
           </form>
           </div>
           </div>
+          <div >
+            <mat-card class="editcard" *ngFor=" let users of details">
+              <p>{{users.title}}</p>
+              <p>{{users.description}}</p>
+              <p><mat-chip>{{users.labelname}}</mat-chip></p>
+            </mat-card> 
+           </div>

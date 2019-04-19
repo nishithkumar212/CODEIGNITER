@@ -5,7 +5,7 @@ include_once("/var/www/html/codeigniter/application/Services/jwt.php");
 use \Firebase\JWT\JWT;
 class Noteuser extends CI_Controller
 {
-    public function notes($tit,$des,$myhead,$date)
+    public function notes($tit,$des,$myhead,$date,$labelid)
     {
         if($date=="undefined")
         {
@@ -25,7 +25,7 @@ class Noteuser extends CI_Controller
                  $ar=0;
                  $unactive=0;
                 $email=$ref->decode($value,$key,array('HS256'))->email;
-        $query="INSERT into notes (title,description,emailid,reminder,archive,unactive) values('$tit','$des','$email ','$date','$ar','$unactive')";
+        $query="INSERT into notes (title,description,emailid,reminder,archive,unactive,labelid) values('$tit','$des','$email ','$date','$ar','$unactive','$labelid')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();
         $no=$stmt->rowCount();

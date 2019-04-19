@@ -10,18 +10,23 @@ import {Router} from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { LoginService } from 'src/app/services/login.service';
 import { note } from 'src/app/Models/note';
+import {labels} from 'src/app/Models/labels';
+import { element } from 'protractor';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  sendedlabel=" nishithkumar";
   showFiller = false;
   list: any = true;
   grid: any = false;
   dialogConfig;
   notes:note[];
   details;
+  sendinglabel:any;
+  detailslabels:labels[];
   updatedimage;
   googleimages;
   constructor(private view: ViewService,private dialog: MatDialog,private route:Router,private service: NoteService,private cookies:CookieService,private search:SearchService,private  serve:LoginService) { 
@@ -54,8 +59,13 @@ export class DashboardComponent implements OnInit {
      let createlabel=this.service.selection1(this.email);
     createlabel.subscribe((res:any)=>
     {
-      this.details=res as String[];
-    })
+      this.details=res ;
+      this.detailslabels=res;
+      this.detailslabels.forEach(element =>{
+        this.sendinglabel=element.labelname;
+      }
+        );
+    });
   }
   clicker() {
     if (this.list == true) {
@@ -84,6 +94,12 @@ export class DashboardComponent implements OnInit {
    this.dialogConfig.direction='ltr';
    this.dialogConfig.data=this.email;
    this.dialog.open(LabelComponent,this.dialogConfig);
+  }
+
+  sendlabel(labelvalue:any)
+  {
+    debugger;
+    this.service.sendlabel(labelvalue)
   }
   signout() {
     localStorage.removeItem('token');
@@ -115,7 +131,6 @@ changefile($event)
  }
 }
 base64string;
-
 _handleReaderLoaded(readerEvt)
 {
   debugger;
@@ -132,5 +147,6 @@ console.log(this.base64string);
 // {
  
 // });
+
 }
 }

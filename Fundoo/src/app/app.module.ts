@@ -79,7 +79,7 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     MatDatepickerModule,
     MatGridListModule,
     MatDialogModule,
-    DragDropModule
+    DragDropModule,
   ],
   
   providers: [RegisterService,DatePipe,AuthService,CookieService,

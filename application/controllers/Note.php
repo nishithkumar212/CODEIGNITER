@@ -17,8 +17,9 @@ class Note extends CI_Controller
        $des=$_POST['description'];
     //   $email=$_POST['emailid'];
        $date=$_POST['reminder'];
+                $labelid=$_POST['labelid'];
        $myhead=0;
-       return  $this->ref->notes($tit,$des,$myhead,$date);
+       return  $this->ref->notes($tit,$des,$myhead,$date,$labelid);
     }
     // public function labeldatainsertion()
     // {

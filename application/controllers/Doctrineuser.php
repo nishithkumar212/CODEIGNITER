@@ -1,11 +1,11 @@
 <?php
-include_once("/var/www/html/codeigniter/application/models/Entity/user.php");
-class Doctrineuser extends  CI_Controller
+include_once "/var/www/html/codeigniter/application/models/Entity/user.php";
+class Doctrineuser extends CI_Controller
 {
     // Doctrine EntityManager
     public $em;
 
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         // Not required if you autoload the library
@@ -16,10 +16,13 @@ class Doctrineuser extends  CI_Controller
     public function setter()
     {
         $user = new Entity\User;
-$user->setUsername('nishith');
-$user->setPassword('123456');
-$user->setEmail('acha.nishith212@gmail.com');
-$this->em->persist($user);
-$this->em->flush();
+        $uname = $_POST['username'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $user->setUsername($uname);
+        $user->setPassword($password);
+        $user->setEmail($email);
+        $this->em->persist($user);
+        $this->em->flush();
     }
 }

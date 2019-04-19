@@ -3,7 +3,7 @@ include_once("/var/www/html/codeigniter/application/vendor/autoload.php");
 use GuzzleHttp\Client;
 class Forgot extends Testcase
 {
-    protected $client;
+    protected $client; 
     protected function setUp() {
         $this->client = new GuzzleHttp\Client([
             'base_uri' => 'http://localhost/codeigniter',
@@ -17,8 +17,8 @@ class Forgot extends Testcase
              'email'=>'yaka@gmail.com'
             ]
         ]);
-                    $data=$response->getBody();
-                $array=json_decode($data);
+                 $data=$response->getBody();
+             $array=json_decode($data);
         $this->assertEquals("200",$array->message,'success');
         $this->assertEquals("204",$array->message, 'Invalid credentials given');
       }

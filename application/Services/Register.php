@@ -14,7 +14,6 @@ class Register extends CI_Controller
             'lastname' => $lname,
             'email' => $email,
             'password' => $pass,
-            
         ];
         //query which is used to insert the values in to the database
         $query = " Insert into fundoo (firstname,lastname,email,password) values  ('$fname','$lname','$email','$pass')";

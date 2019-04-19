@@ -12,7 +12,6 @@ export class SearchService {
   { 
     this.var = datas;
     this.subject.next({data:datas});
- 
   }
   searchingreturn()
   {

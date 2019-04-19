@@ -23,4 +23,10 @@ class Editnotes extends CI_Controller
        $id=$_POST['setid'];
        $this->ref->setcolor($colors,$id);
    }
+   public function searching()
+   {
+       $searchdata=$_POST['searchdata'];
+       $this->ref->searchnotes($searchdata);
+       
+   }
 }

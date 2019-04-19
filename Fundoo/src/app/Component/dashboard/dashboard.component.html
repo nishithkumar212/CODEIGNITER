@@ -43,8 +43,8 @@
           </button>
           <mat-menu class="menubar" #mymenu="matMenu">
             <div>
-         <button  (click)="file.click()" > 
-           <img class="source"  src="{{updatedimage}}"> {{email}}
+         <button class="source" style="height: 36px;" mat-icon-button  (click)="file.click()" > 
+           <img class="source" style="height: 36px;" src="{{updatedimage}}"> {{email}}
          </button>
          <input  style="display:none;" type="file" #file (change)=changefile($event)>  </div>
             <mat-divider></mat-divider>
@@ -82,7 +82,7 @@
             <span class="editlabels">Edit labels</span>
           </a>
           <div *ngFor="let users of details">
-           <mat-icon class="mylabel">label</mat-icon><button  mat-icon-button routerLink="editlabel" >{{users.labelname}}</button>
+           <mat-icon class="mylabel">label</mat-icon><button  (click)= "sendlabel(users.labelid)" mat-icon-button routerLink="editlabel" >{{users.labelname}}</button>
           </div>
           <mat-divider></mat-divider>
         </mat-nav-list>

@@ -7,10 +7,9 @@ fxLayoutAlign="start center">
         <p> {{users.title}}</p>
         <p>{{users.description}} </p>
         <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
-
                 <mat-chip-list>
                         <mat-chip>
-                                <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px; margin-top: 5px;">schedule</mat-icon>{{users.reminder}}
+             <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px; margin-top: 5px;">schedule</mat-icon>{{users.reminder}}
                             </mat-chip>
                  </mat-chip-list>
         </p>

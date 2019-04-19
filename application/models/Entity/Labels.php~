@@ -1,0 +1,58 @@
+<?php
+namespace Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @Entity
+ * @Table(name="Labels")
+ */
+class Labels
+{
+    /**
+     * @Id
+     * @Column(type="integer", nullable=false)
+     * @GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+     /**
+     * @Column(type="string", length=32, unique=true, nullable=false)
+     */
+    protected $labelname;
+
+    
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set labelname.
+     *
+     * @param string $labelname
+     *
+     * @return Labels
+     */
+    public function setLabelname($labelname)
+    {
+        $this->labelname = $labelname;
+
+        return $this;
+    }
+
+    /**
+     * Get labelname.
+     *
+     * @return string
+     */
+    public function getLabelname()
+    {
+        return $this->labelname;
+    }
+}

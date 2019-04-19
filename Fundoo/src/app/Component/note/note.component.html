@@ -12,7 +12,7 @@
                <div >
                    <mat-chip-list>
                    <mat-chip>
-                   <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}}
+                   <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}} {{labelname}}
                 </mat-chip>
             </mat-chip-list>
                 </div>
@@ -33,7 +33,6 @@
                     <mat-icon class="a">notifications_none</mat-icon>
                 </button>
                 <mat-icon class="b">person_add</mat-icon>
-                <img src={{Mainimage}}>
                 <button matTooltip="Add image " (click)="file.click()" mat-icon-button>
                         <mat-icon>
                           insert_photo</mat-icon>
@@ -56,14 +55,12 @@
                         <button *ngIf="deleteflag==true" mat-menu-item (click)="deleted(users.id)">Delete Note</button>
                <button  mat-menu-item [matMenuTriggerFor]="addlabel">Add Label</button>
                 <mat-menu   #addlabel="matMenu">
-                <p>Label Note</p>
-                <!-- <button *ngFor="let user of labeldetails"></button> -->
-                <input class="createlabel" matInput placeholder="Enter label name">
-                <mat-icon style="font-size:10px;">search</mat-icon> 
-                <!-- <mat-checkbox>{{user.labelname}}</mat-checkbox> -->
+                <mat-checkbox  *ngFor="let user of labeldetails" (click)="labelname=user.labelname" (click)="labelid=user.labelid">
+                    {{user.labelname}}
+                </mat-checkbox>
                 </mat-menu> 
             </mat-menu>
-                <button class="edge" mat-icon-button (click)="Forms(noteform.value)">close</button>
+                <button class="edge" mat-icon-button (click)="Forms(noteform.value,labelid)">close</button>
           </div>
             </div>
         </form>
@@ -75,8 +72,11 @@
         fxLayoutAlign="center center">
             <div>
                 <p> {{users.title}}</p>
-                <p>{{users.description}} </p>
-                <p>{{users.image}}</p>
+                <p>{{users.description}}</p>
+               <p>{{users.labelname}}</p>
+                <p><img style="    margin-top: -96px;
+                    width: 249px;
+                " src="{{users.notesimage}}"></p>
                 <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
                         <mat-chip-list>
                                 <mat-chip>
@@ -93,7 +93,7 @@
             <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">notifications_none</mat-icon> -->
             <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' "> person_add</mat-icon>
 
-            <img src={{Mainimage}}>
+         
             <button matTooltip="Add image " (click)="file.click()" mat-icon-button>
                     <mat-icon>
                       insert_photo</mat-icon>
@@ -131,7 +131,6 @@
                 </button>
             </mat-menu>
         </span>
-
 <mat-menu class="colormenu" #colorMenu="matMenu" >
     <div class="menu" >
         <button (click)="colordb(noteform.value.color='#fcf476',users.id)" mat-mini-fab
