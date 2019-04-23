@@ -9,7 +9,7 @@
             </div>
             <div>
                 <input class="takenote" matInput placeholder="take a Note" formControlName="description">
-               <div >
+               <div>
                    <mat-chip-list>
                    <mat-chip>
                    <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}} {{labelname}}
@@ -53,9 +53,9 @@
                     </button>
                     <mat-menu  #labelmenu="matMenu">
                         <button *ngIf="deleteflag==true" mat-menu-item (click)="deleted(users.id)">Delete Note</button>
-               <button  mat-menu-item [matMenuTriggerFor]="addlabel">Add Label</button>
+               <button  mat-menu-item [matMenuTriggerFor]="addlabel"> Label</button>
                 <mat-menu   #addlabel="matMenu">
-                <mat-checkbox  *ngFor="let user of labeldetails" (click)="labelname=user.labelname" (click)="labelid=user.labelid">
+                <mat-checkbox  *ngFor="let user of labeldetails" (click)="labelname=user.labelname" (click)="labelid=user.id">
                     {{user.labelname}}
                 </mat-checkbox>
                 </mat-menu> 
@@ -68,15 +68,18 @@
     <div  cdkDropList (cdkDropListDropped)="drop($event)">
     <mat-card *ngFor="let users of details" cdkDrag  [ngStyle]="{'background-color': users.color}"
         [ngClass]="direction=='row' ? 'row' :'column' ">
-        <div class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
+        <div  class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
         fxLayoutAlign="center center">
             <div>
                 <p> {{users.title}}</p>
                 <p>{{users.description}}</p>
-               <p>{{users.labelname}}</p>
-                <p><img style="    margin-top: -96px;
+              <p> <mat-chip *ngIf="users.labelname">{{users.labelname}}
+             <button mat-icon-button (click)="deletelabel(users.labelid,users.id)"><mat-icon style="height:12px;">close</mat-icon></button> </mat-chip></p>
+               <!-- <p>{{newlabelname}}</p> -->
+               <!-- <span *ngIf="noteid=={{users.id}}">{{newlabelname}}</span> -->
+                <p><img src="{{users.notesimage}}"style="    margin-top: -96px;
                     width: 249px;
-                " src="{{users.notesimage}}"></p>
+                "></p>
                 <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
                         <mat-chip-list>
                                 <mat-chip>
@@ -105,7 +108,6 @@
                 <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">color_lens</mat-icon>
             </button>
             <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">more_vert</mat-icon> -->
-
             <button mat-icon-button [matMenuTriggerFor]="appMenu">
                 <mat-icon class="e" [ngClass]="direction=='row' ? 'a' :'b' ">more_vert</mat-icon>
             </button>
@@ -117,10 +119,20 @@
                 <input class="createlabel" matInput placeholder="Enter label name">
                 <mat-icon>search</mat-icon>
                 </mat-menu> -->
+                <!-- <button mat-menu-item [matMenuTriggerFor]="labelmenu">
+              Change Label</button> -->
+              <button mat-menu-item [matMenuTriggerFor]="labelmenu">
+                  AddLabel
+              </button>
                 <button mat-menu-item>Add Drawing</button>
                 <button mat-menu-item>Make a copy</button>
             </mat-menu>
+            <mat-menu  class="labels" #labelmenu="matMenu">
+           <button  (click)="newlabelname =userslabels.labelname"  (click)="labelid=userslabels.id"  (click)="noteid=users.id" (click)="updatingnotes(labelid,noteid)" (click)=addinglabel(labelid,noteid) *ngFor="let userslabels of labeldetails" mat-menu-item>
+               {{userslabels.labelname}}
+            </button>
 
+            </mat-menu>
             <mat-menu class="menu" #reminderMenu="matMenu">
                 <p>Reminder</p>
                 <button mat-menu-item (click)="reminder(1)"> Later Today 8.00PM</button>

@@ -28,9 +28,9 @@ class Deleteuser extends CI_Controller
     $stmt=$this->db->conn_id->prepare($query);
     $stmt->execute();
     }
-    public function selection($email)
+    public function selection($uid)
     {
-        $query="select * from notes where unactive=1 AND emailid='$email' ";
+        $query="select * from notes where unactive=1 AND uid='$uid' ";
         $stmt=$this->db->conn_id->prepare($query);
         $stmt->execute();
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);

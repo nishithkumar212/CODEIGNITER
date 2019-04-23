@@ -32,7 +32,7 @@ class Note extends CI_Controller
     public function createlabel()
     {
         $label=$_POST['label'];
-        $email=$_POST['email'];
-        $this->ref->createlabels($label,$email);
+        $uid=$_POST['uid'];
+        $this->ref->createlabels($label,$uid);
     }
 }

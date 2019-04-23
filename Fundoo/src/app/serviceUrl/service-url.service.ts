@@ -32,4 +32,8 @@ export class ServiceUrlService {
   public imageinsertionnote="imageinsertionnote";
   public imageselection="imageselection";
   public childlabel="childlabel";
+  public updatelabelnotes="updatelabelnotes";
+  public deletelabel="deletelabel";
+  public addlabel="addlabel";
+
 }

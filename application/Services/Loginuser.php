@@ -16,6 +16,9 @@ class Loginuser extends CI_Controller
         $stmt->execute();
         $no = $stmt->rowCount();
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach($res as $arr){
+          $uid = $arr['id'];
+        }
         //  foreach($res as $temp )
         //  {
         //      if($temp['email']== $email && $temp['password']==$password)
@@ -38,9 +41,11 @@ class Loginuser extends CI_Controller
             //     "message" => "200",
 
             // );
+            
             $key = "nishith";
             $data = array(
-                "email" => $email,
+                // "email" => $email,
+                "id"=>$uid,
             );
             $ref = new JWT();
             $jwt = $ref->encode($data, $key);
@@ -139,7 +144,7 @@ class Loginuser extends CI_Controller
 
     public function databaseimageinsertion($email,$image)
     {
-        $query="UPDATE  fundoo set  image='$image' where email='$email'";
+        $query="UPDATE  fundoo set  image='$image' where id='$email'";
         $stmt=$this->db->conn_id->prepare($query);
         $stmt->execute();
     }

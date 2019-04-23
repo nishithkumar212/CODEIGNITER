@@ -28,7 +28,7 @@ class Selected extends CI_Controller
     }
     public function imageselection()
     {
-            $email=$_POST['email'];
-            return $this->ref->imageselection($email);
+            $uid=$_POST['uid'];
+            return $this->ref->imageselection($uid);
     }
 }

@@ -19,18 +19,17 @@ noteform: FormGroup;
       description: ""
     });
    }
-email:any;
-remail:any;
+uid:any;
+ruid:any;
   ngOnInit() {
           debugger;
-          this.email=localStorage.getItem('token');
-           this.remail=decode(this.email);
-     let reminderuser=this.reminder.selection(this.remail);
+          this.uid=localStorage.getItem('token');
+           this.ruid=decode(this.uid);
+     let reminderuser=this.reminder.selection(this.ruid);
      reminderuser.subscribe((res:any)=>
      {
          this.details=res as String[];
      })
-
   }
   deleteflag=true;
   // tokenemail:any;

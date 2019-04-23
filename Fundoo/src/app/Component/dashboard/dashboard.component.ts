@@ -39,20 +39,21 @@ export class DashboardComponent implements OnInit {
   myimages:any;
   selectionuser:any;
   notesdetails:any;
+  myemail:any;
   ngOnInit() {
     debugger;
     //this.googleimages=this.cookies.get("image");
     const token = localStorage.getItem('token');
     var decoded = decode(token);
-    this.email = decoded.email;
+    this.email = decoded.id;
     this.selectionuser=this.service.imageselection(this.email); 
      this.selectionuser.subscribe((res:any)=>
      {
        debugger;
       this.notes = res;
-
       this.notes.forEach(element => {
-        this.updatedimage ="data:image/jpeg;base64,"+element.image 
+        this.updatedimage ="data:image/jpeg;base64,"+element.image ,
+        this.myemail=element.emailid;
       });
        console.log(res+"aaaa");
      });
@@ -85,6 +86,7 @@ export class DashboardComponent implements OnInit {
   }
   opendialog()
   {
+    debugger;
     this. dialogConfig = new MatDialogConfig();
     this.dialogConfig.disableClose = false;
    this.dialogConfig.autoFocus = true;

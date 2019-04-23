@@ -7,6 +7,8 @@ class Noteuser extends CI_Controller
 {
     public function notes($tit,$des,$myhead,$date,$labelid)
     {
+
+
         if($date=="undefined")
         {
             $date="";
@@ -21,16 +23,31 @@ class Noteuser extends CI_Controller
             $value=$client->get('token');
              if($value)
              {
+                
                  $ref=new JWT();
                  $ar=0;
                  $unactive=0;
-                $email=$ref->decode($value,$key,array('HS256'))->email;
-        $query="INSERT into notes (title,description,emailid,reminder,archive,unactive,labelid) values('$tit','$des','$email ','$date','$ar','$unactive','$labelid')";
+                $id=$ref->decode($value,$key,array('HS256'));
+                $ide=$id->id;;
+                
+        $query="INSERT into notes (title,description,uid,reminder,archive,unactive,labelid) values('$tit','$des','$ide ','$date','$ar','$unactive','$labelid')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();
         $no=$stmt->rowCount();
         if($no>0)
         {
+            if($labelid=="undefined")
+            {
+                $labelid1=null;
+                $query1="INSERT into label_notes(noteid,labelid) values (LAST_INSERT_ID(),'$labelid1')";
+                $stmt1=$this->db->conn_id->prepare($query1);
+                        $res1=$stmt1->execute();
+            }
+            else{
+            $query1="INSERT into label_notes(noteid,labelid) values (LAST_INSERT_ID(),'$labelid')";
+            $stmt1=$this->db->conn_id->prepare($query1);
+                        $res1=$stmt1->execute();
+            }
             $data=array(
                 "message"=>"200"
             );
@@ -39,9 +56,9 @@ class Noteuser extends CI_Controller
         }
     }
 }
-public function createlabels($value,$email)
+public function createlabels($value,$uid)
 {
-    $query="insert into editlabel (labelname,emailid) values('$value','$email')"; 
+    $query="insert into labels (labelname,uid) values('$value','$uid')"; 
     $stmt=$this->db->conn_id->prepare($query);
     $stmt->execute();
 }

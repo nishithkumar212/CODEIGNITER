@@ -15,6 +15,7 @@ new :any;
    }
    selection(values)
    {
+     debugger;
      let selectuser=new FormData();
      selectuser.append("tokenemail",values);
      return this.http.post(this.serverurl.host+this.serverurl.selected,selectuser);
@@ -38,6 +39,7 @@ new :any;
    }
   register(Notes:note,labelid,tokenvalue,date)
   {
+    debugger;
     let noteuser=new FormData();
     noteuser.append("title",Notes.title);
     noteuser.append("description",Notes.description);
@@ -67,12 +69,12 @@ new :any;
     coloruser.append("setid",id);
 return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
   }
-  createlabel(values,email)
+  createlabel(values,uid)
   {
   debugger;
     let labeluser=new FormData();
     labeluser.append("label",values.createlabel);
-    labeluser.append("email",email);
+    labeluser.append("uid",uid);
     return this.http.post(this.serverurl.host+this.serverurl.createlabel,labeluser);
   }
 
@@ -101,11 +103,11 @@ imageinsertionnote(image,id)
   return this.http.post(this.serverurl.host+this.serverurl.imageinsertionnote,imageinsertionnote)
 }
 
- imageselection(values)
+ imageselection(uid)
  {
    debugger;
   let selectuser=new FormData();
-  selectuser.append("email",values);
+  selectuser.append("uid",uid);
   return this.http.post(this.serverurl.host+this.serverurl.imageselection,selectuser);
  }
 
@@ -120,6 +122,30 @@ imageinsertionnote(image,id)
     let childlabel=new FormData();
     childlabel.append("labelid",labelid);
     return this.http.post(this.serverurl.host+this.serverurl.childlabel,childlabel);
+  }
+  updatinglabelnotes(labelid,notesid)
+  {
+    debugger;
+      let updatinglabelnotes=new FormData();
+      updatinglabelnotes.append("labelid",labelid);
+      updatinglabelnotes.append("notesid",notesid);
+      return this.http.post(this.serverurl.host+this.serverurl.updatelabelnotes,updatinglabelnotes);      
+  }
+  labeldelete(labelid,noteid)
+  {
+    debugger;
+    let deletelabelnotes=new FormData();
+    deletelabelnotes.append("labelid",labelid);
+    deletelabelnotes.append("noteid",noteid);
+    return this.http.post(this.serverurl.host+this.serverurl.deletelabel,deletelabelnotes);
+  }
+  addinglabel(labelid,noteid)
+  {
+    debugger;
+    let addinglabel=new FormData();
+    addinglabel.append("labelid",labelid);
+    addinglabel.append("noteid",noteid);
+    return this.http.post(this.serverurl.host+this.serverurl.addlabel,addinglabel);
   }
 
 }

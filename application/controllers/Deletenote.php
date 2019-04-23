@@ -18,7 +18,7 @@ class Deletenote extends CI_controller
     }
     public function selection()
     {
-        $email=$_POST['email'];
-        $this->ref->selection($email);
+        $uid=$_POST['uid'];
+        $this->ref->selection($uid);
     }
 }

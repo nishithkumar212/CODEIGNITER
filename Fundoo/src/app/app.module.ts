@@ -43,6 +43,7 @@ import { DraganddropComponent } from './Component/draganddrop/draganddrop.compon
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NewComponent } from './Component/new/new.component';
 import { SearchfilterPipe } from './services/searchfilter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     MatGridListModule,
     MatDialogModule,
     DragDropModule,
+   
   ],
   
   providers: [RegisterService,DatePipe,AuthService,CookieService,

@@ -5,4 +5,6 @@ export class note
     reminder:string;
     color:string;
     image:string;
+    emailid:string;
+    notesimage:string;
 }

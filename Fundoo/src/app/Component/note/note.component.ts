@@ -17,7 +17,7 @@ import {ReminderserviceService} from '../../services/reminderservice.service';
 import { EditService } from 'src/app/services/edit.service';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {note} from "../../Models/note";
-// import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -56,7 +56,7 @@ valuechange:any;
 //  cards:boolean=true;
 
 
-  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog,private  eservice:EditService) {
+  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog,private  eservice:EditService,private snackbar:MatSnackBar) {
     this.noteform = fb.group({
       title: "",
       description: ""
@@ -66,35 +66,42 @@ valuechange:any;
         datevalue: ""
       }
     );
-    
     this.direction="row";
   }
-
+comparetime:any;
+dbreminder:any;
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     debugger;
     this.tokenvalue = localStorage.getItem('token');
     this.myvalue = decode(this.tokenvalue);
-    this.emailvalues = this.myvalue['email'];
+    this.emailvalues = this.myvalue['id'];
    
     let selectionlabel=this.service.selectionlabel(this.emailvalues);
     selectionlabel.subscribe((res:any)=>
     {
-      
+      debugger
       this.labeldetails = res;
       console.log(this.labeldetails);
     });
     setInterval(() => {
      
     }, 1000);
+    debugger;
     let user = this.service.selection(this.emailvalues);
-    this.checkdate= this.checkingreminder();
+    // this.checkdate= this.checkingreminder();
     user.subscribe((res: any) => {
       this.details = res ;
       console.log(this.details,"notes");
       this.details.array.forEach(element => {
        console.log(element.notesimage);
         this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
+        this.dbreminder=element.reminder;
+        this.comparetime=this.checkingreminder();
+        if(this.comparetime==this.dbreminder)
+        {
+         this.snackbar.open("alert")
+        }
       });
       // if(this.checkdate==this.details.reminder)
       // {
@@ -102,6 +109,7 @@ valuechange:any;
       // }
 
     });
+   
     this.vi.getview().subscribe(res => {
       this.view = res;
       debugger;
@@ -131,7 +139,6 @@ valuechange:any;
   initialize() {
     this.flag = !this.flag;
   }
-
   currentDateAndTime:any;
   currentdate:any;
   timer:any;
@@ -204,13 +211,13 @@ notecalender;
 selectChangeHandler (event: any) {
   debugger;
       this.timevariable = event.target.value;
+      
 }
 templabel:any;
   mydate(value: any) {
     // this.cards=false;
     this.remins=true;
     debugger;
-    
     this.currentDateAndTime=moment(this.date).format("MM/DD");
     this.currentDateAndTime=this.currentDateAndTime+this.timevariable;
     this.service.register(value,this.templabel, this.tokenvalue,  this.currentDateAndTime);
@@ -272,15 +279,21 @@ _handleReaderLoaded(readerEvt) {
   debugger;
  var binaryString = readerEvt.target.result;
         this.base64textString= btoa(binaryString);
-        this.Mainimage = "data:image/jpeg;base64," + this.base64textString;
-       let image= this.service.imageinsertionnote(this.base64textString,this.noteid);
+         this.Mainimage = "data:image/jpeg;base64," + this.base64textString;
+       let image= this.service.imageinsertionnote(this.Mainimage,this.noteid);
        image.subscribe((res:any)=>
        {
-
        });
 }
+newnotes:any;
   Forms(value: any,labelid:any) {
     debugger;
+  this.newnotes={} as note;
+  this.newnotes.title=value.title;
+  this.newnotes.description=value.description;
+  this.newnotes.reminder=value.reminder;
+  this.details.push(this.newnotes);
+
     console.log(value);
     this.flag =true;
     this.tokenvalue = localStorage.getItem('token');
@@ -297,12 +310,7 @@ _handleReaderLoaded(readerEvt) {
       //   {
       //     this.errormsg="some thing went wrong in insertion ";
       //   }
-      
     })
-  }
-  addinglabel(value,id)
-  {
-
   }
   archive(myid)
   {
@@ -326,7 +334,6 @@ _handleReaderLoaded(readerEvt) {
     let duser=this.eservice.delete(values,values);
     duser.subscribe((res:any)=>
     {
-
     })
   }
   @Output() valueChange = new EventEmitter();
@@ -339,5 +346,31 @@ _handleReaderLoaded(readerEvt) {
   moveItemInArray(this.details, event.previousIndex, event.currentIndex);
   console.log("previousIndex",event.previousIndex);
   console.log("currentIndex",event.currentIndex);
+}
+updatingnotes(labelid,noteid)
+{
+  debugger;
+let updatingnotes=this.service.updatinglabelnotes(labelid,noteid);
+updatingnotes.subscribe((res:any)=>
+{
+
+});
+}
+deletelabel(labelid,noteid)
+{
+  debugger;
+    let deletinglabel= this.service.labeldelete(labelid,noteid);
+    deletinglabel.subscribe((res:any)=>
+    {
+
+    });
+}
+addinglabel(labelid,noteid)
+{
+  debugger;
+    let addlabel=this.service.addinglabel(labelid,noteid);
+    addlabel.subscribe((res:any)=>
+    {
+    });
 }
 }

@@ -2,9 +2,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class Reminderuser extends CI_Controller
 {
-    public function fetchreminder($email)
+    public function fetchreminder($uid)
     {
-        $query= " SELECT  * from notes where reminder!='' And emailid='$email'";
+        $query= " SELECT  * from notes where reminder!='' And uid='$uid'";
           $stmt=$this->db->conn_id->prepare($query);
           $stmt->execute();
           $data=$stmt->fetchAll(PDO::FETCH_ASSOC);

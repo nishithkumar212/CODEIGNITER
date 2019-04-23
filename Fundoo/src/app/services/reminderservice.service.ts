@@ -9,18 +9,18 @@ import { debugOutputAstAsTypeScript } from '@angular/compiler';
 export class ReminderserviceService {
 
   constructor(private serviceurl: ServiceUrlService,private http:HttpClient) { }
-  selection(email)
+  selection(uid)
   {
     debugger;
     let selectreminder=new FormData();
-    selectreminder.append("email",email.email);
+    selectreminder.append("uid",uid.id);
     return this.http.post(this.serviceurl.host+this.serviceurl.reminder,selectreminder);
   }
-  selection1(email)
+  selection1(uid)
   {
     debugger;
     let selecttrash=new FormData();
-    selecttrash.append("email",email.email);
+    selecttrash.append("uid",uid.id);
     return this.http.post(this.serviceurl.host+this.serviceurl.archivedisplay,selecttrash);
   }
   insertion(value)

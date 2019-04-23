@@ -10,6 +10,8 @@ MatSelectModule ,MatFormFieldModule,MatSidenavModule,MatDividerModule, MatListMo
 MatDatepickerModule ,MatNativeDateModule ,MAT_DIALOG_DATA
 } from '@angular/material';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSnackBarModule} from '@angular/material';
+
 @NgModule({
 imports: [
 CommonModule, 
@@ -32,7 +34,8 @@ MatListModule,
 MatDatepickerModule,
 MatNativeDateModule,
 MatCheckboxModule,
-MatChipsModule
+MatChipsModule,
+MatSnackBarModule
 ],
 exports: [
 CommonModule,
@@ -51,7 +54,8 @@ MatSidenavModule,
 MatDividerModule,
 MatListModule,
 MatCheckboxModule,
-MatChipsModule
+MatChipsModule,
+MatSnackBarModule
 ],
 })
 export class CustomMaterial { }

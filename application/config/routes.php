@@ -86,6 +86,8 @@ $route['imageinsertionnote']='Login/imageinsertionnote';
 $route['imageselection']='selected/imageselection';
 $route['searchdata']='Editnotes/searching';
 $route['childlabel']= 'Childlabel/label';
-
+$route['updatelabelnotes']='Updatelabelnote/update';
+$route['deletelabel']='Updatelabelnote/deletelabel';
+$route['addlabel']='Updatelabelnote/addlabel';
 $route['setdata']='Doctrineuser/setter';
 $route['setregister']='RegistrationDoctrine/setregistrationdata';

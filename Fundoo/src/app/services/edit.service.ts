@@ -32,11 +32,11 @@ export class EditService {
     //  dataa.append("email",token);
     return this.http.post(this.serviceurl.host+this.serviceurl.deletenote,dataa);
   }
-  selectiondelete(email)
+  selectiondelete(uid)
   {
     debugger;
     let selectiondelete=new FormData();
-    selectiondelete.append("email",email.email);
+    selectiondelete.append("uid",uid.id);
     return this.http.post(this.serviceurl.host+this.serviceurl.selectiondelete,selectiondelete);
   }
   editcolor(value,id)

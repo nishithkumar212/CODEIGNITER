@@ -10,6 +10,7 @@ import decode from 'jwt-decode';
 })
 export class LabelComponent implements OnInit {
 email;
+uid;
 labelemail:any;
 labelform:FormGroup;
 myvalue:any;
@@ -21,7 +22,7 @@ emailvalues:any;
                createlabel:""
         }
       );
-   this.email=data;
+   this.uid=data;
    }
    details:String[];
   ngOnInit() {
@@ -38,7 +39,7 @@ emailvalues:any;
 {
 
   debugger;
-  let labeluser=this.service.createlabel(values,this.email);
+  let labeluser=this.service.createlabel(values,this.uid);
   labeluser.subscribe((res:any)=>
   {
 

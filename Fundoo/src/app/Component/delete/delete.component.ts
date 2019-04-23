@@ -19,6 +19,7 @@ details
 let deleteselectionuser=this.eservice.selectiondelete(this.tokenemail);
 deleteselectionuser.subscribe((res:any)=>
 {
+  console.log(res+"aaaa");
   this.details=res as String[];
 })
   }
