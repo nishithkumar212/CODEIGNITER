@@ -1,0 +1,200 @@
+<div class="body">
+    <div fxLayout="row" class="first" *ngIf="flag==true" fxLayoutGap="10px">
+            <input class="takenote" matInput placeholder="take a Note" formControlName="description" (click)="initialize()">
+    </div>
+    <div class="second" *ngIf="flag==false">
+        <form class="some" [formGroup]="noteform">
+            <div>
+                    <input class="takenote" matInput placeholder="title" formControlName="title">
+            </div>
+            <div>
+                <input class="takenote" matInput placeholder="take a Note" formControlName="description">
+               <div>
+                   <mat-chip-list>
+                   <mat-chip>
+                   <mat-icon *ngIf="remins==true">schedule</mat-icon>{{currentDateAndTime}} {{labelname}}
+                </mat-chip>
+            </mat-chip-list>
+                </div>
+            </div>
+            <div class="designs" fxLayoutGap="12px ">
+                <mat-menu class="menu" #appMenu="matMenu">
+                    <p>Reminder</p>
+                    <button mat-menu-item (click)="reminder(1)"> Later Today 8.00PM</button>
+                    <button mat-menu-item (click)="reminder(2)">Tomorrow 8.00AM</button>
+                    <button mat-menu-item (click)="reminder(3)">Next Week</button>
+                    <button  mat-menu-item (click)="datecalender=true">
+                        <mat-icon>schedule</mat-icon> Datepicker
+                    </button>
+                </mat-menu>
+                <div fxLayoutGap="10px;"> 
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                  
+                    <mat-icon class="a">notifications_none</mat-icon>
+                </button>
+                <mat-icon class="b">person_add</mat-icon>
+                <button matTooltip="Add image " (click)="file.click()" mat-icon-button>
+                        <mat-icon>
+                          insert_photo</mat-icon>
+                      </button>
+                      <input style="display: none;" type="file" #file (change)="handleFileSelect($event)" />
+                <!-- <button mat-icon-button>
+                <mat-icon  (click)="file.click()" class="c">insert_photo</mat-icon>
+                <input  style="display :none ;"type="file" accept="image/*" #file>
+            </button> -->
+                <!-- <mat-icon class="c">insert_photo</mat-icon> -->
+                <mat-icon class="d">archive</mat-icon>
+                <button  mat-icon-button [matMenuTriggerFor]="colorMenu">
+                    <mat-icon class="a" >color_lens</mat-icon>
+                </button>
+                <!-- <mat-icon class="e">color_lens</mat-icon> -->
+                <button mat-icon-button [matMenuTriggerFor]="labelmenu">
+                        <mat-icon class="e" [ngClass]="direction=='row' ? 'a' :'b' ">more_vert</mat-icon>
+                    </button>
+                    <mat-menu  #labelmenu="matMenu">
+                        <button *ngIf="deleteflag==true" mat-menu-item (click)="deleted(users.id)">Delete Note</button>
+               <button  mat-menu-item [matMenuTriggerFor]="addlabel"> Label</button>
+                <mat-menu   #addlabel="matMenu">
+                <mat-checkbox  *ngFor="let user of labeldetails" (click)="labelname=user.labelname" (click)="labelid=user.id">
+                    {{user.labelname}}
+                </mat-checkbox>
+                </mat-menu> 
+            </mat-menu>
+                <button class="edge" mat-icon-button (click)="Forms(noteform.value,labelid)">close</button>
+          </div>
+            </div>
+        </form>
+    </div>
+    <div  cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-card *ngFor="let users of details" cdkDrag  [ngStyle]="{'background-color': users.color}"
+        [ngClass]="direction=='row' ? 'row' :'column' ">
+        <div  class="last" (click)="openDialog(users)" fxLayout="{{direction}} wrap" fxLayoutGap="4px"
+        fxLayoutAlign="center center">
+            <div>
+                <p> {{users.title}}</p>
+                <p>{{users.description}}</p>
+              <p> <mat-chip *ngIf="users.labelname">{{users.labelname}}
+             <button mat-icon-button (click)="deletelabel(users.labelid,users.id)"><mat-icon style="height:12px;">close</mat-icon></button> </mat-chip></p>
+               <!-- <p>{{newlabelname}}</p> -->
+               <!-- <span *ngIf="noteid=={{users.id}}">{{newlabelname}}</span> -->
+                <p><img src="{{users.notesimage}}"style="    margin-top: -96px;
+                    width: 249px;
+                "></p>
+                <p [ngClass]="users.reminder == '' ? 'dateVisOff': 'dateVisOn' " >
+                        <mat-chip-list>
+                                <mat-chip>
+                                        <mat-icon  class="remins "style="border-radius: 5px; margin-left: 5px; margin-top: 5px;">schedule</mat-icon>{{users.reminder}}
+                                    </mat-chip>
+                         </mat-chip-list>
+                </p>
+            </div>
+        </div>
+        <span class="icons" >
+            <button mat-icon-button [matMenuTriggerFor]="reminderMenu">
+                <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">notifications_none</mat-icon>
+            </button>
+            <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">notifications_none</mat-icon> -->
+            <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' "> person_add</mat-icon>
+
+         
+            <button matTooltip="Add image " (click)="file.click()" mat-icon-button>
+                    <mat-icon>
+                      insert_photo</mat-icon>
+                  </button>
+                  <input style="display: none;" type="file" #file (change)="handleFileSelect($event,users.id)" />
+            <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon> -->
+            <button mat-icon-button ><mat-icon (click)="archive(users.id)" class="d" [ngClass]="direction=='row' ? 'a' :'b' ">archive</mat-icon></button>
+            <button mat-icon-button [matMenuTriggerFor]="colorMenu">
+                <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">color_lens</mat-icon>
+            </button>
+            <!-- <mat-icon class="a" [ngClass]="direction=='row' ? 'a' :'b' ">more_vert</mat-icon> -->
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon class="e" [ngClass]="direction=='row' ? 'a' :'b' ">more_vert</mat-icon>
+            </button>
+            <mat-menu class="menu" #appMenu="matMenu">
+                <button *ngIf="deleteflag==true" mat-menu-item (click)="deleted(users.id)">Delete Note</button>
+                <!-- <button mat-menu-item [matMenuTriggerFor]="addlabel">Add Label</button> -->
+                <!-- <mat-menu #addlabel="matMenu">
+                <p>Label Note</p>
+                <input class="createlabel" matInput placeholder="Enter label name">
+                <mat-icon>search</mat-icon>
+                </mat-menu> -->
+                <!-- <button mat-menu-item [matMenuTriggerFor]="labelmenu">
+              Change Label</button> -->
+              <button mat-menu-item [matMenuTriggerFor]="labelmenu">
+                  AddLabel
+              </button>
+                <button mat-menu-item>Add Drawing</button>
+                <button mat-menu-item>Make a copy</button>
+            </mat-menu>
+            <mat-menu  class="labels" #labelmenu="matMenu">
+           <button  (click)="newlabelname =userslabels.labelname"  (click)="labelid=userslabels.id"  (click)="noteid=users.id" (click)="updatingnotes(labelid,noteid)" (click)=addinglabel(labelid,noteid) *ngFor="let userslabels of labeldetails" mat-menu-item>
+               {{userslabels.labelname}}
+            </button>
+
+            </mat-menu>
+            <mat-menu class="menu" #reminderMenu="matMenu">
+                <p>Reminder</p>
+                <button mat-menu-item (click)="reminder(1)"> Later Today 8.00PM</button>
+                <button mat-menu-item (click)="reminder(2)">Tomorrow 8.00AM</button>
+                <button mat-menu-item (click)="reminder(3)">Next Week</button>
+                <button  mat-menu-item (click)="datecalender=true">
+                    <mat-icon>schedule</mat-icon> Datepicker
+                </button>
+            </mat-menu>
+        </span>
+<mat-menu class="colormenu" #colorMenu="matMenu" >
+    <div class="menu" >
+        <button (click)="colordb(noteform.value.color='#fcf476',users.id)" mat-mini-fab
+            style="background-color:#fcf476;"></button>
+        <button (click)="colordb(noteform.value.color='#f8bc04',users.id)" mat-mini-fab
+            style="background-color:#f8bc04;"></button>
+        <button (click)="colordb(noteform.value.color='#aecbfa',users.id)" mat-mini-fab
+            style="background-color:#aecbfa;"></button>
+        <button (click)="colordb(noteform.value.color='#ffffff',users.id)" mat-mini-fab
+            style="background-color:#ffffff;"></button>
+        <button (click)="colordb(noteform.value.color='#e8eaed',users.id)" mat-mini-fab
+            style="background-color:#e8eaed;"></button>
+        <button (click)="colordb(noteform.value.color='#6a5acd',users.id)" mat-mini-fab
+            style="background-color: #6a5acd;"></button>
+        <button (click)="colordb(noteform.value.color='#ccff90',users.id)" mat-mini-fab
+            style="background-color: #ccff90;"></button>
+        <button (click)="colordb(noteform.value.color='#e8eaed',users.id)" mat-mini-fab
+            style="background-color: #e8eaed;"></button>
+        <button (click)="colordb(noteform.value.color='#e6c9a8',users.id)" mat-mini-fab
+            style="background-color: #e6c9a8;"></button>
+        <button (click)="colordb(noteform.value.color='#fccfe8',users.id)" mat-mini-fab
+            style="background-color: #fccfe8;"></button>
+        <button (click)="colordb(noteform.value.color='#cbf0f8',users.id)" mat-mini-fab
+            style="background-color:#cbf0f8;"></button>
+        <button (click)="colordb(noteform.value.color='#d7aefb',users.id)" mat-mini-fab
+            style="background-color:#d7aefb;"></button>
+    </div>
+</mat-menu>
+ </mat-card></div>
+</div>
+<div *ngIf="datecalender" fxLayout="row">
+    <form [formGroup]="dateuser">
+        <mat-card class="call">
+            <p>pick date and time</p>
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="datevalue" [matDatepicker]="picker" placeholder="Choose a date" ([ngmodel])="datechooser">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="line">
+                <select  (change)="selectChangeHandler($event)"  matNativeControl required>
+                    <option value="08.00 AM">MORNING 08.00AM</option>
+                    <option value="12.00 AM">AFTERNOON 12.00AM </option>
+                    <option value="06.00 PM">EVENING 06.00 PM</option>
+                    <option value= "08.00 PM">NIGHT</option>
+                </select>
+            </mat-form-field>
+            <input type="button" value="save" (click)="mydate(dateuser.value)">
+        </mat-card>
+    </form>
+</div>
+
+

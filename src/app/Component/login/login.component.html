@@ -1,0 +1,40 @@
+<mat-card class="loginpage">
+    <div class="loginname">
+        <!--Declaring the head as login -->
+        <h1>Login</h1>
+
+        <!--Declaring the div section  including the mat-form field to include the labels -->
+    </div>
+    <form class="myform" [formGroup]="loginForm" novalidate>
+        <mat-form-field matinput [ngClass]="{'has-error':!loginForm.controls['email'].valid}">
+            <input type="email" matInput placeholder=" email" formControlName="email"
+                [formControl]="loginForm.controls['email']" required>
+        </mat-form-field><br>
+
+        <!--*ngif is used to evaluate the the condition contains errors or not-->
+        <div *ngIf="submitted && loginForm.controls['email'].errors">
+        <!--validating the email it must be a valid email -->
+            <div class="validate" *ngIf="loginForm.controls['email'].errors.required">Email must be a valid email
+                address</div>
+        <!--validating the email that it should be required-->
+            <div class="validate" *ngIf="loginForm.controls['email'].errors.required">email is required</div>
+        </div>
+        <!--mat-form-field for developing a button which has controllername,placeholder-->
+        <mat-form-field matinput [ngClass]="{'has-error':!loginForm.controls['password'].valid}">
+            <input type="password" matInput placeholder=" password" formControlName="password"
+                [formControl]="loginForm.controls['password']" required>
+        </mat-form-field><br>
+        <!--*ngif is used to evaluate the the condition contains errors or not-->
+        <div *ngIf="submitted && loginForm.controls['password'].errors">
+             <!--validating the email that it should be required-->
+            <div class="validate" *ngIf="loginForm.controls['password'].errors.required">password is required</div>
+        </div>
+        <div class="bfield">
+            <button mat-button (click)="submitForm(loginForm.value)">Login</button>
+            <button mat-button routerLink="../register">Register</button>
+            <button  mat-raised-button color="primary" (click)="socialSignIn('facebook')">Sign in with Facebook</button>
+            <button  mat-raised-button color="primary" (click)="socialSignIn('google')">Sign in with Google</button>              
+        </div>
+        {{errormsg}}
+    </form>
+</mat-card>

@@ -1,0 +1,28 @@
+.center
+{
+    color: blue;
+    text-align: center;
+}
+.register
+{
+    width: 500px;
+    margin-left: 400px;
+    margin-right: 500px;
+    margin-top:50px;
+    margin-bottom:30px;
+}
+mat-form-field
+{
+    margin-left: 150px;
+}
+.bfield
+{
+    margin-left: 150px;
+    color:blue;
+}
+.validate
+{
+    margin-left:150px;
+    color:red;
+    font-size: 15px;
+}
