@@ -53,12 +53,15 @@ new :any;
       headers:this.head
     });
   }
-  register1(value)
+  register1(value,labelid,uid)
   {
+    debugger;
     let labeledituser=new FormData();
     labeledituser.append("title",value.title);
     labeledituser.append("description",value.description);
     labeledituser.append("labelname",value.labelname);
+    labeledituser.append("labelid",labelid);
+    labeledituser.append("uid",uid);
     return this.http.post(this.serverurl.host+this.serverurl.notes,labeledituser);
   }
   coloring(value,id)
@@ -81,9 +84,9 @@ return this.http.post(this.serverurl.host+this.serverurl.setcolor,coloruser);
 
 selection1(value)
 {
-
+debugger;
   let selectlabeluser=new FormData();
-  selectlabeluser.append("email",value);
+  selectlabeluser.append("tokenemail",value);
   return this.http.post(this.serverurl.host+this.serverurl.getlabel,selectlabeluser);
 }
 imageinsertion(email,image)
@@ -147,5 +150,12 @@ imageinsertionnote(image,id)
     addinglabel.append("noteid",noteid);
     return this.http.post(this.serverurl.host+this.serverurl.addlabel,addinglabel);
   }
-
+  renamelabel(labelname,labelid)
+  {
+      let labels=new FormData();
+      labels.append("labelname",labelname);
+      labels.append("labelid",labelid);
+      return this.http.post(this.serverurl.host+this.serverurl.renamelabel,labels);
+  }
 }
+

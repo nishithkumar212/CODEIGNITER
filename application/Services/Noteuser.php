@@ -23,13 +23,11 @@ class Noteuser extends CI_Controller
             $value=$client->get('token');
              if($value)
              {
-                
                  $ref=new JWT();
                  $ar=0;
                  $unactive=0;
                 $id=$ref->decode($value,$key,array('HS256'));
                 $ide=$id->id;;
-                
         $query="INSERT into notes (title,description,uid,reminder,archive,unactive,labelid) values('$tit','$des','$ide ','$date','$ar','$unactive','$labelid')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();
@@ -58,9 +56,21 @@ class Noteuser extends CI_Controller
 }
 public function createlabels($value,$uid)
 {
-    $query="insert into labels (labelname,uid) values('$value','$uid')"; 
+    $query="Insert into labels (labelname,uid) values('$value','$uid')"; 
     $stmt=$this->db->conn_id->prepare($query);
     $stmt->execute();
+}
+
+public function createlabelnotes($title,$description,$labelname,$labelid,$uid)
+{
+        $query= "INSERT into  notes (title,description,uid,labelid)values('$title','$description','$uid','$labelid')";
+        $stmt=$this->db->conn_id->prepare($query);
+        $res=$stmt->execute();
+        $result=$stmt->fetchall(PDO::FETCH_ASSOC);
+        $query="INSERT into label_notes(noteid,labelid) values(LAST_INSERT_ID(),'$labelid')";
+         $stmt=$this->db->conn_id->prepare($query);
+        $res1=$stmt->execute();
+        $resu=$stmt->fetchall(PDO::FETCH_ASSOC);
 }
 }
 ?>

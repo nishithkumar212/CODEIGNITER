@@ -57,6 +57,7 @@ export class DashboardComponent implements OnInit {
       });
        console.log(res+"aaaa");
      });
+     debugger;
      let createlabel=this.service.selection1(this.email);
     createlabel.subscribe((res:any)=>
     {
@@ -68,6 +69,7 @@ export class DashboardComponent implements OnInit {
         );
     });
   }
+  
   clicker() {
     if (this.list == true) {
       this.list = false;
@@ -91,10 +93,18 @@ export class DashboardComponent implements OnInit {
     this.dialogConfig.disableClose = false;
    this.dialogConfig.autoFocus = true;
    this.dialogConfig.width='400px';
-   this.dialogConfig.height='200px';
+   this.dialogConfig.height='400px';
    this.dialogConfig.align='center';
    this.dialogConfig.direction='ltr';
+  
    this.dialogConfig.data=this.email;
+this.dialogConfig.data={
+  
+    email:this.email,
+    labelname:[this.details]
+  
+};
+   
    this.dialog.open(LabelComponent,this.dialogConfig);
   }
 

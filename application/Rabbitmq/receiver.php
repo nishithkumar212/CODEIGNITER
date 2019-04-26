@@ -21,13 +21,11 @@ class Receiver
             $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
                 ->setUsername($Rabbit->senderEmailID)
                 ->setPassword($Rabbit->senderPassword);
-           
             $mailer = new Swift_Mailer($transport);
             $message = (new Swift_Message($subject))
                 ->setFrom($Rabbit->senderEmailID)
                 ->setTo([$to_email])
                 ->setBody($message);
-            
             $result = $mailer->send($message);
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };

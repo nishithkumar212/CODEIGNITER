@@ -13,7 +13,7 @@ class Updatenoteslabel extends CI_Controller
     {
         $query="Delete  from label_notes where labelid='$labelid' AND noteid='$noteid'";
         $stmt=$this->db->conn_id->prepare($query);
-        $stmt->execute();
+        $res= $stmt->execute();
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
         print json_encode($data);
     }

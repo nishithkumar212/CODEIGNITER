@@ -72,7 +72,7 @@ comparetime:any;
 dbreminder:any;
   ngOnInit() {
     // this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-    debugger;
+    
     this.tokenvalue = localStorage.getItem('token');
     this.myvalue = decode(this.tokenvalue);
     this.emailvalues = this.myvalue['id'];
@@ -82,7 +82,7 @@ dbreminder:any;
     {
       debugger
       this.labeldetails = res;
-      console.log(this.labeldetails);
+      console.log(this.labeldetails+"aaaa");
     });
     setInterval(() => {
      
@@ -284,7 +284,7 @@ _handleReaderLoaded(readerEvt) {
        image.subscribe((res:any)=>
        {
        });
-}
+}3
 newnotes:any;
   Forms(value: any,labelid:any) {
     debugger;

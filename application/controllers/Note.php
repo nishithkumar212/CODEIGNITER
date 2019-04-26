@@ -35,4 +35,14 @@ class Note extends CI_Controller
         $uid=$_POST['uid'];
         $this->ref->createlabels($label,$uid);
     }
+
+    public function labeldatainsertion()
+    {
+        $title=$_POST['title'];
+        $description=$_POST['description'];
+        $labelname=$_POST['labelname'];
+        $labelid=$_POST['labelid'];
+        $uid=$_POST['uid'];
+        $this->ref->createlabelnotes($title,$description,$labelname,$labelid,$uid);
+    }
 }

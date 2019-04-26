@@ -1,31 +1,43 @@
 <?php
 namespace Entity;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * @Entity
- * @Table(name="Labels")
+ * @Table(name="Labels" )
  */
 class Labels
 {
     /**
      * @Id
-     * @Column(type="integer", nullable=false)
+     * @column(type="integer" ,nullable=false)
      * @GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
-     /**
-     * @Column(type="string", length=32)
+    /**
+     * @column(type="string" ,nullable=false)
      */
     protected $labelname;
 
     /**
-     * @ManyToOne(targetEntity="Registrationuser", inversedBy="$user_labelid")
-     * @JoinColumn(name="id", referencedColumnName="id")
+     * @column(type="integer" ,nullable=false)
      */
-    protected  $user_id;
-    
+    protected $uid;
+
+    /**
+     * Set id.
+     *
+     * @param int $id
+     *
+     * @return Labels
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     /**
      * Get id.
      *
@@ -58,5 +70,29 @@ class Labels
     public function getLabelname()
     {
         return $this->labelname;
+    }
+
+    /**
+     * Set uid.
+     *
+     * @param int $uid
+     *
+     * @return Labels
+     */
+    public function setUid($uid)
+    {
+        $this->uid = $uid;
+
+        return $this;
+    }
+
+    /**
+     * Get uid.
+     *
+     * @return int
+     */
+    public function getUid()
+    {
+        return $this->uid;
     }
 }

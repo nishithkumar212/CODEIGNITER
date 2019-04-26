@@ -74,14 +74,16 @@ class Loginuser extends CI_Controller
         return $data;
 
     }
-    public function socialsignin($email, $name,$image)
+    public function socialsignin($email, $name,$image,$id)
     {
         $token=0;
         // $query="insert into Fundoo (Firstname,email) values ('$name','$email')";
         // $stmt=$this->db->conn_id->prepare($query);
         // $stmt->execute();
-
+            if($email)
+            {
         $variable = $this->checkemail($email);
+       
         $ref = new JWT();
         $key = "nishith";
         $client = new Predis\Client(array(
@@ -105,7 +107,7 @@ class Loginuser extends CI_Controller
             );
             print json_encode($data);
         } else {
-          $query="Insert into registrations (firstname,email,image) values ('$name','$email','$image')";
+          $query="Insert into fundoo (firstname,email,image) values ('$name','$email','$image')";
           $stmt = $this->db->conn_id->prepare($query);
           $res=$stmt->execute();
         $jwttoken = $ref->encode($email, $key);
@@ -118,6 +120,88 @@ class Loginuser extends CI_Controller
     }
     return $data;
 }
+     if($id)
+    {
+            $googlevariable=$this->checkgoogleid($id);
+            if($googlevariable)
+            {
+                $query="select * from fundoo where googleid='$id'";
+                $stmt=$this->db->conn_id->prepare($query);
+                $stmt->execute();  
+                $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($stmt as $arr)
+                {
+                    $uid=$arr->id;
+                }              
+                $key = "nishith";
+                $data = array(
+                  
+                    "id"=>$uid,
+                );
+                $ref = new JWT();
+                $jwt = $ref->encode($data, $key);
+                // $decodedvalue=$ref->decode($jwt,$key,array('HS256'));
+                $client = new Predis\Client(array(
+                    'host' => '127.0.0.1',
+                    'port' => 6379,
+                    'password' => null,
+                ));
+                $client->set('token',$jwt);
+               
+                $data = array(
+                    "message" => "200",
+                    "token" => "$jwt",
+                );
+               
+                print json_encode($data);
+            } 
+            // return $data;
+            
+            else
+            {
+                $query="INSERT into fundoo(googleid) values('$id')";
+                $stmt=$this->db->conn_id->prepare($query);
+                $stmt->execute();
+                $no1=$stmt->rowcount();
+                 if($no1>0)
+                 {
+                $query1="select * from fundoo where googleid='$id'";
+                $stmt=$this->db->conn_id->prepare($query);
+                $stmt->execute();  
+                $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($stmt as $arr)
+                {
+                    $uid=$arr->id;
+                }              
+                $key = "nishith";
+                $data = array(
+                    "id"=>$uid,
+                );
+                $ref = new JWT();
+                $jwt = $ref->encode($data, $key);
+                $client = new Predis\Client(array(
+                    'host' => '127.0.0.1',
+                    'port' => 6379,
+                    'password' => null,
+                ));
+                $client->set('token',$jwt);
+                $data = array(
+                    "message" => "200",
+                    "token" => "$jwt",
+                );
+                print json_encode($data);
+            }
+            else
+            {
+                $data = array(
+                    "message" => "204",
+                );
+                print json_encode($data);
+            }
+        }
+    }
+}
+    
     public function checkemail($email)
     {
         $query = "select * from fundoo where email='$email'";
@@ -138,6 +222,22 @@ class Loginuser extends CI_Controller
             return true;
         } else {
             return false;
+        }
+
+    }
+    public function checkgoogleid($id)
+    {
+        $query="select * from fundoo where googleid='$id'";
+        $stmt=$this->db->conn_id->prepare($query);
+        $stmt->execute();
+        $no=$stmt->rowcount();
+        if($no>0)
+        {
+            return true;
+        }
+        else
+        {
+             return false;
         }
 
     }

@@ -35,5 +35,6 @@ export class ServiceUrlService {
   public updatelabelnotes="updatelabelnotes";
   public deletelabel="deletelabel";
   public addlabel="addlabel";
+  public renamelabel="renamelabel";
 
 }

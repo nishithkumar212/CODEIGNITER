@@ -19,10 +19,11 @@ class Login extends CI_Controller
     }
     public function signin()
     {
-        $email = $_POST["email"];
+       // $email = $_POST["email"];
         $name  = $_POST["name"];
         $image=$_POST["image"];
-        return  $this->ref->socialSignIn($email, $name,$image);
+        $id=$_POST["id"];
+        return  $this->ref->socialSignIn($email, $name,$image,$id);
     }
     public function imageinsertion()
     {

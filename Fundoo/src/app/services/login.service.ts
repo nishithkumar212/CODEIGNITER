@@ -19,11 +19,13 @@ login(login:Login)
   loginuser.append('password',login.password);
    return this.http.post(this.serverurl.host+this.serverurl.login,loginuser);
 }
-socialLoginData(email, name,image) {
+socialLoginData(email, name,image,id) {
+  debugger;
   let socialLoginData = new FormData();
   socialLoginData.append("email", email);
   socialLoginData.append("name", name);
   socialLoginData.append("image",image);
+  socialLoginData.append("id",id);
   return this.http.post(
     this.serverurl.host + this.serverurl.sociallogindata,
     socialLoginData

@@ -60,9 +60,8 @@ export class LoginComponent implements OnInit {
       
   });
   }
-
   public socialSignIn(socialPlatform: string) {
-	//	debugger;
+		debugger;
 		let socialPlatformProvider;
 		if (socialPlatform == "facebook") {
 			socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
@@ -74,22 +73,23 @@ export class LoginComponent implements OnInit {
       console.log(userData,"Hghg");
       debugger;
 			this.sendToRestApiMethod(
-				userData.token,
+				userData.id,
 				userData.email,
 				userData.image,
-				userData.name
+        userData.name,
 			);
 		});
   }
   iserror:any;
   errorMessage :any;
-
-	sendToRestApiMethod(token, email, image, name): void {
-   // debugger;
-		let obsss = this.loginservice.socialLoginData(email, name,image);
+  
+	sendToRestApiMethod(id, email, image, name): void {
+    debugger;
+    let obsss = this.loginservice.socialLoginData(email, name,image,id);
+    debugger;
 		obsss.subscribe(
+  
 			(res: any) => {
-        
         console.log(res,"jkhnij");
 				if (res.message == "200") {
 					 this._cookieService.set("email", email);

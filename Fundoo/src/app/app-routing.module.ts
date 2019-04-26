@@ -48,7 +48,6 @@ const routes: Routes = [
                 path:'new',
                 component:NewComponent
             }
-           
         ]
     },
     {path:'details',component:FirstComponent},

@@ -6,9 +6,16 @@
 <input class="first" matInput placeholder= "Create new label" formControlName="createlabel">
 </div>
 <div>
-<mat-icon class="two">label</mat-icon>
-<span class="legend">legend</span>
-<mat-icon class="mode">mode_edit</mat-icon>
+
+<div  style="margin-left:20px;"*ngFor ="let users of details">
+    
+  <mat-icon class="two">label</mat-icon>  
+
+  
+  <input type ="text" class="first" matInput placeholder= "{{users.labelname}}" [formControl]="renamelabel" >
+       <!-- <button mat-button > <mat-icon *ngIf="modeedit==false">check</mat-icon></button> -->
+        <button mat-button (click)=modeedits(users.id)><mat-icon>mode_edit</mat-icon></button>
+</div>
 </div>
 <button class="button"  mat-button (click)="addlabel(labelform.value)" >Done</button>
 </form>
