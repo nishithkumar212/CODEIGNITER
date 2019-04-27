@@ -284,7 +284,7 @@ _handleReaderLoaded(readerEvt) {
        image.subscribe((res:any)=>
        {
        });
-}3
+}
 newnotes:any;
   Forms(value: any,labelid:any) {
     debugger;

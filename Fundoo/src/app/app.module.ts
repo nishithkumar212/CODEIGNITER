@@ -62,7 +62,7 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     ChildComponent,
     DeleteComponent,
     EditlabelComponent,
-    FileSelectDirective,
+    // FileSelectDirective,
     DraganddropComponent,
     NewComponent,
     SearchfilterPipe,
@@ -82,6 +82,9 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     MatDialogModule,
     DragDropModule,
   ],
+  // exports:[
+  //   FileSelectDirective
+  // ],
   
   providers: [RegisterService,DatePipe,AuthService,CookieService,
    {
