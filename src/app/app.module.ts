@@ -62,7 +62,7 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     ChildComponent,
     DeleteComponent,
     EditlabelComponent,
-    FileSelectDirective,
+    // FileSelectDirective,
     DraganddropComponent,
     NewComponent,
     SearchfilterPipe,
