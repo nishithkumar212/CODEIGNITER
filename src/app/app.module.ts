@@ -82,6 +82,9 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     MatDialogModule,
     DragDropModule,
   ],
+  exports:[
+    FileSelectDirective
+  ],
   
   providers: [RegisterService,DatePipe,AuthService,CookieService,
    {
