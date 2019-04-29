@@ -1,0 +1,21 @@
+.remindermat
+{
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 4px;
+    width: 260px;
+    height: 150px;
+    margin-left: 100px;
+    margin-top: 60px;
+}
+.body
+{
+    max-height: 100%;
+    width: 1000px;
+    margin-left: 100px;
+}
+.b
+{
+    margin-top:-14px;
+}

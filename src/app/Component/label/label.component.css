@@ -1,0 +1,39 @@
+.first
+{
+    border:none; 
+    outline:none;
+     line-height: 34px;
+ font-size: 16px; 
+  margin-left:22px;
+  margin-top:-50px;
+}
+.one
+{
+    margin-left: 30px;
+    margin-top:20px;
+}
+.two
+{
+    margin-left:32px;
+}
+.legend
+{
+    margin-left:40px;
+}
+.editlabel
+{
+    margin-left:15px;
+}
+.o
+{
+    margin-left:20px;
+    margin-bottom:40px;
+}
+.button
+{
+    margin-left:320px;
+}
+.mode
+{
+    margin-left:100px;
+}
