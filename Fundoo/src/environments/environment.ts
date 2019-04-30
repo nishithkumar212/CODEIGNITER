@@ -4,7 +4,7 @@
 
 export const 
 environment = {
-  baseUrl:   "https://myfundoo.herokuapp.com/index.php",
+  baseUrl:   "http://localhost/codeigniter/",
   production: false
 };
 

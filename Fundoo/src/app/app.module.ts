@@ -30,6 +30,7 @@ import { ChildComponent } from './Component/child/child.component';
 import { DeleteComponent } from './Component/delete/delete.component';
 import { EditlabelComponent } from './Component/editlabel/editlabel.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { PushNotificationsModule } from 'ng-push';
 import{
 SocialLoginModule,
     AuthServiceConfig,
@@ -81,10 +82,12 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     MatGridListModule,
     MatDialogModule,
     DragDropModule,
+    PushNotificationsModule
+    
   ],
-  // exports:[
-  //   FileSelectDirective
-  // ],
+  exports:[
+    
+   ],
   
   providers: [RegisterService,DatePipe,AuthService,CookieService,
    {

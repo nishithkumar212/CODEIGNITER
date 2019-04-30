@@ -17,6 +17,7 @@ import {ReminderserviceService} from '../../services/reminderservice.service';
 import { EditService } from 'src/app/services/edit.service';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {note} from "../../Models/note";
+import { PushNotificationsService} from 'ng-push'
 import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-note',
@@ -55,8 +56,7 @@ valuechange:any;
  view;
 //  cards:boolean=true;
 
-
-  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog,private  eservice:EditService,private snackbar:MatSnackBar) {
+  constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog,private  eservice:EditService,private snackbar:MatSnackBar, private _pushNotifications: PushNotificationsService) {
     this.noteform = fb.group({
       title: "",
       description: ""
@@ -67,6 +67,7 @@ valuechange:any;
       }
     );
     this.direction="row";
+  this._pushNotifications.requestPermission();
   }
 comparetime:any;
 dbreminder:any;
@@ -85,7 +86,7 @@ dbreminder:any;
       console.log(this.labeldetails+"aaaa");
     });
     setInterval(() => {
-     
+   
     }, 1000);
     debugger;
     let user = this.service.selection(this.emailvalues);
@@ -107,9 +108,7 @@ dbreminder:any;
       // {
       //     console.log("alert reminder");
       // }
-
     });
-   
     this.vi.getview().subscribe(res => {
       this.view = res;
       debugger;
@@ -223,13 +222,18 @@ templabel:any;
     // this.latest_date=moment(this.date).format('DD-MMM');
     // // this.cardcal =false;
      this.datecalender=false;
+  
+
   }
     checkingreminder()
     {
-     this.dateFormat=require('dateformat');
-     this.now=new Date();
-     this.currentsystemtime =this.dateFormat(this.now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-      return this.currentsystemtime;
+    //  this.dateFormat=require('dateformat');
+    //  this.now=new Date();
+    //  this.currentsystemtime =this.dateFormat(this.now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+    //   return this.currentsystemtime;
+    var date=new Date();
+    var now=date.toDateString()+" "+(date.getHours()%12)+":"+date.getMinutes();
+    return now;
     }
   title:any;
   description:any;

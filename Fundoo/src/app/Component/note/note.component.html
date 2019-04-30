@@ -67,7 +67,7 @@
         </form>
     </div>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <mat-card *ngFor="let users of details" cdkDrag [ngStyle]="{'background-color': users.color}"
+        <mat-card   class="cardListItem" *ngFor="let users of details" cdkDrag [ngStyle]="{'background-color': users.color}"
             [ngClass]="direction=='row' ? 'row' :'column' ">
             
             
