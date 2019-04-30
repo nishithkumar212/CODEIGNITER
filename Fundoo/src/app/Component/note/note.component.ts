@@ -93,7 +93,7 @@ dbreminder:any;
     user.subscribe((res: any) => {
       this.details = res ;
       console.log(this.details,"notes");
-      this.detail.forEach(element => {
+      this.details.array.forEach(element => {
        console.log(element.notesimage);
         this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
         this.dbreminder=element.reminder;
@@ -200,7 +200,6 @@ dbreminder:any;
     let currentDate = moment(this.fulldate).format("DD/MM/YYYY");
     this.currentDateAndTime = currentDate + " " + " 08:00 PM"; 
 this.timer = true;
-
   }
 }
   cardcal

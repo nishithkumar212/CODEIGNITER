@@ -4,7 +4,7 @@
 
 export const 
 environment = {
-  baseUrl:   "https://myfundoo.herokuapp.com",
+  baseUrl:   "https://git.heroku.com/deployfundoo.git/",
   production: false
 };
 
