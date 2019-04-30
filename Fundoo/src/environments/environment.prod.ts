@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-   baseUrl:  " https://deployfundoo.herokuapp.com/"
+  production: true,
+   baseUrl:  " https://deployfundoo.herokuapp.com/index.php"
 };
