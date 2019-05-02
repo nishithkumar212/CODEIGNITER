@@ -17,7 +17,7 @@ login(login:Login)
   let loginuser=new FormData();
   loginuser.append('email',login.email);
   loginuser.append('password',login.password);
-   return this.http.post(this.serverurl+this.serverurl.login,loginuser);
+   return this.http.post(this.serverurl.host+this.serverurl.login,loginuser);
 }
 socialLoginData(email, name,image,id) {
   debugger;
