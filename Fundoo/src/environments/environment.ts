@@ -4,7 +4,7 @@
 
 export const 
 environment = {
-  baseUrl:   "  https://newfundoo.herokuapp.com/ ",
+  baseUrl:   "https://newfundoo.herokuapp.com/ ",
   production: false
 };
 
