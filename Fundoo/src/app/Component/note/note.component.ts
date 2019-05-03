@@ -86,29 +86,31 @@ dbreminder:any;
       console.log(this.labeldetails+"aaaa");
     });
     setInterval(() => {
-   
+      let user = this.service.selection(this.emailvalues);
+      // this.checkdate= this.checkingreminder();
+      user.subscribe((res: any) => {
+        this.details = res ;
+        debugger;
+        console.log(this.details,"notes");
+        this.details.array.forEach(element => {
+         console.log(element.notesimage);
+          this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
+          this.dbreminder=element.reminder;
+          this.comparetime=this.checkingreminder();
+          if(this.comparetime==this.dbreminder)
+          {
+           this.snackbar.open("alert")
+           console.log("reminder alert");
+          }
+        });
+        // if(this.checkdate==this.details.reminder)
+        // {
+        //     console.log("alert reminder");
+        // }
+      });
     }, 1000);
     debugger;
-    let user = this.service.selection(this.emailvalues);
-    // this.checkdate= this.checkingreminder();
-    user.subscribe((res: any) => {
-      this.details = res ;
-      console.log(this.details,"notes");
-      this.details.array.forEach(element => {
-       console.log(element.notesimage);
-        this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
-        this.dbreminder=element.reminder;
-        this.comparetime=this.checkingreminder();
-        if(this.comparetime==this.dbreminder)
-        {
-         this.snackbar.open("alert")
-        }
-      });
-      // if(this.checkdate==this.details.reminder)
-      // {
-      //     console.log("alert reminder");
-      // }
-    });
+   
     this.vi.getview().subscribe(res => {
       this.view = res;
       debugger;

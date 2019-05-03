@@ -19,6 +19,15 @@ class Loginuser extends CI_Controller
         foreach($res as $arr){
           $uid = $arr['id'];
         }
+
+        
+
+
+
+
+
+
+
         //  foreach($res as $temp )
         //  {
         //      if($temp['email']== $email && $temp['password']==$password)
@@ -66,7 +75,7 @@ class Loginuser extends CI_Controller
             print json_encode($data);
         } else {
             $data = array(
-                "message" => "204",
+                "message" => "204", 
             );
             print json_encode($data);
             return "204";
