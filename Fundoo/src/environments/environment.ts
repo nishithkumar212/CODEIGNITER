@@ -4,9 +4,18 @@
 
 export const 
 environment = {
-   baseUrl:   " http://myfundoo.herokuapp.com/ ",
-  // baseUrl:"http://localhost/codeigniter/",
-  production: false
+  // baseUrl:   " http://myfundoo.herokuapp.com/ ",
+  baseUrl:"http://localhost/codeigniter/",
+  production: false,
+  firebase :{
+    apiKey: "AIzaSyDrEOn9mvFPMox8IKo38hcsapN7_8Li_Sc",
+    authDomain: "myfundoo.firebaseapp.com",
+    databaseURL: "https://myfundoo.firebaseio.com",
+    projectId: "myfundoo",
+    storageBucket: "myfundoo.appspot.com",
+    messagingSenderId: "974074009028",
+    appId: "1:974074009028:web:68f4365cc5554b4b"
+  } 
 };
 
 /*

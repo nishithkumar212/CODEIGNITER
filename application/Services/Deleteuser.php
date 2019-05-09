@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+include_once "/var/www/html/codeigniter/application/predis-1.1/autoload.php";
+include_once("/var/www/html/codeigniter/application/Services/Redis.php");
 class Deleteuser extends CI_Controller
 {
     public function deletes($eid)
@@ -24,6 +26,23 @@ class Deleteuser extends CI_Controller
     //   }
     //   return $data;
     // }
+    $conn=new Redis();
+    $client=$conn->connection();
+    $rediskey="chinna";
+    $start=0;
+    $stop=-1;
+    $data=$client->lrange($rediskey,$start,$stop);
+    $client->del($rediskey);
+    foreach($data as $datas)
+    {
+        $redinfo=json_decode($datas);
+        if($redinfo->id==$eid)
+        {
+            $redinfo->unactive=1;
+        }
+        $var=json_encode($redinfo);
+        $client->rpush($rediskey,$var);
+    }
     $query="update notes set unactive=1 where id='$eid'";
     $stmt=$this->db->conn_id->prepare($query);
     $stmt->execute();

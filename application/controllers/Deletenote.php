@@ -14,7 +14,6 @@ class Deletenote extends CI_controller
     {
         $eid=$_POST['eid'];
       $res =   $this->ref->deletes($eid);
-      return $res;
     }
     public function selection()
     {

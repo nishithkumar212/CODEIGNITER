@@ -55,7 +55,6 @@ valuechange:any;
   // layout: string = this.direction + " " + this.wrap
  view;
 //  cards:boolean=true;
-
   constructor(private fb: FormBuilder,private myremind:ReminderserviceService,private service: NoteService, public datepipe: DatePipe, private vi: ViewService,private dialog: MatDialog,private  eservice:EditService,private snackbar:MatSnackBar, private _pushNotifications: PushNotificationsService) {
     this.noteform = fb.group({
       title: "",
@@ -83,34 +82,52 @@ dbreminder:any;
     {
       debugger
       this.labeldetails = res;
-      console.log(this.labeldetails+"aaaa");
     });
     setInterval(() => {
-      let user = this.service.selection(this.emailvalues);
+      
+    }, 1000);
+    let user = this.service.selection(this.emailvalues);
+      // this.checkdate= this.checkingreminder();
+    
       // this.checkdate= this.checkingreminder();
       user.subscribe((res: any) => {
+      debugger;
         this.details = res ;
         debugger;
-        console.log(this.details,"notes");
-        this.details.array.forEach(element => {
-         console.log(element.notesimage);
-          this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
-          this.dbreminder=element.reminder;
-          this.comparetime=this.checkingreminder();
-          if(this.comparetime==this.dbreminder)
-          {
-           this.snackbar.open("alert")
-           console.log("reminder alert");
-          }
-        });
+        // console.log("nishiiiiii",this.details);
+        // this.details.array.forEach(element => {
+        //  console.log(element.notesimage);
+        //   this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
+        //   this.dbreminder=element.reminder;
+        //   this.comparetime=this.checkingreminder();
+        //   if(this.comparetime==this.dbreminder)
+        //   {
+        //    this.snackbar.open("alert")
+        //    console.log("reminder alert");
+        //   }
+        // });
         // if(this.checkdate==this.details.reminder)
         // {
         //     console.log("alert reminder");
         // }
       });
-    }, 1000);
-    debugger;
-   
+    
+       
+        // this.details.array.forEach(element => {
+        //  console.log(element.notesimage);
+        //   this.Mainimage = "data:image/jpeg;base64," + element.notesimage;
+        //   this.dbreminder=element.reminder;
+        //   this.comparetime=this.checkingreminder();
+        //   if(this.comparetime==this.dbreminder)
+        //   {
+        //    this.snackbar.open("alert")
+        //    console.log("reminder alert");
+        //   }
+        // });
+        // if(this.checkdate==this.details.reminder)
+        // {
+        //     console.log("alert reminder");
+        // }
     this.vi.getview().subscribe(res => {
       this.view = res;
       debugger;
@@ -211,21 +228,18 @@ notecalender;
 selectChangeHandler (event: any) {
   debugger;
       this.timevariable = event.target.value;
-      
 }
 templabel:any;
   mydate(value: any) {
     // this.cards=false;
     this.remins=true;
     debugger;
-    this.currentDateAndTime=moment(this.date).format("MM/DD");
+    this.currentDateAndTime=moment(this.date).format("DD/MM/YYYY");
     this.currentDateAndTime=this.currentDateAndTime+this.timevariable;
     this.service.register(value,this.templabel, this.tokenvalue,  this.currentDateAndTime);
     // this.latest_date=moment(this.date).format('DD-MMM');
     // // this.cardcal =false;
      this.datecalender=false;
-  
-
   }
     checkingreminder()
     {
@@ -233,8 +247,9 @@ templabel:any;
     //  this.now=new Date();
     //  this.currentsystemtime =this.dateFormat(this.now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
     //   return this.currentsystemtime;
+    debugger;
     var date=new Date();
-    var now=date.toDateString()+" "+(date.getHours()%12)+":"+date.getMinutes();
+    var now=date.toDateString()+" "+(date.getHours()%12)+" "+date.getMinutes();
     return now;
     }
   title:any;
@@ -297,7 +312,7 @@ newnotes:any;
   this.newnotes.title=value.title;
   this.newnotes.description=value.description;
   this.newnotes.reminder=value.reminder;
-  this.details.push(this.newnotes);
+  // this.details.push(this.newnotes);
 
     console.log(value);
     this.flag =true;
@@ -346,12 +361,27 @@ newnotes:any;
  {
   this.valuechange.emit(this.details);
  }
+ difference:any;
+ directions:any;
   drop(event: CdkDragDrop<string[]>) {
     debugger
   moveItemInArray(this.details, event.previousIndex, event.currentIndex);
-  console.log("previousIndex",event.previousIndex);
-  console.log("currentIndex",event.currentIndex);
-}
+  if(event.previousIndex-event.currentIndex>=0)
+  {
+      this.difference=event.previousIndex-event.currentIndex;
+      this.directions="positive";
+  }
+  else
+  {
+    this.difference=(event.previousIndex-event.currentIndex*-1)
+    this.directions="negative";
+  }
+    let draguser=this.service.dragAndDrop(this.difference,this.details[event.currentIndex].dragid,this.directions,this.emailvalues);
+        draguser.subscribe((res:any)=>
+        {
+
+        })
+  }
 updatingnotes(labelid,noteid)
 {
   debugger;

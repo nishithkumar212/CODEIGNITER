@@ -19,15 +19,6 @@ class Loginuser extends CI_Controller
         foreach($res as $arr){
           $uid = $arr['id'];
         }
-
-        
-
-
-
-
-
-
-
         //  foreach($res as $temp )
         //  {
         //      if($temp['email']== $email && $temp['password']==$password)

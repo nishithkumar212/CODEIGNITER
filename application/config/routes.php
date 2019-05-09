@@ -92,3 +92,5 @@ $route['addlabel']='Updatelabelnote/addlabel';
 $route['setdata']='Doctrineuser/setter';
 $route['setregister']='RegistrationDoctrine/setregistrationdata';
 $route['renamelabel']='Labels/renamelabel';
+$route['deleteredis']='Note/deleteredis';
+$route['dragging']='Note/dragging';

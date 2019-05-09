@@ -45,8 +45,8 @@ new :any;
     noteuser.append("description",Notes.description);
     noteuser.append("labelid",labelid);
      //noteuser.append("emailid",tokenvalue);
-    this.head=new HttpHeaders().set("Authorization",tokenvalue);
-    console.log(this.head);
+    // this.head=new HttpHeaders().set("Authorization",tokenvalue);
+    // console.log(this.head);
     noteuser.append("reminder",date);
     //this.new=this.head.get("AUthorization");
     return this.http.post(this.serverurl.host+this.serverurl.note,noteuser,{
@@ -156,6 +156,22 @@ imageinsertionnote(image,id)
       labels.append("labelname",labelname);
       labels.append("labelid",labelid);
       return this.http.post(this.serverurl.host+this.serverurl.renamelabel,labels);
+  }
+
+  deleteredis()
+  {
+    return this.http.get(this.serverurl.host+this.serverurl.deleteredis)
+  }
+  dragAndDrop(difference,dragid,direction,uid)
+  {
+    debugger;
+    let dragdrop=new FormData();
+    dragdrop.append("difference",difference);
+    dragdrop.append("dragid",dragid);
+    dragdrop.append("direction",direction);
+    dragdrop.append("uid",uid);
+    return this.http.post(this.serverurl.host+this.serverurl.dragging,dragdrop);
+    
   }
 }
 

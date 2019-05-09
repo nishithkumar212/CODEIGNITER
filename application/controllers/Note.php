@@ -26,8 +26,6 @@ class Note extends CI_Controller
     //         $tit=$_POST['title'];
     //         $des=$_POST['description'];
     //         $labelname=$_POST['labelname'];
-        
-
     // }
     public function createlabel()
     {
@@ -44,5 +42,17 @@ class Note extends CI_Controller
         $labelid=$_POST['labelid'];
         $uid=$_POST['uid'];
         $this->ref->createlabelnotes($title,$description,$labelname,$labelid,$uid);
+    }
+    public function deleteredis()
+    {
+        $this->ref->removeredis();
+    }
+    public function dragging()
+    {
+        $difference=$_POST['difference'];
+        $dragid=$_POST['dragid'];
+        $direction=$_POST['direction'];
+        $uid=$_POST['uid'];
+        $this->ref->setposition($difference,$dragid,$direction,$uid);
     }
 }

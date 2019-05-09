@@ -44,7 +44,7 @@ import { DraganddropComponent } from './Component/draganddrop/draganddrop.compon
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NewComponent } from './Component/new/new.component';
 import { SearchfilterPipe } from './services/searchfilter.pipe';
-
+import {MessagingService} from './services/messaging.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,14 +82,15 @@ import { SearchfilterPipe } from './services/searchfilter.pipe';
     MatGridListModule,
     MatDialogModule,
     DragDropModule,
-    PushNotificationsModule
+    PushNotificationsModule,
+
     
   ],
   exports:[
     
    ],
   
-  providers: [RegisterService,DatePipe,AuthService,CookieService,
+  providers: [RegisterService,DatePipe,AuthService,CookieService,MessagingService,
    {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

@@ -85,6 +85,7 @@ export class DashboardComponent implements OnInit {
   {
     localStorage.removeItem("token");
     this.route.navigate(["/login"]);
+    this.service.deleteredis();
   }
   opendialog()
   {

@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+include_once "/var/www/html/codeigniter/application/predis-1.1/autoload.php";
 class  Childlabelselect extends CI_Controller
 {
    public function childselection($labelid)
