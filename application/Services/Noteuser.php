@@ -40,12 +40,13 @@ class Noteuser extends CI_Controller
         $query="INSERT into notes (title,description,uid,reminder,archive,unactive,labelid) values('$tit','$des','$ide ','$date','$ar','$unactive','$labelid')";
         $stmt=$this->db->conn_id->prepare($query);
       $RES =  $stmt->execute();
+
         $no=$stmt->rowCount();
 
         $query2= "SELECT MAX(id) id from notes where uid='$ide' ";
         $stmt1=$this->db->conn_id->prepare($query2);
         $stmt1->execute();
-        $response=$stmt1->fetchall();
+        $response=$stmt1->fetchAll();
         $myid=$response[0]['id'];
         $querythree="UPDATE  notes set dragid= '$myid' where id=$myid";
         $stmt2=$this->db->conn_id->prepare($querythree);
@@ -67,11 +68,16 @@ class Noteuser extends CI_Controller
             $data=array(
                 "message"=>"200"
             );
-            $quer="SELECT n.title,n.labelid,n.uid,n.notesimage,n.dragid,n.reminder,n.description,n.reminder,n.color,n.id,l.labelname from notes n Left JOIN label_notes ln ON ln.noteid=n.id left JOIN Labels l on ln.labelid=l.id where n.id = LAST_INSERT_ID() And  n.archive=0 And n.unactive=0";
-            $stmt5=$this->db->conn_id->prepare($quer);
-            $myres=$stmt5->execute();
-            $quertydata=$stmt5->fetchAll(PDO::FETCH_ASSOC);
-            $client->rpush($rediskey,json_encode($quertydata)); 
+            // $qrs="select MAX(id) id from notes where uid=20";
+            // $stmts=$this->db->conn_id->prepare($qrs);
+            // $myres=$stmts->execute();
+            // $quertydata=$stmts->fetchAll();
+            $quer="SELECT n.title,n.labelid,n.uid,n.notesimage,n.dragid,n.reminder,n.description,n.reminder,n.color,n.id,l.labelname from notes n Left JOIN label_notes ln ON ln.noteid=n.id left JOIN Labels l on ln.labelid=l.id where n.id='$myid'";
+            $stmts=$this->db->conn_id->prepare($quer);
+            $myres=$stmts->execute();
+            $quertydata=$stmts->fetchAll();
+            $datas=$quertydata;
+            $client->rpush($rediskey,json_encode($quertydata[0])); 
             $start=0;
             $stop=-1;
             $mydataaas=$client->lrange($rediskey,$start,$stop);           
@@ -92,7 +98,7 @@ public function createlabelnotes($title,$description,$labelname,$labelid,$uid)
         $query= "INSERT into  notes (title,description,uid,labelid)values('$title','$description','$uid','$labelid')";
         $stmt=$this->db->conn_id->prepare($query);
         $res=$stmt->execute();
-        $result=$stmt->fetchall(PDO::FETCH_ASSOC);
+        $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
         $query="INSERT into label_notes(noteid,labelid) values(LAST_INSERT_ID(),'$labelid')";
          $stmt=$this->db->conn_id->prepare($query);
         $res1=$stmt->execute();
@@ -106,35 +112,24 @@ public function setposition($difference,$currId,$direction,$uid)
 {
 for ($i = 0; $i < $difference; $i++) {
 if ($direction == "negative") {
-/**
-* @var string $query has query to select the next max note id of the notes
-*/
-$query = "SELECT MAX(dragId) dragId FROM Notes  where dragId < '$currId' and uid_id='$uid'";
+
+$query = "SELECT MAX(dragid) dragid FROM notes  where dragid < '$currId' and uid='$uid'";
 } else {
-/**
-* @var string $query has query to select the next min note id of the notes
-*/
-$query = "SELECT MIN(dragId) dragId FROM Notes where dragId > '$currId' and uid_id='$uid'";
+
+$query = "SELECT MIN(dragid) dragid FROM notes where dragid > '$currId' and uid='$uid'";
 }
 $statement = $this->db->conn_id->prepare($query);
 $statement->execute();
 $swapId = $statement->fetch(PDO::FETCH_ASSOC);
-/**
-* @var swapId to store the next id
-*/
-$swapId = $swapId['dragId'];
-/**
-* @var string $query has query to swap the tow rows
-*/
-$query = "UPDATE Notes a INNER JOIN Notes b on a.dragId <> b.dragId set a.dragId = b.dragId
-WHERE a.dragId in ('$swapId','$currId') and b.dragId in ('$swapId','$currId')";
+
+$swapId = $swapId['dragid'];
+
+$query = "UPDATE notes a INNER JOIN notes b on a.dragid <> b.dragid set a.dragid = b.dragid
+WHERE a.dragid in ('$swapId','$currId') and b.dragid in ('$swapId','$currId')";
 $statement = $this->db->conn_id->prepare($query);
 $temp = $statement->execute();
-
-/**
-* storing in the next id
-*/
 $currId = $swapId;
+print json_encode($data);
 }
 }
 }

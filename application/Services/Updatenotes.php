@@ -53,7 +53,6 @@ class Updatenotes extends CI_Controller
             $var = json_encode($data);
             $client->rpush($rediskey,$var);
         }
-
     }
     public function updatedb($etit,$edes,$eid)
     {
